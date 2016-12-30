@@ -1,0 +1,13 @@
+{
+    "name": "evrysoft/complex-a",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+    	"psr-4": {
+    		"EvrySoft\\": "ext-libs/"
+    	}
+    }
+}
