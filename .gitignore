@@ -2,7 +2,6 @@
 /.htaccess
 /*.htaccess
 /.htaccess*
-/urlrewrite.php
 /web.config
 /*web.config
 /*.log
