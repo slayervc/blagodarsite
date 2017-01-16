@@ -4,7 +4,7 @@ $arUrlRewrite = array(
 		"CONDITION" => "#^/code/auth/get#",
 		"RULE" => "",
 		"ID" => "",
-		"PATH" => "/external-pages/auth/get-auth-code.php",
+		"PATH" => "/ext-pages/auth/get-auth-code.php",
 	)
 );
 

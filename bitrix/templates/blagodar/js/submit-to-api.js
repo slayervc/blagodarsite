@@ -40,6 +40,7 @@ $(document).ready(function () {
 
 		codeResponse.done(function(response) {
 			console.log(response);
+
 			var $response = JSON.parse(response);
 
 			_self.parent().find('.alert').remove();

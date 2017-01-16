@@ -11,12 +11,18 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 	<p><?php echo GetMessage("MAIN_REGISTER_AUTH") ?></p>
 
 <?php else: ?>
-<?php if ($arResult['ERRORS']): ?>
-	<pre>
-		<?php var_dump($arResult['ERRORS']) ?>
-	</pre>
-<?php endif ?>
-
+<?
+	if (count($arResult["ERRORS"]) > 0){
+		foreach ($arResult["ERRORS"] as $key => $error)
+			if (intval($key) == 0 && $key !== 0) {
+				$arResult["ERRORS"][$key] = str_replace("#FIELD_NAME#", "&quot;".GetMessage("REGISTER_FIELD_".$key)."&quot;", $error);
+			}
+			echo '<p class="alert alert-danger">';
+			echo implode("<br />", $arResult["ERRORS"]);
+			echo '</p>';
+	}
+		
+?>
 		<div class="col-md-8 col-md-offset-2">
 			<div class="auth-block">
 				<h4 class="auth-block__form-header auth-block__form-header--centered">
@@ -26,16 +32,27 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 					<form action="<?php echo POST_FORM_ACTION_URI ?>" method="POST" name="regform" class="form" enctype="multipart/form-data">
 						<input type="hidden" name="user_type" value="client">
 						<?php foreach ($arResult['SHOW_FIELDS'] as $field): ?>
+							
 							<div class="form-group">
 								<?php if ($arResult['REQUIRED_FIELDS_FLAGS'][$field] == 'Y'): ?>
-									<span style="color:red">*</span>
+									<!-- <span style="color:red">*</span> -->
 								<?php endif ?>
 								<?php if ($field == 'PASSWORD' || $field == 'CONFIRM_PASSWORD'): ?>
-									<input type="password" name="REGISTER[<?php echo $field ?>]" class="form-control auth-block__form-control" placeholder="<?php echo strtolower($field) ?>">
+									<input type="hidden" 
+										   name="REGISTER[<?php echo $field ?>]" 
+										   placeholder="<?php echo strtolower(GetMessage('REGISTER_FIELD_'.$field)) ?>"
+										   value="external_password"
+									>
 								<?php elseif ($field == 'EMAIL'): ?>
-									<input type="email" name="REGISTER[<?php echo $field ?>]" class="form-control auth-block__form-control" placeholder="<?php echo strtolower($field) ?>">
+									<input type="email" 
+										   name="REGISTER[<?php echo $field ?>]" 
+										   class="form-control auth-block__form-control" 
+										   placeholder="<?php echo strtolower(GetMessage('REGISTER_FIELD_'.$field)) ?>"
+									>
+								<?php elseif ($field == 'LOGIN'):?>
+									<input type="hidden" name="REGISTER[<?php echo $field ?>]" value="mobile_login">
 								<?php else: ?>
-									<input type="text" name="REGISTER[<?php echo $field ?>]" class="form-control auth-block__form-control" placeholder="<?php echo strtolower($field) ?>">
+									<input type="text" name="REGISTER[<?php echo $field ?>]" class="form-control auth-block__form-control" placeholder="<?php echo strtolower(GetMessage('REGISTER_FIELD_'.$field)) ?>">
 								<?php endif ?>
 							</div>
 						<?php endforeach ?>

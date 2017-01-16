@@ -29,19 +29,19 @@ $url = implode('/', $request_settings);
 
 $errors = [];
 
-if (isset($_GET['login'])) {
-	$login = $_GET['login'];
+if (isset($_REQUEST['login'])) {
+	$login = $_REQUEST['login'];
 } else {
 	$errors['login_exception'] = 'Empty login';
 }
 
 if (!empty($errors)) {
-	echo json_encode($errors);
+	var_dump($errors);
 	return;
 }
 
-if (isset($_GET['type'])) {
-	$type = $_GET['type'];
+if (isset($_REQUEST['type'])) {
+	$type = $_REQUEST['type'];
 } else {
 	$type = '';
 }
