@@ -23,11 +23,12 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . "/js/submit-to-api.js");
 			4 => "PERSONAL_MOBILE",
 		),
 		"SUCCESS_PAGE" => "/index.php",
-		"USE_BACKURL" => "Y",
+		"USE_BACKURL" => "N",
 		"COMPONENT_TEMPLATE" => "main-register-form",
 		"USER_PROPERTY" => array(
 		),
-		"USER_PROPERTY_NAME" => ""
+		"USER_PROPERTY_NAME" => "",
+		"CLIENT_TYPE" => "Client"
 	),
 	false
 );?>

@@ -4,16 +4,22 @@
 if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 	ShowMessage($arResult['ERROR_MESSAGE']);
 ?>
+
 <?php if ($arResult["FORM_TYPE"] == "login"): ?>
 	<div class="auth-block__form">
 		<h4 class="auth-block__form-header">
-			Вход для Клиентов
+			Вход <?php if ($arParams['CLIENT_TYPE'] == 'Client'): ?>
+				для Клиентов
+				<?php elseif($arParams['CLIENT_TYPE'] == 'Partner'): ?>
+				для Партнеров
+				<?php endif ?>
 		</h4>
 		<form name="system_auth_form <?=$arResult["RND"]?>" class="form" method="POST" action="<?php echo $arResult['AUTH_URL'] ?>">
 			<input type="hidden" name="AUTH_FORM" value="Y" />
 			<input type="hidden" name="TYPE" value="AUTH" />
+			<input type="hdden" name="CLIENT_TYPE" value="<?php echo $arParams['CLIENT_TYPE'] ?>">
 			<div class="form-group">
-				<input type="text" name="USER_LOGIN" class="form-control auth-block__form-control" placeholder="Логин" value="<?php echo $arResult['USER_LOGIN'] ?>">
+				<input type="text" name="USER_LOGIN" class="form-control auth-block__form-control" placeholder="Логин">
 			</div>
 			<div class="form-group">
 				<input type="password" name="USER_PASSWORD" autocomplete="off" class="form-control auth-block__form-control" placeholder="Пароль">

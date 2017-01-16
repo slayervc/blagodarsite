@@ -1,15 +1,11 @@
-<?
+<?php 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+
 $arTemplateParameters = array(
-	"USER_PROPERTY_NAME"=>array(
-		"NAME" => GetMessage("USER_PROPERTY_NAME"),
-		"TYPE" => "STRING",
-		"DEFAULT" => "",	
-	),
 	"CLIENT_TYPE" => [
-		"NAME" => GetMessage("CLIENT_TYPE"),
+		"NAME" => "CLIENT_TYPE",
 		"TYPE" => "STRING",
 		"DEFAULT" => 'Client'
 	]
 );
-?>
+

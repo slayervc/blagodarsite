@@ -33,5 +33,6 @@
 # включаем папку шаблонов
 !/bitrix/templates/
 vendor/
+upload/tmp/
 .phpintel
 

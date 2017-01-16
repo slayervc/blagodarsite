@@ -7,9 +7,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 <div class="container">
 	<div class="row">
 <?php if ($USER->IsAuthorized()): ?>
-	
 	<p><?php echo GetMessage("MAIN_REGISTER_AUTH") ?></p>
-
 <?php else: ?>
 <?
 	if (count($arResult["ERRORS"]) > 0){
@@ -30,10 +28,12 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 				</h4>
 				<div class="auth-block__form auth-block__form--expanded auth-block__form--bordered">
 					<form action="<?php echo POST_FORM_ACTION_URI ?>" method="POST" name="regform" class="form" enctype="multipart/form-data">
-						<input type="hidden" name="user_type" value="client">
+						<input type="hidden" 
+							   name="user_type" 
+							   value="<?php echo $arParams['CLIENT_TYPE'] ?>"
+						>
 						<?php foreach ($arResult['SHOW_FIELDS'] as $field): ?>
 							
-							<div class="form-group">
 								<?php if ($arResult['REQUIRED_FIELDS_FLAGS'][$field] == 'Y'): ?>
 									<!-- <span style="color:red">*</span> -->
 								<?php endif ?>
@@ -43,18 +43,21 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 										   placeholder="<?php echo strtolower(GetMessage('REGISTER_FIELD_'.$field)) ?>"
 										   value="external_password"
 									>
+								<?php elseif ($field == 'LOGIN'):?>
+									<input type="hidden" name="REGISTER[<?php echo $field ?>]" value="mobile_login">
 								<?php elseif ($field == 'EMAIL'): ?>
+								<div class="form-group">
 									<input type="email" 
 										   name="REGISTER[<?php echo $field ?>]" 
 										   class="form-control auth-block__form-control" 
 										   placeholder="<?php echo strtolower(GetMessage('REGISTER_FIELD_'.$field)) ?>"
 									>
-								<?php elseif ($field == 'LOGIN'):?>
-									<input type="hidden" name="REGISTER[<?php echo $field ?>]" value="mobile_login">
+								</div>
 								<?php else: ?>
+								<div class="form-group">
 									<input type="text" name="REGISTER[<?php echo $field ?>]" class="form-control auth-block__form-control" placeholder="<?php echo strtolower(GetMessage('REGISTER_FIELD_'.$field)) ?>">
+								</div>
 								<?php endif ?>
-							</div>
 						<?php endforeach ?>
 						<div class="form-group">
 							<div class="row">

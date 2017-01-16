@@ -14,13 +14,16 @@ use GuzzleHttp\Exception\RequestException;
 class OnBeforeUserRegister
 {
 	/**
-	 *	
+	 *
+	 * 
 	 */
-	public function externalRegister()
+	public function externalRegister(&$arParams)
 	{
 		$data = $_REQUEST;
 
-		var_dump($data);
+		$arParams['LOGIN'] = $arParams['PERSONAL_MOBILE'];
+
+		var_dump($arParams);
 
 		die();
 
@@ -32,14 +35,14 @@ class OnBeforeUserRegister
 			'verify' => false,
 			'http_errors' => false,
 			'query' => [
-				'login' => $data['REGISTER']['PERSONAL_MOBILE'],
+				'login' => $arParams['LOGIN'],
 				'name' => sprintf('%s %s %s', 
-					$data['REGISTER']['NAME'], 
-					$data['REGISTER']['LAST_NAME'], 
-					$data['REGISTER']['SECOND_NAME']
+					$arParams['NAME'], 
+					$arParams['LAST_NAME'], 
+					$arParams['SECOND_NAME']
 				),		
-				'code' => $data['REGISTER']['USER_PHONE_CODE'],
-				'email' => $data['REGISTER']['EMAIL'],
+				'code' => $arParams['USER_PHONE_CODE'],
+				'email' => $arParams['EMAIL'],
 				'type' => 'json'
 			]
 		]);		
@@ -50,10 +53,6 @@ class OnBeforeUserRegister
 			$GLOBALS['APPLICATION']->ThrowException($error->info);
 			return false;
 		}
-
-		// echo $response->getBody();
-		die();
-
 
 	}
 
