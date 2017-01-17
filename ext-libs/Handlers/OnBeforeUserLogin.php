@@ -14,36 +14,46 @@ use GuzzleHttp\Client as HttpClient;
 class OnBeforeUserLogin
 {
 	
-	public function beforeLogin(&$arParams)
+	public function beforeLogin(&$arFields)
 	{
 
-		// var_dump($arParams);
+		// var_dump($arFields);
 
 		$client = new HttpClient();
 
-		$login = $arParams['LOGIN'];
+		$login = $arFields['LOGIN'];
 
-		$password = $arParams['PASSWORD'];
+		$password = $arFields['PASSWORD'];
 
+
+		// Check if password is correct
 		if (CheckPassword::checkByLogin($login, $password) && !CheckPassword::checkByLogin($login, 'external_password')) {
 			return true;
 		}
 
+
+		/* TODO: Make helper for requests */
 		$url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/getinfo';
 
 		$response = $client->request('GET', $url, [
 			'verify' => false,
 			'http_errors' => false,
 			'query' => [
-				'login' => $arParams['LOGIN'],
-				'password' => $arParams['PASSWORD'],
+				'login' => $arFields['LOGIN'],
+				'password' => $arFields['PASSWORD'],
 				'type' => 'json'
 			]
 		]);
 
-		if ($response->getResponseCode() == 200) {
+		if ($response->getStatusCode() !== 200) {
+			echo $response->getBody();			
+		} else {
 			/* TODO: INSERT UPDATE VALUES IN USERS FIELDS */
+			echo $response->getBody();
+			var_dump($arFields);
+			die();
 		}
+
 
 	}
 

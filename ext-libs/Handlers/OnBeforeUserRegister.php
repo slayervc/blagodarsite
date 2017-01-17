@@ -17,15 +17,13 @@ class OnBeforeUserRegister
 	 *
 	 * 
 	 */
-	public function externalRegister(&$arParams)
+	public function beforeRegister(&$arFields)
 	{
+
+
 		$data = $_REQUEST;
 
-		$arParams['LOGIN'] = $arParams['PERSONAL_MOBILE'];
-
-		var_dump($arParams);
-
-		die();
+		$arFields['LOGIN'] = $arFields['PERSONAL_MOBILE'];
 
 		$client = new HttpClient();
 
@@ -35,14 +33,14 @@ class OnBeforeUserRegister
 			'verify' => false,
 			'http_errors' => false,
 			'query' => [
-				'login' => $arParams['LOGIN'],
+				'login' => $arFields['LOGIN'],
 				'name' => sprintf('%s %s %s', 
-					$arParams['NAME'], 
-					$arParams['LAST_NAME'], 
-					$arParams['SECOND_NAME']
+					$arFields['NAME'], 
+					$arFields['LAST_NAME'], 
+					$arFields['SECOND_NAME']
 				),		
-				'code' => $arParams['USER_PHONE_CODE'],
-				'email' => $arParams['EMAIL'],
+				'code' => $arFields['USER_PHONE_CODE'],
+				'email' => $arFields['EMAIL'],
 				'type' => 'json'
 			]
 		]);		
@@ -52,7 +50,14 @@ class OnBeforeUserRegister
 			$error = json_decode($response->getBody());
 			$GLOBALS['APPLICATION']->ThrowException($error->info);
 			return false;
+		} else {
+			
 		}
+
+		echo $response->getBody();
+
+		die();
+
 
 	}
 

@@ -15,7 +15,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 								"CLIENT_TYPE" => "Partner",
 								"FORGOT_PASSWORD_URL" => "auth/forgot-password.php",
 								"PROFILE_URL" => "profile/client/",
-								"REGISTER_URL" => "",
+								"REGISTER_URL" => "/auth/register.php",
 								"SHOW_ERRORS" => "Y"
 							)
 						);?>

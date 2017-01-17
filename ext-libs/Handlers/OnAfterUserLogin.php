@@ -11,20 +11,20 @@ use GuzzleHttp\Client as HttpClient;
 class OnAfterUserLogin
 {
 	
-	public function afterLogin(&$arParams)
+	public function afterLogin(&$arFields)
 	{
 
 		// global $USER;
 
 		// $client = new HttpClient();
 
-		// $login = $arParams['LOGIN'];
+		// $login = $arFields['LOGIN'];
 
-		// $password = $arParams['PASSWORD'];
+		// $password = $arFields['PASSWORD'];
 
 		// $url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/getinfo';
 
-		// var_dump($arParams);
+		// var_dump($arFields);
 
 		// die()
 
@@ -32,8 +32,8 @@ class OnAfterUserLogin
 		// 	'verify' => false,
 		// 	'http_errors' => false,
 		// 	'query' => [
-		// 		'login' => $arParams['LOGIN'],
-		// 		'password' => $arParams['PASSWORD'],
+		// 		'login' => $arFields['LOGIN'],
+		// 		'password' => $arFields['PASSWORD'],
 		// 		'type' => 'json'
 		// 	]
 		// ]);
