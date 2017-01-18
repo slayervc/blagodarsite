@@ -15,6 +15,7 @@ if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 				<?php endif ?>
 		</h4>
 		<form name="system_auth_form <?=$arResult["RND"]?>" class="form" method="POST" action="<?php echo $arResult['AUTH_URL'] ?>">
+
 			<input type="hidden" name="AUTH_FORM" value="Y" />
 			<input type="hidden" name="TYPE" value="AUTH" />
 			<input type="hidden" name="CLIENT_TYPE" value="<?php echo $arParams['CLIENT_TYPE'] ?>">
@@ -35,6 +36,7 @@ if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 					<input type="submit" class="auth-block__button pull-right" name="Login" value="<?php echo GetMessage('AUTH_LOGIN_BUTTON') ?>">
 				</div>
 			</div>
+			<?php echo $arResult['FORM_FOOTER'] ?>
 		</form>
 	</div>
 <?php elseif ($arResult['FORM_TYPE'] == 'logout'):?>

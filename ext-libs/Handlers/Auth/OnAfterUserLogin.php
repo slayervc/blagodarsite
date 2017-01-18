@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-namespace EvrySoft\Handlers;
+namespace EvrySoft\Handlers\Auth;
 
-use GuzzleHttp\Client as HttpClient;
+// use GuzzleHttp\Client as HttpClient;
 
 
 /**
@@ -17,16 +17,16 @@ class OnAfterUserLogin
 		// global $USER;
 
 		// $client = new HttpClient();
-
+		
 		// $login = $arFields['LOGIN'];
 
 		// $password = $arFields['PASSWORD'];
 
 		// $url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/getinfo';
 
-		// var_dump($arFields);
+		var_dump($arFields);
 
-		// die()
+		die();
 
 		// $response = $client->request('GET', $url, [
 		// 	'verify' => false,

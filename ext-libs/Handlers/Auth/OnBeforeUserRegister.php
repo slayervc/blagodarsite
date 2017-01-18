@@ -1,6 +1,6 @@
 <?php
 
-namespace EvrySoft\Handlers;
+namespace EvrySoft\Handlers\Auth;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\RequestException;
@@ -20,9 +20,6 @@ class OnBeforeUserRegister
 	public function beforeRegister(&$arFields)
 	{
 
-
-		$data = $_REQUEST;
-
 		$arFields['LOGIN'] = $arFields['PERSONAL_MOBILE'];
 
 		$client = new HttpClient();
@@ -35,15 +32,15 @@ class OnBeforeUserRegister
 			'query' => [
 				'login' => $arFields['LOGIN'],
 				'name' => sprintf('%s %s %s', 
-					$arFields['NAME'], 
 					$arFields['LAST_NAME'], 
+					$arFields['NAME'], 
 					$arFields['SECOND_NAME']
 				),		
-				'code' => $arFields['USER_PHONE_CODE'],
+				'code' => $_REQUEST['REGISTER']['USER_PHONE_CODE'],
 				'email' => $arFields['EMAIL'],
 				'type' => 'json'
 			]
-		]);		
+		]);
 
 		/* Handle HTTP BadRequest code 400 */
 		if ($response->getStatusCode() == 400) {
@@ -51,14 +48,27 @@ class OnBeforeUserRegister
 			$GLOBALS['APPLICATION']->ThrowException($error->info);
 			return false;
 		} else {
-			
+			return true;
+		}
+	}
+
+
+	public function testUser(&$arFields)
+	{
+
+		$testMobile = 2222;
+
+		$arFields['LOGIN'] = $arFields['PERSONAL_MOBILE'];
+
+		if ($testMobile == $_REQUEST['REGISTER']['USER_PHONE_CODE']) {
+			return true;	
+		} else {
+
+			$GLOBALS['APPLICATION']->ThrowException(['error' => 'USER_PHONE_CODE FAILED']);
+			return false;
 		}
 
-		echo $response->getBody();
-
-		die();
-
-
 	}
+
 
 }

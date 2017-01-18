@@ -1,6 +1,6 @@
 <?php 
 
-namespace EvrySoft\Handlers;
+namespace EvrySoft\Handlers\Auth;
 
 /**
 * OnBeforeUserRegister handler

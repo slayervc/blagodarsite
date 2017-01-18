@@ -1,6 +1,6 @@
 <?php
 
-namespace EvrySoft\Handlers;
+namespace EvrySoft\Handlers\Auth;
 
 use EvrySoft\Helpers\CheckPassword;
 use GuzzleHttp\Client as HttpClient;
@@ -17,7 +17,8 @@ class OnBeforeUserLogin
 	public function beforeLogin(&$arFields)
 	{
 
-		// var_dump($arFields);
+		global $APPLICATION;
+		global $USER;
 
 		$client = new HttpClient();
 
@@ -26,8 +27,13 @@ class OnBeforeUserLogin
 		$password = $arFields['PASSWORD'];
 
 
+		if ($password =='external_password') {
+			$APPLICATION->ThrowException('Неверный пароль');
+			return false;
+		}
+
 		// Check if password is correct
-		if (CheckPassword::checkByLogin($login, $password) && !CheckPassword::checkByLogin($login, 'external_password')) {
+		if (CheckPassword::checkByLogin($login, $password)) {
 			return true;
 		}
 
@@ -46,12 +52,18 @@ class OnBeforeUserLogin
 		]);
 
 		if ($response->getStatusCode() !== 200) {
-			echo $response->getBody();			
+			$error = json_decode($response->getBody());
+			$GLOBALS['APPLICATION']->ThrowException($error->info);
+			return false;
 		} else {
-			/* TODO: INSERT UPDATE VALUES IN USERS FIELDS */
-			echo $response->getBody();
-			var_dump($arFields);
-			die();
+			/* UPDATE */
+			$user_id = \CUser::GetByLogin($login)->Fetch()['ID'];
+
+			$USER->Update($user_id, [
+				'PASSWORD' => $password,
+			]);
+
+			$USER->SetParam('API_PASSWD');
 		}
 
 
