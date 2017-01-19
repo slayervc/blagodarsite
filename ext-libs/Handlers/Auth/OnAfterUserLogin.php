@@ -2,7 +2,8 @@
 
 namespace EvrySoft\Handlers\Auth;
 
-// use GuzzleHttp\Client as HttpClient;
+
+use GuzzleHttp\Client as HttpClient;
 
 
 /**
@@ -14,35 +15,38 @@ class OnAfterUserLogin
 	public function afterLogin(&$arFields)
 	{
 
-		// global $USER;
+		global $USER;
 
-		// $client = new HttpClient();
+		if ($USER->IsAdmin()) {
+			return true;
+		}
+
+
+		$client = new HttpClient();
 		
-		// $login = $arFields['LOGIN'];
+		$login = $arFields['LOGIN'];
 
-		// $password = $arFields['PASSWORD'];
+		$password = $arFields['PASSWORD'];
 
-		// $url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/getinfo';
+		$url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/getinfo';
 
-		var_dump($arFields);
+		$response = $client->request('GET', $url, [
+			'verify' => false,
+			'http_errors' => false,
+			'query' => [
+				'login' => $arFields['LOGIN'],
+				'password' => $arFields['PASSWORD'],
+				'type' => 'json'
+			]
+		]);
 
-		die();
+		$user_info = json_decode($response->getBody(), true);
 
-		// $response = $client->request('GET', $url, [
-		// 	'verify' => false,
-		// 	'http_errors' => false,
-		// 	'query' => [
-		// 		'login' => $arFields['LOGIN'],
-		// 		'password' => $arFields['PASSWORD'],
-		// 		'type' => 'json'
-		// 	]
-		// ]);
+		$USER->SetParam('API_PASSWD', $password);
 
-		// echo $password;
+		$USER->SetParam('USER_EXT_INFO', $user_info);
 
-		// $USER->SetParam('API_PASSWD', $password);
-
-		// echo $response->getBody();
+		return true;
 	}
 
 

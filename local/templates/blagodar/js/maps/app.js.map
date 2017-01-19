@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":["app"],"mappings":";;AAAA;;;;;;AAGA,IAAIA,MAAM,kBAAQ,MAAR,CAAV","file":"../app.js","sourcesContent":["import App from \"./Application/App.js\";\n\n\nvar app = new App('TEST');\n\n\n"]}

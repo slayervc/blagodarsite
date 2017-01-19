@@ -3,18 +3,6 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 ?>
 
-<?php 
-
-	$APPLICATION->IncludeComponent(
-		'evrysoft:external.user.info',
-		'',
-		[
-			'URI' => '/clients/add'
-		]
-	);	
-
-?>
-
 <div class="container">
 	<div class="row">
 		 <?php if (!$USER->IsAuthorized()): ?>
@@ -23,34 +11,44 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 				<div class="row">
 					<div class="col-md-6">
 						 <?$APPLICATION->IncludeComponent(
-	"bitrix:system.auth.form",
-	"main-auth-form",
-	Array(
-		"CLIENT_TYPE" => "Partner",
-		"FORGOT_PASSWORD_URL" => "auth/forgot-password.php",
-		"PROFILE_URL" => "profile/client/",
-		"REGISTER_URL" => "/auth/register.php",
-		"SHOW_ERRORS" => "Y"
-	)
-);?>
+							"bitrix:system.auth.form",
+							"main-auth-form",
+							Array(
+								"CLIENT_TYPE" => "Partner",
+								"FORGOT_PASSWORD_URL" => "auth/forgot-password.php",
+								"PROFILE_URL" => "profile/client/",
+								"REGISTER_URL" => "/auth/register.php",
+								"SHOW_ERRORS" => "Y"
+							)
+						);?>
 					</div>
 					<div class="col-md-6">
 						 <?$APPLICATION->IncludeComponent(
-	"bitrix:system.auth.form",
-	"main-auth-form",
-	Array(
-		"CLIENT_TYPE" => "Client",
-		"FORGOT_PASSWORD_URL" => "/auth/forgot-password.php",
-		"PROFILE_URL" => "profile/partner/",
-		"REGISTER_URL" => "/auth/register.php",
-		"SHOW_ERRORS" => "Y"
-	)
-);?>
+							"bitrix:system.auth.form",
+							"main-auth-form",
+							Array(
+								"CLIENT_TYPE" => "Client",
+								"FORGOT_PASSWORD_URL" => "/auth/forgot-password.php",
+								"PROFILE_URL" => "profile/partner/",
+								"REGISTER_URL" => "/auth/register.php",
+								"SHOW_ERRORS" => "Y"
+							)
+						);?>
 					</div>
 				</div>
 			</div>
 		</div>
-		 <?php endif ?>
+		<?php else: ?>
+			<?php 
+				$APPLICATION->IncludeComponent(
+					'evrysoft:external.user.info',
+					'',
+					Array(
+						"URI" => ''
+					)
+				);
+			?>
+		<?php endif ?>
 		<div class="col-md-12">
 			<div class="company-search">
 				<div class="row">

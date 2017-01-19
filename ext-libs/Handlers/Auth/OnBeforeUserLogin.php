@@ -62,8 +62,6 @@ class OnBeforeUserLogin
 			$USER->Update($user_id, [
 				'PASSWORD' => $password,
 			]);
-
-			$USER->SetParam('API_PASSWD');
 		}
 
 
