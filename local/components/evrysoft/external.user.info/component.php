@@ -18,6 +18,5 @@ use Bitrix\Main\Config\Configuration;
 		$arResult['EXT_REQUEST_STATUS'] = $userData['status'];
 		$arResult['USER_DATA'] = array_change_key_case($userData['info'], CASE_UPPER);
 	}
-
 	$this->IncludeComponentTemplate();
 ?>

@@ -2,13 +2,13 @@
 
 @media screen and (min-width: 1170px) { .container { width: 940px; } }
 
-@font-face { font-family: "Open Sans"; src: url("/bitrix/templates/blagodar/fonts/OpenSans-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/fonts/OpenSans-Regular.ttf"); font-weight: 400; }
 
-@font-face { font-family: "Open Sans"; src: url("/bitrix/templates/blagodar/fonts/OpenSans-Semibold.ttf"); font-weight: 600; }
+@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/fonts/OpenSans-Semibold.ttf"); font-weight: 600; }
 
-@font-face { font-family: "Open Sans"; src: url("/bitrix/templates/blagodar/fonts/OpenSans-Bold.ttf"); font-weight: 700; }
+@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/fonts/OpenSans-Bold.ttf"); font-weight: 700; }
 
-@font-face { font-family: "Open Sans"; src: url("/bitrix/templates/blagodar/fonts/OpenSans-Light.ttf"); font-weight: 300; }
+@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/fonts/OpenSans-Light.ttf"); font-weight: 300; }
 
 .header__head-block { padding: 25px 0; }
 
@@ -84,7 +84,7 @@
 
 .navigation__link-list { border: 1px solid red; }
 
-.navigation__icon { position: absolute; height: 25px; width: 25px; top: 50%; left: 50%; transform: translate(-50%, -50%); background-image: url("/bitrix/templates/images/home.png"); background-position: center center; background-size: 100%; display: block; }
+.navigation__icon { position: absolute; height: 25px; width: 25px; top: 50%; left: 50%; transform: translate(-50%, -50%); background-image: url("/local/templates/blagodar/images/home.png"); background-position: center center; background-size: 100%; display: block; }
 
 .banner { margin: 20px 0; }
 
@@ -124,7 +124,7 @@
 
 .company-search__input:focus { outline: none; }
 
-.company-search__search-button { border-radius: 8px; color: #fff; background-color: #7aa700; font-weight: 600; font-family: 'Open Sans'; border: 3px solid #fff; box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); padding-top: 7px; padding-bottom: 7px; padding-left: 40px; padding-right: 15px; background-image: url("/bitrix/templates/images/search-icon.png"); background-position: 15px center; background-size: 16px; background-repeat: no-repeat; }
+.company-search__search-button { border-radius: 8px; color: #fff; background-color: #7aa700; font-weight: 600; font-family: 'Open Sans'; border: 3px solid #fff; box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); padding-top: 7px; padding-bottom: 7px; padding-left: 40px; padding-right: 15px; background-image: url("/local/templates/blagodar/images/search-icon.png"); background-position: 15px center; background-size: 16px; background-repeat: no-repeat; }
 
 .company-search__search-button:hover { background-color: #9fda00; }
 

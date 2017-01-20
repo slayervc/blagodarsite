@@ -7,8 +7,8 @@
 		$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/jquery/dist/jquery.min.js');
 		$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/bootstrap/dist/js/bootstrap.min.js');
 	 ?>
-	<link rel="stylesheet" href="/bitrix/templates/<?php echo SITE_TEMPLATE_ID ?>/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/bitrix/templates/<?php echo SITE_TEMPLATE_ID ?>/css/main.css">
+	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/css/main.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

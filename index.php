@@ -5,7 +5,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 
 <div class="container">
 	<div class="row">
-		 <?php if (!$USER->IsAuthorized()): ?>
+		<?php if (!$USER->IsAuthorized()): ?>
 		<div class="col-md-12">
 			<div class="auth-block">
 				<div class="row">
@@ -39,15 +39,15 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 			</div>
 		</div>
 		<?php else: ?>
-			<?php 
-				$APPLICATION->IncludeComponent(
-					'evrysoft:external.user.info',
-					'',
-					Array(
-						"URI" => ''
-					)
-				);
-			?>
+			<div class="col-md-4 sidebar">
+				<?php $APPLICATION->IncludeComponent(
+						'evrysoft:external.user.info',
+						'',
+						Array(
+							"URI" => ''
+						)
+					);?>
+			</div>
 		<?php endif ?>
 		<div class="col-md-12">
 			<div class="company-search">
