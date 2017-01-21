@@ -6,47 +6,37 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 <div class="container">
 	<div class="row">
 		<?php if (!$USER->IsAuthorized()): ?>
-		<div class="col-md-12">
-			<div class="auth-block">
-				<div class="row">
-					<div class="col-md-6">
-						 <?$APPLICATION->IncludeComponent(
-							"bitrix:system.auth.form",
-							"main-auth-form",
-							Array(
-								"CLIENT_TYPE" => "Partner",
-								"FORGOT_PASSWORD_URL" => "auth/forgot-password.php",
-								"PROFILE_URL" => "profile/client/",
-								"REGISTER_URL" => "/auth/register.php",
-								"SHOW_ERRORS" => "Y"
-							)
-						);?>
-					</div>
-					<div class="col-md-6">
-						 <?$APPLICATION->IncludeComponent(
-							"bitrix:system.auth.form",
-							"main-auth-form",
-							Array(
-								"CLIENT_TYPE" => "Client",
-								"FORGOT_PASSWORD_URL" => "/auth/forgot-password.php",
-								"PROFILE_URL" => "profile/partner/",
-								"REGISTER_URL" => "/auth/register.php",
-								"SHOW_ERRORS" => "Y"
-							)
-						);?>
+			<div class="col-md-12">
+				<div class="auth-block">
+					<div class="row">
+						<div class="col-md-6">
+							 <?$APPLICATION->IncludeComponent(
+								"bitrix:system.auth.form",
+								"main-auth-form",
+								Array(
+									"CLIENT_TYPE" => "Partner",
+									"FORGOT_PASSWORD_URL" => "auth/forgot-password.php",
+									"PROFILE_URL" => "profile/client/",
+									"REGISTER_URL" => "/auth/register.php",
+									"SHOW_ERRORS" => "Y"
+								)
+							);?>
+						</div>
+						<div class="col-md-6">
+							 <?$APPLICATION->IncludeComponent(
+								"bitrix:system.auth.form",
+								"main-auth-form",
+								Array(
+									"CLIENT_TYPE" => "Client",
+									"FORGOT_PASSWORD_URL" => "/auth/forgot-password.php",
+									"PROFILE_URL" => "profile/partner/",
+									"REGISTER_URL" => "/auth/register.php",
+									"SHOW_ERRORS" => "Y"
+								)
+							);?>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<?php else: ?>
-			<div class="col-md-4 sidebar">
-				<?php $APPLICATION->IncludeComponent(
-						'evrysoft:external.user.info',
-						'',
-						Array(
-							"URI" => ''
-						)
-					);?>
 			</div>
 		<?php endif ?>
 		<div class="col-md-12">
@@ -59,12 +49,13 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 					</div>
 					<div class="col-md-6 col-xs-8 company-search__column">
 						<div class="company-search__input-wrapper">
- <input type="text" class="company-search__input" placeholder="Введите назавние компании или вид деятельности">
+							<input type="text" class="company-search__input" placeholder="Введите назавние компании или вид деятельности">
 						</div>
 					</div>
 					<div class="col-md-3 col-xs-4 company-search__column">
- <button class="company-search__search-button pull-right">
-						Найти </button>
+						<button class="company-search__search-button pull-right">
+							Найти
+						</button>
 					</div>
 				</div>
 			</div>
@@ -94,4 +85,4 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 		</div>
 	</div>
 </div>
- <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

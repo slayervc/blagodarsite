@@ -1,9 +1,13 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
-<?
-if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
-	ShowMessage($arResult['ERROR_MESSAGE']);
-?>
+<?if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR']):?>
+	<?php foreach ($arResult['ERROR_MESSAGE']['MESSAGE'] as $error): ?>
+		<div class="alert alert-danger">
+			<p class="text-center"><?php echo $error ?></p>
+		</div>
+	<?php endforeach ?>
+<? endif ?>
+
 
 <?php if ($arResult["FORM_TYPE"] == "login"): ?>
 	<div class="auth-block__form">
@@ -14,7 +18,7 @@ if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 				для Партнеров
 				<?php endif ?>
 		</h4>
-		<form name="system_auth_form <?=$arResult["RND"]?>" class="form" method="POST" action="<?php echo $arResult['AUTH_URL'] ?>">
+		<form name="system_auth_form<?=$arResult["RND"]?>" class="form" _taret="top" method="POST" action="<?php echo $arResult['AUTH_URL'] ?>">
 
 			<input type="hidden" name="AUTH_FORM" value="Y" />
 			<input type="hidden" name="TYPE" value="AUTH" />
@@ -36,7 +40,6 @@ if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 					<input type="submit" class="auth-block__button pull-right" name="Login" value="<?php echo GetMessage('AUTH_LOGIN_BUTTON') ?>">
 				</div>
 			</div>
-			<?php echo $arResult['FORM_FOOTER'] ?>
 		</form>
 	</div>
 <?php elseif ($arResult['FORM_TYPE'] == 'logout'):?>

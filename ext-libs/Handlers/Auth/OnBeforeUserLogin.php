@@ -2,6 +2,7 @@
 
 namespace EvrySoft\Handlers\Auth;
 
+use Bitrix\Main\Config\Configuration;
 use EvrySoft\Helpers\CheckPassword;
 use GuzzleHttp\Client as HttpClient;
 
@@ -20,14 +21,22 @@ class OnBeforeUserLogin
 		global $APPLICATION;
 		global $USER;
 
-		$client = new HttpClient();
+		$host = Configuration::getValue('complex_api_host');
+		$uris = Configuration::getValue('complex_api_uris');
+
+		$login_type = strtolower($_REQUEST['CLIENT_TYPE']);
+
+		$uri = $uris[$login_type]['info'];
+
+		$client = new HttpClient([
+			'base_uri' => $host
+		]);
 
 		$login = $arFields['LOGIN'];
 
 		$password = $arFields['PASSWORD'];
 
-
-		if ($password =='external_password') {
+		if ($password == 'external_password') {
 			$APPLICATION->ThrowException('Неверный пароль');
 			return false;
 		}
@@ -37,11 +46,29 @@ class OnBeforeUserLogin
 			return true;
 		}
 
-
 		/* TODO: Make helper for requests */
-		$url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/getinfo';
 
-		$response = $client->request('GET', $url, [
+
+		// if ($login_type == 'partner') {
+
+		// 	$response = $client->get($uri, [
+		// 		'verify' => false,
+		// 		'http_errors' => false,
+		// 		'query' => [
+		// 			'login' => $arFields['LOGIN'],
+		// 			'password' => $arFields['PASSWORD'],
+		// 			'type' => 'json'
+		// 		]
+		// 	]);
+
+		// 	if ($response->getStatusCode() !== 200) {
+		// 		$error = json_decode($response->getBody());
+		// 		$APPLICATION->ThrowException($error->info);
+		// 		return false;
+		// 	}
+		// }
+
+		$response = $client->request('GET', $uri, [
 			'verify' => false,
 			'http_errors' => false,
 			'query' => [
@@ -63,8 +90,6 @@ class OnBeforeUserLogin
 				'PASSWORD' => $password,
 			]);
 		}
-
-
 	}
 
 

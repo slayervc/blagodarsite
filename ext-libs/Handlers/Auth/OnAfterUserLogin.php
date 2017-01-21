@@ -3,6 +3,7 @@
 namespace EvrySoft\Handlers\Auth;
 
 
+use Bitrix\Main\Config\Configuration;
 use GuzzleHttp\Client as HttpClient;
 
 
@@ -21,6 +22,11 @@ class OnAfterUserLogin
 			return true;
 		}
 
+		$host = Configuration::getValue('complex_api_host');
+
+		$uris = Configuration::getValue('complex_api_uris');
+
+		$login_type = strtolower($_REQUEST['CLIENT_TYPE']);
 
 		$client = new HttpClient();
 		
@@ -28,7 +34,7 @@ class OnAfterUserLogin
 
 		$password = $arFields['PASSWORD'];
 
-		$url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/getinfo';
+		$url = $host . $uris[$login_type]['info'];
 
 		$response = $client->request('GET', $url, [
 			'verify' => false,
@@ -45,6 +51,8 @@ class OnAfterUserLogin
 		$USER->SetParam('API_PASSWD', $password);
 
 		$USER->SetParam('USER_EXT_INFO', $user_info);
+
+		$USER->SetParam('USER_API_TYPE', $login_type);
 
 		return true;
 	}
