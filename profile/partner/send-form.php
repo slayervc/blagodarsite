@@ -22,13 +22,12 @@
 		</div>
 		<div class="col-md-8 personal-content">
 			<?php $APPLICATION->IncludeComponent(
-					"evrysoft:external.client.report", 
+					"evrysoft:external.partner.sendform.sms", 
 					".default", 
 					array(
 						"DATE_BEFORE" => "",
 						"DATE_AFTER" => "",
-						"DEBUG" => "Y",
-						"COMPONENT_TEMPLATE" => ".default"
+						"DEBUG" => "Y"
 					),
 					false
 				);

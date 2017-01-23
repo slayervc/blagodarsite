@@ -1,5 +1,10 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
-<div class="col-md-4 sidebar">
+
+<?php if ($arParams['DEBUG']): ?>
+	<p class="text-center alert alert-warning">
+		<strong>Debug mode enabled</strong>
+	</p>
+<?php endif ?>
 <?php foreach ($arResult['USER_SHOW_DATA'] as $arKey => $arValue): ?>
 	<div class="sidebar__info">
 		<p class="sidebar__info-content sidebar__info-content--small">
@@ -14,12 +19,11 @@
 		</p>
 	</div>
 <?php endforeach ?>
-	<div class="sidebar__advertising">
+	<!-- <div class="sidebar__advertising">
 		<img src="http://placehold.it/400x400" alt="placeholder">
 	</div>
 	<div class="sidebar__actions">
 		<a href="/auth/login.php?logout=yes&backurl=/" class="button button--bottom-shadow">Выйти</a>
-	</div>
-</div>
+	</div> -->
 
 

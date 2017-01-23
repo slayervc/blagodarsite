@@ -13,6 +13,10 @@ $arComponentParameters = array(
 				'ID' => 'ID'
 			],
 			'PARENT' => 'BASE'
+		],
+		'DEBUG' => [
+			'NAME' => 'DEBUG',
+			'TYPE' => 'CHECKBOX',
 		]
 	),
 );

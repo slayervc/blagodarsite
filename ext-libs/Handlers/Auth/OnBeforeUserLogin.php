@@ -49,25 +49,6 @@ class OnBeforeUserLogin
 		/* TODO: Make helper for requests */
 
 
-		// if ($login_type == 'partner') {
-
-		// 	$response = $client->get($uri, [
-		// 		'verify' => false,
-		// 		'http_errors' => false,
-		// 		'query' => [
-		// 			'login' => $arFields['LOGIN'],
-		// 			'password' => $arFields['PASSWORD'],
-		// 			'type' => 'json'
-		// 		]
-		// 	]);
-
-		// 	if ($response->getStatusCode() !== 200) {
-		// 		$error = json_decode($response->getBody());
-		// 		$APPLICATION->ThrowException($error->info);
-		// 		return false;
-		// 	}
-		// }
-
 		$response = $client->request('GET', $uri, [
 			'verify' => false,
 			'http_errors' => false,
