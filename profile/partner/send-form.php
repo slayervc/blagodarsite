@@ -25,9 +25,6 @@
 					"evrysoft:external.partner.sendform.sms", 
 					".default", 
 					array(
-						"DATE_BEFORE" => "",
-						"DATE_AFTER" => "",
-						"DEBUG" => "Y"
 					),
 					false
 				);

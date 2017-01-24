@@ -21,7 +21,7 @@
 			);?>
 		</div>
 		<div class="col-md-8 personal-content">
-			<?php $APPLICATION->IncludeComponent(
+			<?php/* $APPLICATION->IncludeComponent(
 					"evrysoft:external.client.report", 
 					".default", 
 					array(
@@ -31,7 +31,7 @@
 						"COMPONENT_TEMPLATE" => ".default"
 					),
 					false
-				);
+				);*/
 			?>
 		</div>
 	</div>
