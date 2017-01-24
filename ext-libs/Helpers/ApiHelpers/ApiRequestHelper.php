@@ -100,17 +100,20 @@ class ApiRequestHelper
 		return $this;
 	}
 
+	public function getResponse()
+	{
+		return $this->response->getBody();
+	}
 
 	public function getArrayResponse()
 	{
 		return json_decode($this->response->getBody(), true);
 	}
 
-	public function getResponse()
+	public function getJsonResponse()
 	{
-		return $this->response->getBody();
+		return $this->getResponse();
 	}
-
 
 	public function send(string $uri = null)
 	{
