@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php $APPLICATION->ShowHead(); ?>
 	<title><?php $APPLICATION->ShowTitle(); ?></title>
 	<?php 
 		$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/jquery/dist/jquery.min.js');
 		$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/bootstrap/dist/js/bootstrap.min.js');
-	 ?>
+	?>
+	<?php $APPLICATION->ShowHead(); ?>
 	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/css/main.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
