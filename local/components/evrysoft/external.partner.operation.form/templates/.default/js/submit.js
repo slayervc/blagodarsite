@@ -1,4 +1,3 @@
-
 /**
  * [description]
  * @param  {[type]} ){	var form          [description]
@@ -7,17 +6,36 @@
 
 $(document).ready(function (){
 
-	var form = $('.form')[0];
+	var submitFormOptions = window.submitFormOptions;
 
-	var formAction = $(form).attr('action');
-	var formMethod = $(form).attr('method');
+	if (typeof submitFormOptions === 'undefined') {
+		console.warn("submitFormOptions doesn't exists");
+	}
 
-	var login = $(form).find('input[name="cl-login"]');
+	var formSubmits = $('input[type="submit"]');
 
-	var button = $(form).find('input[name="submit"]');
-
-	button.on('click', function(event){
+	formSubmits.on('click', function(event){
 		event.preventDefault();
+
+		// $(this).addClass('btn-block');
+
+		var form = $(this).parents('form');
+
+		console.log(form);
+
+		var formAction = $(form).attr('action');
+		var formMethod = $(form).attr('method');
+
+		var inputs = $(form).find('input');
+
+		inputs = inputs.not('[type="submit"]');
+
+		var formData = {};
+
+		inputs.each(function(index, el) {
+			formData[$(el).attr('name')] = $(el).val();
+		});
+		console.log(formData);
 
 		// Remove all alerts after click
 		$('.alert').remove();
@@ -26,18 +44,12 @@ $(document).ready(function (){
 
 		$(form).prepend(preloader);
 
-		// Login value from input
-		var _login = login.val();
-
 		// Send Ajax Request
 		$.ajax(formAction, {
 			method: formMethod,
-			data: {
-				'cl-login': _login
-			}
+			data: formData
 		}).done(function(res){
 
-			console.log(res);
 
 			$(form).find('.preloader').remove();
 
@@ -47,8 +59,7 @@ $(document).ready(function (){
 				var data = res;
 			}
 
-
-			var alertContent = data.status == 'ERROR' ? data.info : 'Отправлено по номеру ' + data.info
+			var alertContent = data.info;
 
 			var alert = $('<p>'+ alertContent +'</p>');
 
@@ -63,7 +74,7 @@ $(document).ready(function (){
 			$(form).prepend(alert);
 
 		});
-	});
+	});	
 
 });
 

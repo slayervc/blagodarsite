@@ -32,7 +32,6 @@ use GuzzleHttp\Client;
 		$url = rtrim($host, '/') . '/' . 'partners/getinfo';
 
 		$response = $client->request('GET', $url, [
-
 			'verify' => false,
 			'http_errors' => false,
 			'query' => [
@@ -40,7 +39,6 @@ use GuzzleHttp\Client;
 				'password' => 'mainpass',
 				'type' => 'json'
 			]
-
 		]);
 
 		$data = json_decode($response->getBody(), true);
@@ -53,4 +51,4 @@ use GuzzleHttp\Client;
 
 
 	$this->IncludeComponentTemplate();
-?>
+

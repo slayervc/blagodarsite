@@ -1,5 +1,5 @@
 <?php require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-	$APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
+	$APPLICATION->SetTitle("Форма получения информации о клиенте");
 ?>
 <div class="container">
 	<div class="row">
@@ -22,12 +22,11 @@
 		</div>
 		<div class="col-md-8 personal-content">
 			<?php $APPLICATION->IncludeComponent(
-					"evrysoft:external.partner.sendform.sms", 
+					"evrysoft:external.partner.clientinfo", 
 					".default", 
 					array(
-						"DEBUG" => "Y"
-					),
-					false
+						"DEBUG" => "N",
+					)
 				);
 			?>
 		</div>

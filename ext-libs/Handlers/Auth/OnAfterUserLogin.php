@@ -54,7 +54,12 @@ class OnAfterUserLogin
 
 		$USER->SetParam('USER_API_TYPE', $login_type);
 
-		return true;
+		if ($USER->GetParam('USER_EXT_INFO')['status'] == 'OK') {
+			LocalRedirect("/profile/{$login_type}/", true, 303);
+		} else {
+			LocalRedirect("/", true, 303);
+		}
+
 	}
 
 

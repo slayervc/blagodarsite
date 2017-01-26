@@ -14,6 +14,10 @@ $arComponentParameters = array(
 		'DEBUG' => [
 			'NAME' => 'DEBUG',
 			'TYPE' => 'CHECKBOX'
+		],
+		'USE_PRELOAD' => [
+			'NAME' => 'USE_PRELOAD',
+			'TYPE' => 'CHECKBOX'
 		]
 	),
 );

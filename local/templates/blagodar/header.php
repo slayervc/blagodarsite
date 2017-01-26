@@ -36,12 +36,22 @@
 							<?php if ($USER->IsAuthorized()): ?>
 								<div class="header__user-info">
 									<span>Здравствуйте</span><br>
-									<span><?php echo $USER->GetFullName() ?></span>
+									<span>
+										<?php if ($USER->IsAdmin()): ?>
+											<a href="<?php echo "/profile/partner" ?>"><?php echo $USER->GetFullName() ?></a>
+										<?php else: ?>
+											<a href="<?php echo "/profile/{$USER->GetParam('USER_API_TYPE')}" ?>"><?php echo $USER->GetFullName() ?></a>
+										<?php endif ?>
+									</span>
 								</div>
 								<a href="/auth/login.php?logout=yes&backurl=/" class="btn btn-default header__auth-button header__auth-button--expanded pull-right">Выйти</a>
 							<?php else: ?>
-							<a href="/auth/login.php" class="btn btn-default header__auth-button header__auth-button--first">Войти</a>
-							<a href="/auth/register.php" class="btn btn-default header__auth-button">Зарегистрироваться</a>
+							<a href="/auth/login.php" class="btn btn-default header__auth-button header__auth-button--first">
+								Войти
+							</a>
+							<a href="/auth/register.php" class="btn btn-default header__auth-button">
+								Зарегистрироваться
+							</a>
 							<?php endif ?>
 						</div>
 					</div>

@@ -1,6 +1,6 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
 
-<?php if ($arParams['DEBUG']): ?>
+<?php if ($arParams['DEBUG'] == 'Y' && $USER->IsAdmin()): ?>
 	<p class="text-center alert alert-warning">
 		<strong>Debug mode enabled</strong>
 	</p>

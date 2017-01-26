@@ -66,8 +66,6 @@ class ApiRequestHelper
 	}
 
 
-
-
 	private function makeRequestUrl()
 	{
 		$url = trim(trim($this->host), '/') . '/' . ltrim(trim($this->request_uri), '/');
@@ -121,9 +119,11 @@ class ApiRequestHelper
 			$this->request_uri = $uri;
 		}
 
-		$this->response = $this->client->request($this->method, 
-			   $this->makeRequestUrl(), 
-			   $this->request_options);
+		$this->response = $this->client->request(
+			$this->method, 
+			$this->makeRequestUrl(), 
+			$this->request_options
+		);
 	}
 
 

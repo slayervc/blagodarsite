@@ -5,7 +5,7 @@
 		<strong>Debug mode enabled</strong>
 	</p>
 	<p class="alert alert-info">
-		Количество найденых строк: <?php echo $arResult['REPORT_DATA']['ROWS_COUNT'] ?>
+		Отчет по операциям
 	</p>
 <?php endif ?>
 

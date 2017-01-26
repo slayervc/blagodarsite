@@ -9,4 +9,3 @@ $arComponentParameters = array(
 		]
 	),
 );
-

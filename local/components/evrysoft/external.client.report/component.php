@@ -43,7 +43,7 @@ use EvrySoft\Helpers\ApiHelpers\ApiHelper;
 
 	$arResult['REPORT_DATA']['FULL_LIST'] = $data['info']['list'];
 
-	$dontShowArray = ['transaction', 'operation_code', 'sum_minus_partner', 'sum_comission_partner'];
+	$dontShowArray = ['transaction', 'operation_code', 'sum_minus_partner', 'sum_comission_partner', 'sum_plus_partner'];
 
 	$arResult['REPORT_DATA']['HIDDEN_LIST'] = [];
 
@@ -53,6 +53,9 @@ use EvrySoft\Helpers\ApiHelpers\ApiHelper;
 
 
 	$arResult['REPORT_DATA']['LIST'] = ApiHelper::clearFromArray($arResult['REPORT_DATA']['FULL_LIST'], $arResult['REPORT_DATA']['HIDDEN_LIST']);
+
+
+	// echo '<pre>' . var_dump($arResult['REPORT_DATA']['LIST']) . '</pre>';
 
 	$arResult['REPORT_DATA']['LIST_HEADERS'] = array_keys($arResult['REPORT_DATA']['LIST'][0]);
 

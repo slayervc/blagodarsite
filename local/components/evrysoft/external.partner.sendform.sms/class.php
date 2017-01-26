@@ -52,14 +52,26 @@ class SendFormComponent extends CBitrixComponent
 	public function sendRequest()
 	{
 
+		global $USER;
+
 		$http_request = new ApiRequestHelper();
+
+		if ($USER->IsAdmin() && $this->arParams['DEBUG'] == 'Y') {
+			$host = Configuration::getValue('complex_api_test_host');
+			$login = 'mainpartner';
+			$password = 'mainpass';
+		} else {
+			$host = Configuration::getValue('complex_api_host');
+		}
 		
+		$uris = Configuration::getValue('complex_api_uris');
+
 		$http_request->setMethod('GET')
-				->setHost(Configuration::getValue('complex_api_test_host'))
-				->setRequestUri(Configuration::getValue('complex_api_uris')['partner']['gen-reg-code']. $_POST['cl-login'])
+				->setHost($host)
+				->setRequestUri($uris['partner']['gen-reg-code']. $_POST['cl-login'])
 				->setQuery([
-					'login' => 'mainpartner',
-					'password' => 'mainpass',
+					'login' => $login,
+					'password' => $password,
 					'type' => 'json'
 				]);
 
