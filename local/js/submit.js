@@ -1,16 +1,6 @@
-/**
- * [description]
- * @param  {[type]} ){	var form          [description]
- * @return {[type]}         [description]
- */
-
 $(document).ready(function (){
 
 	var submitFormOptions = window.submitFormOptions;
-
-	if (typeof submitFormOptions === 'undefined') {
-		console.warn("submitFormOptions doesn't exists");
-	}
 
 	var formSubmits = $('input[type="submit"]');
 
@@ -21,7 +11,7 @@ $(document).ready(function (){
 
 		var form = $(this).parents('form');
 
-		console.log(form);
+		// console.log(form);
 
 		var formAction = $(form).attr('action');
 		var formMethod = $(form).attr('method');
@@ -35,7 +25,6 @@ $(document).ready(function (){
 		inputs.each(function(index, el) {
 			formData[$(el).attr('name')] = $(el).val();
 		});
-		console.log(formData);
 
 		// Remove all alerts after click
 		$('.alert').remove();
@@ -49,17 +38,19 @@ $(document).ready(function (){
 			method: formMethod,
 			data: formData
 		}).done(function(res){
-
+			console.log(res);
 
 			$(form).find('.preloader').remove();
 
+			var alertContent;
+
 			if (typeof(JSON.parse(res) == 'object')) {
 				var data = JSON.parse(res);
+				alertContent = data.info;
 			} else {
 				var data = res;
+				alertContent = data;
 			}
-
-			var alertContent = data.info;
 
 			var alert = $('<p>'+ alertContent +'</p>');
 

@@ -29,7 +29,7 @@ return Array(
 				'regclient' => 'partners/regclient/',
 				'get-client-info' => 'partners/getinfoclient/',
 				'add-client-balance' => 'partners/addbalance/',
-				'add-client-balance-proc' => 'partners/addbalanceproc',
+				'add-client-balance-proc' => 'partners/addbalanceproc/',
 				'gen-balance-code' => 'partners/gencode/',
 				'remove-client-balance' => 'partners/removebalance/',
 				'report' => 'partners/getreport'

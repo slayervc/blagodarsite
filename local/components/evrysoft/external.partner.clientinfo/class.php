@@ -28,7 +28,7 @@ class ClientInfoComponent extends CBitrixComponent
 
 				$APPLICATION->RestartBuffer();
 
-				echo $data;
+				echo json_encode($data->getArrayResponse());
 
 				die();
 
@@ -67,8 +67,10 @@ class ClientInfoComponent extends CBitrixComponent
 
 		} else {
 
+			$partner_login = $USER->GetParam('USER_EXT_INFO')['info']['login'];
+			$partner_password = $USER->GetParam('API_PASSWD');
 			$http->setHost(Configuration::getValue('complex_api_host'));
-			/*TODO: Make its for non admin*/
+			
 		}
 
 		$uris = Configuration::getValue('complex_api_uris');
@@ -81,9 +83,7 @@ class ClientInfoComponent extends CBitrixComponent
 
 		$http->send();
 
-		$response = ($returnBody) ? $http->getJsonResponse() : $http->getArrayResponse();
-
-		return $response;
+		return $http;
 
 	}
 

@@ -35,16 +35,22 @@ $(document).ready(function(){
 
 			var jsonData = JSON.parse(res);
 
+			console.log(jsonData);
+
 			alert.removeClass('alert-info alert-danger alert-success');
 			if (jsonData.status == 'ERROR') {
 				alert.addClass('alert-danger');
 			} else {
-				alert.addClass('alert-success')
+				alert.addClass('well');
 			}
 
-			console.log(res);
+			var templateRes = '<p> Баланс: ' + jsonData.info.balance + '</p>' + 
+							  '<p> ean13: ' + jsonData.info.ean13 + '</p>' +
+							  '<p> Email: ' + jsonData.info.email + '</p>' +
+							  '<p> ФИО: ' + jsonData.info.name + '</p>' +
+							  '<p> Телефон: ' + jsonData.info.tel + '</p>';
 
-			alert.html(jsonData.info);
+			alert.html(templateRes);
 		});
 		
 

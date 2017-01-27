@@ -4,7 +4,7 @@ if(!defined("B_PROLOG_INCLUDED")|| B_PROLOG_INCLUDED !== true)die();
 $uris = Bitrix\Main\Config\Configuration::getValue('complex_api_uris');
 
 $fields = [
-	'P_SUM' => 'P_SUM',
+	'sum' => 'P_SUM',
 	'login' => 'CL_LOGIN',
 	'name' => 'CL_NAME',
 	'login_or_ean13' => 'CL_LOGIN_OR_EAN13',

@@ -20,7 +20,7 @@
 		<div class="col-md-8 personal-content">
 			<?php
 			$APPLICATION->IncludeComponent(
-				'evrysoft:external.client.report',
+				'evrysoft:external.user.report',
 				'',
 				Array(
 					'DATE_BEFORE' => '',

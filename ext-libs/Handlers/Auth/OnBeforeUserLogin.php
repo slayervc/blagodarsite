@@ -64,12 +64,42 @@ class OnBeforeUserLogin
 			$GLOBALS['APPLICATION']->ThrowException($error->info);
 			return false;
 		} else {
-			/* UPDATE */
+			
 			$user_id = \CUser::GetByLogin($login)->Fetch()['ID'];
 
-			$USER->Update($user_id, [
-				'PASSWORD' => $password,
-			]);
+			if (!$user_id) {
+				$res = json_decode($response->getBody(), true)['info'];
+				$user = new \CUser;
+
+				$user_name = explode(' ', $res['name']);
+			
+				$user_email = !empty($res['email']) ? $res['email'] : 'email_field';
+
+				$userData = [
+					'LOGIN' => $res['tel'],
+					'PASSWORD' => $_REQUEST['USER_PASSWORD'],
+					'CONFIRM_PASSWORD' => $_REQUEST['USER_PASSWORD'],
+					'NAME' => $user_name[1],
+					'LAST_NAME' => $user_name[0],
+					'SECOND_NAME' => $user_name[2],
+					'EMAIL' => $user_email
+				];
+
+				$user_id = $user->Add($userData);
+
+				if (intval($user_id) > 0) {
+					return true;
+				} else {
+					$APPLICATION->ThrowException('Incorrect Data');
+					die();
+				}
+
+			} else {
+				$USER->Update($user_id, [
+					'PASSWORD' => $password,
+				]);
+			}
+			
 		}
 	}
 

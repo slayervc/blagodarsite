@@ -53,24 +53,57 @@ class OperationFormComponent extends CBitrixComponent
 		$this->arResult['FORM_OPTIONS'] = $this->getFormOptions();
 		$this->arResult['USER_DATA'] = $this->getUserData();
 		$this->arResult['SHOW_FIELDS'] = $this->getShowFields();
+		$this->arResult['PASSED_FIELD_STR'] = $this->getPassedField();
 
-		if (!CheckRequestHelper::isAjax()) {
-			$this->InitComponentTemplate();
+		if (CheckRequestHelper::isAjax()) {
 
-			$this->addJsFromComponentTemplate('/js/submit.js');
-
-			$this->ShowComponentTemplate();
-		} else {
 			$APPLICATION->RestartBuffer();
 
-			$json = $this->sendRequest();
+			$request = $this->sendRequest();
 
-			echo $json;
+			echo $request->getJsonResponse();
 
 			die();
 		}
+		// Final
+		$this->IncludeComponentTemplate();
+	}
+
+
+	/**
+	 * Send request and return response from remote server
+	 * 
+	 * @return string|json response
+	 */
+	public function sendRequest()
+	{
+		$http = new ApiRequestHelper();
+
+		$uriAlias = $this->getUriAliasFromRequest();
+
+		$uri = Configuration::getValue('complex_api_uris')['partner'][$uriAlias];
+
+		$passed = $this->getPassedField();
+
+		if(!empty($passed)){
+			$uri .= $this->formRequest[$passed];
+		}
+		$this->addQueryData('type', 'json');
+		$this->addQueryArrayData($this->formRequest);
+		$this->addQueryArrayData($this->getUserData());
+
+
+		$http->setMethod('GET')
+			 ->setHost($this->host)
+			 ->setRequestUri($uri)
+			 ->setQuery($this->queryData);
+
+		$http->send();
+
+		return $http;
 
 	}
+
 
 	private function getApiUris()
 	{
@@ -91,7 +124,8 @@ class OperationFormComponent extends CBitrixComponent
 		if ($USER->IsAdmin()) {
 			$this->userData = ['login' => 'mainpartner', 'password' => 'mainpass'];
 		} else {
-			$this->userData = $USER->GetParam('USER_EXT_INFO');
+			$this->userData['login'] = $USER->GetParam('USER_EXT_INFO')['info']['login'];
+			$this->userData['password'] = $USER->GetParam('API_PASSWD');
 		}
 
 		return $this->userData;
@@ -129,43 +163,22 @@ class OperationFormComponent extends CBitrixComponent
 		$this->formOptions[$optionKey] = $optionValue;
 	}
 
-
-
 	/**
-	 * Send request and return response from remote server
+	 * Return uri alias from form request
 	 * 
-	 * @return string|json response
+	 * @return string
 	 */
-	public function sendRequest()
+	private function getUriAliasFromRequest()
 	{
-		$http = new ApiRequestHelper();
+		return $_REQUEST['uri_alias'];
+	}
 
-		$uri = Configuration::getValue('complex_api_uris')['partner'][$this->arParams['URI_ALIAS']];
 
+	private function getPassedField()
+	{
 		$passed_id = intval($this->arParams['PASSED_FIELD']);
 
-		$passed = $this->arParams['FIELDS'][$passed_id];
-
-		if(!empty($passed)){
-			$uri .= $this->formRequest[$passed];
-		}
-		$this->addQueryData('type', 'json');
-		$this->addQueryArrayData($this->formRequest);
-		$this->addQueryArrayData($this->getUserData());
-
-		// return $this->queryData;
-
-		// return $this->;
-
-
-		$http->setMethod('GET')
-			 ->setHost($this->host)
-			 ->setRequestUri($uri)
-			 ->setQuery($this->queryData);
-
-		$http->send();
-
-		return $http->getJsonResponse();
+		return $this->arParams['FIELDS'][$passed_id];
 	}
 
 
@@ -177,7 +190,7 @@ class OperationFormComponent extends CBitrixComponent
 
 	public function getFormRequest()
 	{
-		return $_REQUEST;
+		return $_REQUEST['FORM'];
 	}
 
 

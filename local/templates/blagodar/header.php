@@ -31,7 +31,7 @@
 						<div class="header__settings-fields">
 						</div>
 					</div>
-					<div class="col-md-4 col-sm-4 header__head-block hidden-xs">
+					<div class="col-md-4 col-sm-4 header__head-block">
 						<div class="header__auth-container header__auth-container--basic">
 							<?php if ($USER->IsAuthorized()): ?>
 								<div class="header__user-info">

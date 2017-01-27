@@ -23,7 +23,7 @@ use GuzzleHttp\Client;
 
 	}
 
-	if ($arParams['DEBUG'] == 'Y' && $USER->IsAdmin()) {
+	if ($USER->IsAdmin()) {
 
 		$client = new Client;
 

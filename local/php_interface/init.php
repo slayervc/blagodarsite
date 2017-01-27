@@ -9,4 +9,7 @@ AddEventHandler('main', 'OnBeforeUserLogin', [EvrySoft\Handlers\Auth\OnBeforeUse
 AddEventHandler('main', 'OnAfterUserLogin', [EvrySoft\Handlers\Auth\OnAfterUserLogin::class, 'afterLogin']);
 
 
-AddEventHandler('main', 'OnAfterAddUser', [EvrySoft\Handlers\User\OnAfterAddUser::class, 'afterAddUser']);
+AddEventHandler('main', 'OnBeforeProlog', [EvrySoft\Handlers\Page\OnPageStart::class, 'handle']);
+
+
+
