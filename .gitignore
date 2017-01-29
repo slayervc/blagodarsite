@@ -32,6 +32,7 @@
 /bitrix/php_interface/*.bak
 # включаем папку шаблонов
 !/bitrix/templates/
+!/bitrix/.settings_extra.php
 vendor/
 upload/tmp/
 .phpintel
