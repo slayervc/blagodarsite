@@ -22,6 +22,15 @@ $arComponentParameters = array(
 		'USE_PRELOAD' => [
 			'NAME' => 'USE_PRELOAD',
 			'TYPE' => 'CHECKBOX'
+		],
+		'VIEW_TYPE' => [
+			'NAME' => 'VIEW_TYPE',
+			'TYPE' => 'LIST',
+			'VALUES' => [
+				'FILE' => 'LIKE A FILE',
+				'TABLE' => 'LIKE A TABLE',
+				'BLOCK' => 'LIKE A BLOCK'
+			]
 		]
 	),
 );

@@ -40,6 +40,12 @@ class UserReportComponent extends CBitrixComponent
 
 		$http = new ApiRequestHelper;
 
+		$viewType = $this->getViewParam();
+
+		// if ($_REQUEST['GET_FILE'] == 'Y') {
+			
+		// }
+
 		$http->setMethod('GET')
 			 ->setHost($host)
 			 ->setRequestUri($uris[$userType]['report'])
@@ -47,8 +53,21 @@ class UserReportComponent extends CBitrixComponent
 			 	'login' => $login,
 			 	'password' => $password,
 			 	'type' => 'json',
-			 	'xls' => 'false'
+			 	'xls' => 'false',
+			 	'limit' => '30'
 			]);
+
+		$this->arResult['CURRENT_PAGE'] = 1;
+		$this->arResult['NEXT_PAGE'] = 2;
+
+		if ($page = $this->getCurrentReportPage() > 0) {
+			$startValue = $page * 30;
+
+			$this->arResult['CURRENT_PAGE'] = $page;
+			$this->arParams['NEXT_PAGE'] = $page + 1;
+
+			$http->addQuery('start', $startValue);
+		}
 
 		$http->send();
 
@@ -73,8 +92,25 @@ class UserReportComponent extends CBitrixComponent
 
 		$this->arResult['REPORT_DATA']['LIST_HEADERS'] = array_keys($this->arResult['REPORT_DATA']['LIST'][0]);
 
+		if ($viewType == 'FILE') {
+			$this->IncludeComponentTemplate('xls_button');
+			die();
+		}
+
 		$this->IncludeComponentTemplate();
 	}
 
 	
+	protected function getViewParam()
+	{
+		return $this->arParams['VIEW_TYPE'];
+	}
+
+
+	protected function getCurrentReportPage()
+	{
+		return $_REQUEST['page'];
+	}
+
+
 }

@@ -105,13 +105,13 @@ class OperationFormComponent extends CBitrixComponent
 	}
 
 
-	private function getApiUris()
+	protected function getApiUris()
 	{
 		return Configuration::getValue('complex_api_uris');
 	}
 
 
-	private function getShowFields()
+	protected function getShowFields()
 	{
 		return $this->arParams['FIELDS'];
 	}
@@ -139,26 +139,12 @@ class OperationFormComponent extends CBitrixComponent
 	}
 
 
-
-	/**
-	 * Add JavaScript file
-	 * 
-	 * @param string $fileName path to file
-	 */
-	public function addJsFromComponentTemplate($fileName)
-	{
-		$folder = $this->getTemplateFolder();
-
-		$this->app->AddHeadScript($folder . $fileName);
-	}
-
-
 	/**
 	 * Add form option to formOptions property
 	 * @param mixed $optionKey
 	 * @param mixed $optionValue
 	 */
-	public function addFormOption($optionKey, $optionValue)
+	protected function addFormOption($optionKey, $optionValue)
 	{
 		$this->formOptions[$optionKey] = $optionValue;
 	}
@@ -168,13 +154,13 @@ class OperationFormComponent extends CBitrixComponent
 	 * 
 	 * @return string
 	 */
-	private function getUriAliasFromRequest()
+	protected function getUriAliasFromRequest()
 	{
 		return $_REQUEST['uri_alias'];
 	}
 
 
-	private function getPassedField()
+	protected function getPassedField()
 	{
 		$passed_id = intval($this->arParams['PASSED_FIELD']);
 

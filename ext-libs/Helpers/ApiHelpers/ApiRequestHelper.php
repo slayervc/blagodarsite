@@ -42,7 +42,7 @@ class ApiRequestHelper
 	}
 
 
-	public function setHost(string $host)
+	public function setHost($host)
 	{
 		$this->host = $host;
 
@@ -50,7 +50,7 @@ class ApiRequestHelper
 	}
 
 
-	public function setRequestUri(string $uri)
+	public function setRequestUri($uri)
 	{
 		$this->request_uri = $uri;
 
@@ -58,7 +58,7 @@ class ApiRequestHelper
 	}
 
 
-	public function setMethod(string $method)
+	public function setMethod($method)
 	{
 		$this->method = $method;
 
@@ -86,6 +86,13 @@ class ApiRequestHelper
 		if ($this->method == 'GET') {
 			$this->setRequestOption('query', $this->query_string);
 		}
+
+		return $this;
+	}
+
+	public function addQuery($key, $query)
+	{
+		$this->request_options['query'][$key] = $query;
 
 		return $this;
 	}

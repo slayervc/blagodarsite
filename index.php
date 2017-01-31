@@ -2,9 +2,6 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 ?>
-
-<div class="container">
-	<div class="row">
 		<?php if (!$USER->IsAuthorized()): ?>
 			<div class="col-md-12">
 				<div class="auth-block">
@@ -83,6 +80,4 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

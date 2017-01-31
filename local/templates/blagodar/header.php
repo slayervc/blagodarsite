@@ -99,3 +99,5 @@
 			</div>
 		</div>
 		<div class="content-block">
+		<div class="container">
+			<div class="row">

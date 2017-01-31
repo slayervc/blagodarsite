@@ -67,16 +67,18 @@ class OnBeforeUserLogin
 			
 			$user_id = \CUser::GetByLogin($login)->Fetch()['ID'];
 
+			var_dump($user_id);
+
 			if (!$user_id) {
 				$res = json_decode($response->getBody(), true)['info'];
 				$user = new \CUser;
 
 				$user_name = explode(' ', $res['name']);
 			
-				$user_email = !empty($res['email']) ? $res['email'] : 'email_field';
+				$user_email = !empty($res['email']) ? $res['email'] : 'email.field@email.field';
 
 				$userData = [
-					'LOGIN' => $res['tel'],
+					'LOGIN' => $res['login'],
 					'PASSWORD' => $_REQUEST['USER_PASSWORD'],
 					'CONFIRM_PASSWORD' => $_REQUEST['USER_PASSWORD'],
 					'NAME' => $user_name[1],
@@ -90,8 +92,7 @@ class OnBeforeUserLogin
 				if (intval($user_id) > 0) {
 					return true;
 				} else {
-					$APPLICATION->ThrowException('Incorrect Data');
-					die();
+					return false;
 				}
 
 			} else {
