@@ -12,7 +12,7 @@ use EvrySoft\Helpers\ApiHelpers\ApiRequestHelper;
 class UserReportComponent extends CBitrixComponent
 {
 	
-	const PAGE_LIMIT = 5;
+	protected $page_limit = 5;
 
 
 	public function executeComponent()
@@ -52,26 +52,17 @@ class UserReportComponent extends CBitrixComponent
 			 	'login' => $login,
 			 	'password' => $password,
 			 	'type' => 'json',
-			 	'xls' => 'false',
-			 	'limit' => self::PAGE_LIMIT
+			 	'xls' => 'false'
 			]);
 
 		$this->arResult['CURRENT_PAGE'] = 1;
 		$this->arResult['NEXT_PAGE'] = 2;
 
-		if ($page = $this->getCurrentReportPage() > 0) {
-			$startValue = $page * self::PAGE_LIMIT;
+		$page = (int) $this->getCurrentReportPage();
 
-			$this->arResult['CURRENT_PAGE'] = $page;
-			$this->arParams['NEXT_PAGE'] = $page + 1;
-
-			$http->addQuery('start', $startValue);
-		}
-
-
-		var_dump($http);
-
-		die();
+		$this->arResult['PREV_PAGE'] = $page - 1;
+		$this->arResult['CURRENT_PAGE'] = $page;
+		$this->arParams['NEXT_PAGE'] = $page + 1;
 
 		$http->send();
 
