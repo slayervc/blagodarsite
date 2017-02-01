@@ -78,11 +78,15 @@ class UserReportComponent extends CBitrixComponent
 
 		$this->arResult['REPORT_DATA']['FULL_LIST'] = $data['info']['list'];
 
-		$dontShowArray = ['transaction', 'operation_code', 'sum_minus_partner', 'sum_comission_partner', 'sum_plus_partner'];
+		$dontShowArray = [];
 
 		$this->arResult['REPORT_DATA']['HIDDEN_LIST'] = [];
 		$this->arResult['REPORT_DATA']['LIST'] = [];
 
+
+		if (is_array($this->arParams['DONT_SHOW'])) {
+			$dontShowArray = $this->arParams['DONT_SHOW'];	
+		}
 
 		$this->arResult['REPORT_DATA']['HIDDEN_LIST'] = ApiHelper::makeHiddenArray($this->arResult['REPORT_DATA']['FULL_LIST'], $dontShowArray);
 
@@ -90,14 +94,40 @@ class UserReportComponent extends CBitrixComponent
 		$this->arResult['REPORT_DATA']['LIST'] = ApiHelper::clearFromArray($this->arResult['REPORT_DATA']['FULL_LIST'], $this->arResult['REPORT_DATA']['HIDDEN_LIST']);
 
 
+		$this->arResult['REPORT_DATA']['LIST'] = $this->makeFloatFieldsInArray($this->arResult['REPORT_DATA']['LIST'], ['balance_before', 'balance_after', 'sum_comission_partner']);
+
+
 		$this->arResult['REPORT_DATA']['LIST_HEADERS'] = array_keys($this->arResult['REPORT_DATA']['LIST'][0]);
 
+
 		if ($viewType == 'FILE') {
-			$this->IncludeComponentTemplate('xls_button');
-			die();
+			$this->InitComponentTemplate('xls_button');
+		} elseif ($viewType == 'TABLE') {
+			$this->InitComponentTemplate('template');
+		} elseif ($viewType == 'BLOCK') {
+			$this->InitComponentTemplate('block');
+		} else {
+			$this->InitComponentTemplate();
 		}
 
-		$this->IncludeComponentTemplate();
+		$this->ShowComponentTemplate();
+	}
+
+
+	protected function makeFloatFieldsInArray(array $sourceArray, array $changeKeys)
+	{
+
+		foreach ($sourceArray as $listItemKey => $listItem) {
+
+			foreach ($changeKeys as $changeKey) {
+				$listItem[$changeKey] = floatval($listItem[$changeKey]);
+			}
+
+			$sourceArray[$listItemKey] = $listItem;
+		}
+
+		return $sourceArray;
+
 	}
 
 	
@@ -105,6 +135,7 @@ class UserReportComponent extends CBitrixComponent
 	{
 		return $this->arParams['VIEW_TYPE'];
 	}
+
 
 
 	protected function getCurrentReportPage()

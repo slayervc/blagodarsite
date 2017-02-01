@@ -1,6 +1,15 @@
 <?php
 if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 
+$apiFieldsAllowedForHiding = [
+	'transaction' => 'transaction', 
+	'operation_code' => 'operation_code', 
+	'sum_minus_partner' => 'sum_minus_partner', 
+	'sum_comission_partner' => 'sum_comission_partner', 
+	'sum_plus_partner' => 'sum_plus_partner'
+];
+
+
 $arComponentParameters = array(
 	'PARAMETERS' => array(
 		'DATE_BEFORE' => [
@@ -27,11 +36,18 @@ $arComponentParameters = array(
 			'NAME' => 'Режим вывода',
 			'TYPE' => 'LIST',
 			'VALUES' => [
-				'FILE' => 'LIKE A FILE',
-				'TABLE' => 'LIKE A TABLE',
-				'BLOCK' => 'LIKE A BLOCK'
+				'FILE' => 'Ссылка на файл',
+				'TABLE' => 'Как таблица',
+				'BLOCK' => 'Как блоки'
 			],
 			'PARENT' => 'BASE'
+		],
+		'DONT_SHOW' => [
+			'NAME' => 'Скрывать значения вывода',
+			'TYPE' => 'LIST',
+			'MULTIPLE' => 'Y',
+			'VALUES' => $apiFieldsAllowedForHiding,
+			'DEFAULT' => []	
 		]
 	),
 );

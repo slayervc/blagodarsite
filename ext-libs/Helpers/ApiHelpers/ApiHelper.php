@@ -20,6 +20,10 @@ class ApiHelper
 
 		$hiddenArray = [];
 
+		if (empty($hideArray)) {
+			return $hiddenArray;
+		}
+
 		foreach ($hideArray as $hiddenParam) {
 			foreach ($dataArray as $arrKey => $arrValue) {
 				if (array_key_exists($hiddenParam, $arrValue)) {
@@ -42,6 +46,10 @@ class ApiHelper
 	{
 
 		$clearArr = [];
+
+		if (empty($diffArr)) {
+			return $sourceArr;
+		}
 
 		foreach ($sourceArr as $arrKey => $arrValue) {
 			$clearArr[$arrKey] = array_diff($arrValue, $diffArr[$arrKey]);

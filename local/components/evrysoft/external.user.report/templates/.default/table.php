@@ -4,9 +4,15 @@
 	<p class="text-center alert alert-warning">
 		<strong>Debug mode enabled</strong>
 	</p>
-	<p class="alert alert-info">
-		Отчет по операциям
-	</p>
+
+	<div class="well">
+		<h3>$arParams</h3>
+		<?php var_dump($arParams) ?>
+	</div>
+	<div class="well">
+		<h3>$arResult</h3>
+		<?php var_dump($arResult) ?>
+	</div>
 <?php endif ?>
 
 <?php if ($arResult['REPORT_DATA']['ROWS_COUNT'] == 0 ): ?>

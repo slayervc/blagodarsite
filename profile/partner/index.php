@@ -63,33 +63,38 @@
 		</div>
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(
-	"evrysoft:external.partner.operation.form", 
-	".default", 
-	array(
-		"DEBUG" => "N",
-		"COMPONENT_TEMPLATE" => ".default",
-		"FIELDS" => array(
-			0 => "login",
-		),
-		"PASSED_FIELD" => "0",
-		"URI_ALIAS" => "get-client-info"
-	),
-	false
-);?>
+				"evrysoft:external.partner.operation.form", 
+				".default", 
+				array(
+					"DEBUG" => "N",
+					"COMPONENT_TEMPLATE" => ".default",
+					"FIELDS" => array(
+						0 => "login",
+					),
+					"PASSED_FIELD" => "0",
+					"URI_ALIAS" => "get-client-info"
+				),
+				false
+			);?>
 		</div>
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(
-				"evrysoft:external.user.report",
-				"",
-				Array(
-					"DATE_AFTER" => "",
-					"DATE_BEFORE" => "",
-					"DEBUG" => "N",
-					"LIMIT" => "5",
-					"USE_PRELOAD" => "Y",
-					"VIEW_TYPE" => "TABLE"
-				)
-			);?>
+	"evrysoft:external.user.report", 
+	".default", 
+	array(
+		"DATE_AFTER" => "",
+		"DATE_BEFORE" => "",
+		"DEBUG" => "Y",
+		"LIMIT" => "5",
+		"USE_PRELOAD" => "N",
+		"VIEW_TYPE" => "BLOCK",
+		"COMPONENT_TEMPLATE" => ".default",
+		"DONT_SHOW" => array(
+			0 => "transaction",
+		)
+	),
+	false
+);?>
 		</div>
 	</div>
 </div>

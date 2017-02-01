@@ -26,10 +26,11 @@
 		"DATE_BEFORE" => "",
 		"DATE_AFTER" => "",
 		"COMPONENT_TEMPLATE" => ".default",
-		"DEBUG" => "N",
+		"DEBUG" => "Y",
 		"LIMIT" => "5",
 		"USE_PRELOAD" => "N",
-		"VIEW_TYPE" => "TABLE"
+		"VIEW_TYPE" => "BLOCK",
+		"DONT_SHOW" => ['transaction']
 	),
 	false
 );
