@@ -34,6 +34,6 @@
 !/bitrix/templates/
 !/bitrix/.settings_extra.php
 vendor/
-upload/tmp/
+upload/
 .phpintel
 
