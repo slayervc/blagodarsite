@@ -19,6 +19,12 @@ $arComponentParameters = array(
 			'NAME' => 'DEBUG',
 			'TYPE' => 'CHECKBOX'
 		],
+		'FORM_HEADER' => [
+			'NAME' => 'FORM_HEADER',
+			'TYPE' => 'STRING',
+			'PARENT' => 'BASE',
+			'DEFAULT' => 'Форма операций'
+		],
 		'FIELDS' => [
 			'NAME' => 'FIELDS',
 			'TYPE' => 'LIST',
@@ -53,6 +59,14 @@ $arComponentParameters = array(
 			'VALUES' => $uris['partner'],
 			'PARENT' => 'BASE'
 		],
+		'URI_ALIAS_MULTI' => [
+			'NAME' => 'URI_ALIAS_MULTI',
+			'TYPE' => 'LIST',
+			'MULTIPLE' => 'N',
+			'ADDITIONAL_VALUES' => 'N',
+			'VALUES' => $uris['partner'],
+			'PARENT' => 'BASE'
+		]
 	),
 );
 

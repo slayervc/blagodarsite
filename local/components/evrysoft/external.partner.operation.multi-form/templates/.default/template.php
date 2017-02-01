@@ -1,10 +1,16 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
-<?php $this->addExternalJs('/local/js/submit.js'); ?>
+<?php 
+$this->addExternalJs('/local/js/submit-multi-form.js'); 
+?>
+<!-- <h2>PARAMS:</h2>
+<?php #var_dump($arParams) ?> -->
+<!-- <h2>RESULTS</h2> -->
+<?php# var_dump($arResult) ?>
 
 <div class="row">
 	<div class="col-md-12">
 		<h2 class="personal-content__header">
-			<?php echo GetMessage($arParams['URI_ALIAS']) ?>
+			<?php echo $arParams['FORM_HEADER'] ?>
 		</h2>
 		<form name="<?php echo $arResult['FORM_OPTIONS']['FORM_ID'] ?>" 
 			  action="<?php echo $arResult['FORM_OPTIONS']['FORM_ACTION'] ?>" 
@@ -14,7 +20,22 @@
 			<input name="uri_alias" type="hidden" value="<?php echo $arParams['URI_ALIAS'] ?>">
 			<?php foreach ($arResult['SHOW_FIELDS'] as $field):?>
 				<div class="form-group">
-					<input type="text" class="form-control" name="FORM[<?php echo $field ?>]" placeholder="<?php echo GetMessage($field) ?>">
+				<?php if ($field == $arResult['PASSED_FIELD_STR']): ?>
+					<div class="row">
+						<div class="col-md-6">
+							<input type="text" name="FORM[<?php echo $field ?>]" class="form-control" placeholder="<?php echo GetMessage($field) ?>">
+						</div>
+						<div class="col-md-6">
+							<input type="submit" class="btn btn-default btn-block" 
+								data-action="get-code" 
+								data-response-success="Код отправлен на номер:"
+								data-response-error="Ошибка:" value="Отправить код"
+							>
+						</div>
+					</div>
+					<?php else: ?>
+						<input type="text" class="form-control" name="FORM[<?php echo $field ?>]" placeholder="<?php echo GetMessage($field) ?>">
+					<?php endif ?>
 				</div>
 			<?php endforeach ?>
 			<div class="form-group">

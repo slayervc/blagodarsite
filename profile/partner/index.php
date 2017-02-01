@@ -17,31 +17,65 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="personal-content__menu">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
- 								<a href="<?php echo $APPLICATION->GetCurPage() . 'send-form.php' ?>" class="btn btn-block btn-success"> Отправить смс </a>
-							</div>
-							<div class="col-md-6">
-								 <a href="<?php echo $APPLICATION->GetCurPage() . 'info/client.php' ?>" class="btn btn-block btn-success"> Получить информацию по клиенту </a>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(
-				"evrysoft:external.partner.operation.multi-form",
-				"",
-				Array(
+				"evrysoft:external.partner.operation.multi-form", 
+				".default", 
+				array(
 					"DEBUG" => "N",
-					"FIELDS" => array(),
-					"PASSED_FIELD" => "",
-					"URI_ALIAS" => "info"
-				)
+					"FIELDS" => array(
+						0 => "sum",
+						1 => "login",
+						2 => "code",
+					),
+					"PASSED_FIELD" => "1",
+					"URI_ALIAS" => "remove-client-balance",
+					"FORM_HEADER" => "Списание баланса с клиента",
+					"COMPONENT_TEMPLATE" => ".default",
+					"MULTI_FIELD" => "2",
+					"URI_ALIAS_MULTI" => "gen-balance-code"
+				),
+				false
 			);?>
+		</div>
+		<div class="col-md-12">
+			 <?$APPLICATION->IncludeComponent(
+				"evrysoft:external.partner.operation.multi-form", 
+				".default", 
+				array(
+					"DEBUG" => "N",
+					"FIELDS" => array(
+						0 => "login",
+						1 => "name",
+						2 => "code",
+					),
+					"PASSED_FIELD" => "0",
+					"URI_ALIAS" => "regclient",
+					"FORM_HEADER" => "Добавление клиента",
+					"COMPONENT_TEMPLATE" => ".default",
+					"MULTI_FIELD" => "2",
+					"URI_ALIAS_MULTI" => "gen-reg-code"
+				),
+				false
+			);?>
+		</div>
+		<div class="col-md-12">
+			 <?$APPLICATION->IncludeComponent(
+	"evrysoft:external.partner.operation.form", 
+	".default", 
+	array(
+		"DEBUG" => "N",
+		"COMPONENT_TEMPLATE" => ".default",
+		"FIELDS" => array(
+			0 => "login",
+		),
+		"PASSED_FIELD" => "0",
+		"URI_ALIAS" => "get-client-info"
+	),
+	false
+);?>
 		</div>
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(
@@ -51,7 +85,7 @@
 					"DATE_AFTER" => "",
 					"DATE_BEFORE" => "",
 					"DEBUG" => "N",
-					"LIMIT" => "",
+					"LIMIT" => "5",
 					"USE_PRELOAD" => "Y",
 					"VIEW_TYPE" => "TABLE"
 				)

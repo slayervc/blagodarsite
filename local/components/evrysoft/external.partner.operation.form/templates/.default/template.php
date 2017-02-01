@@ -1,5 +1,5 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
-<?php $this->addExternalJs('/local/js/submit.js'); ?>
+<?php $this->addExternalJs('/local/js/submit-multi-form.js'); ?>
 
 <div class="row">
 	<div class="col-md-12">

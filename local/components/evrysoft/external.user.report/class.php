@@ -55,6 +55,11 @@ class UserReportComponent extends CBitrixComponent
 			 	'xls' => 'false'
 			]);
 
+
+			if (intval($this->arParams['LIMIT']) > 0) {
+				$http->addQuery('limit', $this->arParams['LIMIT']);
+			}
+
 		$this->arResult['CURRENT_PAGE'] = 1;
 		$this->arResult['NEXT_PAGE'] = 2;
 

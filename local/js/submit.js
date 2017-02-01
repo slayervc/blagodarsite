@@ -1,7 +1,5 @@
 $(document).ready(function (){
 
-	var submitFormOptions = window.submitFormOptions;
-
 	var formSubmits = $('input[type="submit"]');
 
 	formSubmits.on('click', function(event){

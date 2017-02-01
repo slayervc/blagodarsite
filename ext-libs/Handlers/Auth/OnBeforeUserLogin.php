@@ -59,6 +59,7 @@ class OnBeforeUserLogin
 			]
 		]);
 
+
 		if ($response->getStatusCode() !== 200) {
 			$error = json_decode($response->getBody());
 			$GLOBALS['APPLICATION']->ThrowException($error->info);
@@ -67,18 +68,20 @@ class OnBeforeUserLogin
 			
 			$user_id = \CUser::GetByLogin($login)->Fetch()['ID'];
 
-			var_dump($user_id);
 
 			if (!$user_id) {
 				$res = json_decode($response->getBody(), true)['info'];
+
 				$user = new \CUser;
 
 				$user_name = explode(' ', $res['name']);
 			
 				$user_email = !empty($res['email']) ? $res['email'] : 'email.field@email.field';
 
+				$userDataLogin = ($login_type == 'partner') ? $res['login'] : $res['tel'];
+
 				$userData = [
-					'LOGIN' => $res['login'],
+					'LOGIN' => $userDataLogin,
 					'PASSWORD' => $_REQUEST['USER_PASSWORD'],
 					'CONFIRM_PASSWORD' => $_REQUEST['USER_PASSWORD'],
 					'NAME' => $user_name[1],
@@ -89,7 +92,18 @@ class OnBeforeUserLogin
 
 				$user_id = $user->Add($userData);
 
+				if ($login_type == 'partner') {
+					$group_id = 6;
+				} else {
+					$group_id = 5;
+				}
+				
+
 				if (intval($user_id) > 0) {
+					$user->Update($user_id, [
+						'GROUP_ID' => [$group_id]
+					]);
+
 					return true;
 				} else {
 					return false;
