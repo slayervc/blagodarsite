@@ -58,35 +58,20 @@
 				</div>
 			</div>
 		</div>
-		<nav class="navigation">
-			<div class="container">
-				<div class="row">
-					<div class="navbar-header">
-						<button class="navbar-toggle navigation__nav-toggler" role="button" data-toggle="collapse" data-target=".navigation__nav-wrapper" aria-expanded="false">
-							<span class="sr-only">Меню</span>
-							<span class="icon-bar navigation__icon-bar"></span>
-							<span class="icon-bar navigation__icon-bar"></span>
-							<span class="icon-bar navigation__icon-bar"></span>
-						</button>
-					</div>
-					<div class="navbar-collapse collapse navigation__nav-wrapper">
-						<ul class="nav navbar-nav navigation__nav">
-							<li>
-								<a href="#" class="navigation__link navigation__link--icon-wrap navigation__link--active hidden-xs">
-									<i class="navigation__icon"></i>
-								</a>
-							</li>
-							<li><a href="#" class="navigation__link">Каталог предприятий</a></li>
-							<li><a href="#" class="navigation__link">Акции</a></li>
-							<li><a href="#" class="navigation__link">Рекомендации</a></li>
-							<li><a href="#" class="navigation__link">Новости</a></li>
-							<li><a href="#" class="navigation__link">О программе</a></li>
-							<li><a href="#" class="navigation__link">Контакты</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
+
+		<?$APPLICATION->IncludeComponent(
+			"bitrix:menu",
+			"top",
+			Array(
+				"ALLOW_MULTI_SELECT" => "N",
+				"CHILD_MENU_TYPE" => "left",
+				"DELAY" => "N",
+				"MAX_LEVEL" => "1",
+				"MENU_THEME" => "site",
+				"ROOT_MENU_TYPE" => "top",
+				"USE_EXT" => "N"
+			)
+		);?>
 	</header>
 	<main class="content">
 		<div class="banner">

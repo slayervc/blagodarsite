@@ -232,7 +232,7 @@
 
 .footer__col-news-wrapper:after { content: ''; display: table; clear: both; }
 
-.footer__col-news-block-image-wrapper { overflow: hidden; width: 67px; height: 67px; margin: auto; position: relative; border-radius: 50%; }
+.footer__col-news-block-image-wrapper { overflow: hidden; width: 67px; height: 67px; margin: auto; position: relative; border-radius: 0%; }
 
 .footer__col-news-block-image-wrapper img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; }
 

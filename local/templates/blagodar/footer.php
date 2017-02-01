@@ -1,6 +1,8 @@
-	</div>
-</div>
-</main>
+
+			</div>
+		</div>
+	</main>
+
 <footer class="footer">
 	<div class="container">
 		<div class="footer__content-block">
@@ -8,182 +10,199 @@
 				<div class="col-md-4">
 					<div class="footer__col-main">
 						<div class="footer__col-header">
-							<h4 class="footer__col-header-block footer__col-header-block--text">Header</h4>
-							<a href="#" class="footer__col-header-block footer__col-header-block--button">Все</a>
+							<h4 class="footer__col-header-block footer__col-header-block--text">Лучшие предложения</h4>
+							<a href="/offers" class="footer__col-header-block footer__col-header-block--button">Все</a>
 						</div>
 						<div class="footer__col-content">
-							<div class="footer__col-content-block">
-								<a href="#" class="footer__col-image-link">
-									<div class="footer__col-image-link-block footer__col-image-link-block--image">
-										<img src="http://placehold.it/200x200" alt="company image">
-									</div>
-									<div class="footer__col-image-link-block footer__col-image-link-block--text">
-										<span>Скидки на приобретене
-											горюче смазочных
-											материалов
-										</span>
-									</div>
-								</a>
-							</div>
-							<div class="footer__col-content-block">
-								<a href="#" class="footer__col-image-link">
-									<div class="footer__col-image-link-block footer__col-image-link-block--image">
-										<img src="http://placehold.it/200x200" alt="company image">
-									</div>
-									<div class="footer__col-image-link-block footer__col-image-link-block--text">
-										<span>Скидки на приобретене
-											горюче смазочных
-											материалов
-										</span>
-									</div>
-								</a>
-							</div>
-							<div class="footer__col-content-block">
-								<a href="#" class="footer__col-image-link">
-									<div class="footer__col-image-link-block footer__col-image-link-block--image">
-										<img src="http://placehold.it/200x200" alt="company image">
-									</div>
-									<div class="footer__col-image-link-block footer__col-image-link-block--text">
-										<span>Скидки на приобретене
-											горюче смазочных
-											материалов
-										</span>
-									</div>
-								</a>
-							</div>
-							<div class="footer__col-content-block">
-								<a href="#" class="footer__col-image-link">
-									<div class="footer__col-image-link-block footer__col-image-link-block--image">
-										<img src="http://placehold.it/200x200" alt="company image">
-									</div>
-									<div class="footer__col-image-link-block footer__col-image-link-block--text">
-										<span>Скидки на приобретене
-											горюче смазочных
-											материалов
-										</span>
-									</div>
-								</a>
-							</div>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:news.list",
+								"footercol_offers",
+								Array(
+									"ACTIVE_DATE_FORMAT" => "d.m.Y",
+									"ADD_SECTIONS_CHAIN" => "Y",
+									"AJAX_MODE" => "N",
+									"AJAX_OPTION_ADDITIONAL" => "",
+									"AJAX_OPTION_HISTORY" => "N",
+									"AJAX_OPTION_JUMP" => "N",
+									"AJAX_OPTION_STYLE" => "Y",
+									"CACHE_FILTER" => "N",
+									"CACHE_GROUPS" => "Y",
+									"CACHE_TIME" => "36000000",
+									"CACHE_TYPE" => "A",
+									"CHECK_DATES" => "Y",
+									"DETAIL_URL" => "",
+									"DISPLAY_BOTTOM_PAGER" => "N",
+									"DISPLAY_DATE" => "Y",
+									"DISPLAY_NAME" => "N",
+									"DISPLAY_PICTURE" => "Y",
+									"DISPLAY_PREVIEW_TEXT" => "Y",
+									"DISPLAY_TOP_PAGER" => "N",
+									"FIELD_CODE" => array("",""),
+									"FILTER_NAME" => "",
+									"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+									"IBLOCK_ID" => "9",
+									"IBLOCK_TYPE" => "offers",
+									"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+									"INCLUDE_SUBSECTIONS" => "Y",
+									"MESSAGE_404" => "",
+									"NEWS_COUNT" => "3",
+									"PAGER_BASE_LINK_ENABLE" => "N",
+									"PAGER_DESC_NUMBERING" => "N",
+									"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+									"PAGER_SHOW_ALL" => "N",
+									"PAGER_SHOW_ALWAYS" => "N",
+									"PAGER_TEMPLATE" => ".default",
+									"PAGER_TITLE" => "Лучшие предложения",
+									"PARENT_SECTION" => "",
+									"PARENT_SECTION_CODE" => "",
+									"PREVIEW_TRUNCATE_LEN" => "",
+									"PROPERTY_CODE" => array("",""),
+									"SET_BROWSER_TITLE" => "Y",
+									"SET_LAST_MODIFIED" => "N",
+									"SET_META_DESCRIPTION" => "Y",
+									"SET_META_KEYWORDS" => "Y",
+									"SET_STATUS_404" => "N",
+									"SET_TITLE" => "Y",
+									"SHOW_404" => "N",
+									"SORT_BY1" => "ACTIVE_FROM",
+									"SORT_BY2" => "SORT",
+									"SORT_ORDER1" => "DESC",
+									"SORT_ORDER2" => "ASC"
+								)
+							);?>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="footer__col-main">
 						<div class="footer__col-header">
-							<h4 class="footer__col-header-block footer__col-header-block--text">Header</h4>
-							<a href="#" class="footer__col-header-block footer__col-header-block--button">Все</a>
+							<h4 class="footer__col-header-block footer__col-header-block--text">Акции</h4>
+							<a href="/campaigns" class="footer__col-header-block footer__col-header-block--button">Все</a>
 						</div>
+
 						<div class="footer__col-content">
-							<div class="footer__col-content-block">
-								<a class="footer__col-image-link" href="#">
-									<div class="footer__col-image-wrapper">
-										<img src="http://placehold.it/400x320" alt="image">
-									</div>
-								</a>
-							</div>
-							<div class="footer__col-content-block">
-								<a class="footer__col-image-link" href="#">
-									<div class="footer__col-image-wrapper">
-										<img src="http://placehold.it/400x320" alt="image">
-									</div>
-								</a>
-							</div>
-							<div class="footer__col-content-block">
-								<a class="footer__col-image-link" href="#">
-									<div class="footer__col-image-wrapper">
-										<img src="http://placehold.it/400x320" alt="image">
-									</div>
-								</a>
-							</div>
-							<div class="footer__col-content-block">
-								<a class="footer__col-image-link" href="#">
-									<div class="footer__col-image-wrapper">
-										<img src="http://placehold.it/400x320" alt="image">
-									</div>
-								</a>
-							</div>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:news.list",
+								"",
+								Array(
+									"ACTIVE_DATE_FORMAT" => "d.m.Y",
+									"ADD_SECTIONS_CHAIN" => "Y",
+									"AJAX_MODE" => "N",
+									"AJAX_OPTION_ADDITIONAL" => "",
+									"AJAX_OPTION_HISTORY" => "N",
+									"AJAX_OPTION_JUMP" => "N",
+									"AJAX_OPTION_STYLE" => "Y",
+									"CACHE_FILTER" => "N",
+									"CACHE_GROUPS" => "Y",
+									"CACHE_TIME" => "36000000",
+									"CACHE_TYPE" => "A",
+									"CHECK_DATES" => "Y",
+									"DETAIL_URL" => "",
+									"DISPLAY_BOTTOM_PAGER" => "N",
+									"DISPLAY_DATE" => "N",
+									"DISPLAY_NAME" => "N",
+									"DISPLAY_PICTURE" => "Y",
+									"DISPLAY_PREVIEW_TEXT" => "N",
+									"DISPLAY_TOP_PAGER" => "N",
+									"FIELD_CODE" => array("",""),
+									"FILTER_NAME" => "",
+									"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+									"IBLOCK_ID" => "10",
+									"IBLOCK_TYPE" => "offers",
+									"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+									"INCLUDE_SUBSECTIONS" => "Y",
+									"MESSAGE_404" => "",
+									"NEWS_COUNT" => "3",
+									"PAGER_BASE_LINK_ENABLE" => "N",
+									"PAGER_DESC_NUMBERING" => "N",
+									"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+									"PAGER_SHOW_ALL" => "N",
+									"PAGER_SHOW_ALWAYS" => "N",
+									"PAGER_TEMPLATE" => ".default",
+									"PAGER_TITLE" => "Новости",
+									"PARENT_SECTION" => "",
+									"PARENT_SECTION_CODE" => "",
+									"PREVIEW_TRUNCATE_LEN" => "",
+									"PROPERTY_CODE" => array("",""),
+									"SET_BROWSER_TITLE" => "Y",
+									"SET_LAST_MODIFIED" => "N",
+									"SET_META_DESCRIPTION" => "Y",
+									"SET_META_KEYWORDS" => "Y",
+									"SET_STATUS_404" => "N",
+									"SET_TITLE" => "Y",
+									"SHOW_404" => "N",
+									"SORT_BY1" => "ACTIVE_FROM",
+									"SORT_BY2" => "SORT",
+									"SORT_ORDER1" => "DESC",
+									"SORT_ORDER2" => "ASC"
+								)
+							);?>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="footer__col-main">
 						<div class="footer__col-header">
-							<h4 class="footer__col-header-block footer__col-header-block--text">Header</h4>
-							<a href="#" class="footer__col-header-block footer__col-header-block--button">Все</a>
+							<h4 class="footer__col-header-block footer__col-header-block--text">Новости</h4>
+							<a href="/news" class="footer__col-header-block footer__col-header-block--button">Все</a>
 						</div>
 						<div class="footer__col-content">
-							<div class="footer__col-content-block">
-								<div class="footer__col-news-wrapper">
-									<div class="footer__col-news-block footer__col-news-block--image">
-										<div class="footer__col-news-block-image-wrapper">
-											<img src="http://placehold.it/200x200" alt="">
-										</div>
-									</div>
-									<div class="footer__col-news-block footer__col-news-block--content">
-										<a href="#" class="footer__col-news-header">
-											Заголовок новости
-										</a>
-										<p class="footer__col-news-short-desc">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										</p>
-										<p class="footer__col-news-published">17.08.2017</p>
-									</div>
-								</div>
-							</div>
-							<div class="footer__col-content-block">
-								<div class="footer__col-news-wrapper">
-									<div class="footer__col-news-block footer__col-news-block--image">
-										<div class="footer__col-news-block-image-wrapper">
-											<img src="http://placehold.it/200x200" alt="">
-										</div>
-									</div>
-									<div class="footer__col-news-block footer__col-news-block--content">
-										<a href="#" class="footer__col-news-header">
-											Заголовок новости
-										</a>
-										<p class="footer__col-news-short-desc">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										</p>
-										<p class="footer__col-news-published">17.08.2017</p>
-									</div>
-								</div>
-							</div>
-							<div class="footer__col-content-block">
-								<div class="footer__col-news-wrapper">
-									<div class="footer__col-news-block footer__col-news-block--image">
-										<div class="footer__col-news-block-image-wrapper">
-											<img src="http://placehold.it/200x200" alt="">
-										</div>
-									</div>
-									<div class="footer__col-news-block footer__col-news-block--content">
-										<a href="#" class="footer__col-news-header">
-											Заголовок новости
-										</a>
-										<p class="footer__col-news-short-desc">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										</p>
-										<p class="footer__col-news-published">17.08.2017</p>
-									</div>
-								</div>
-							</div>
-							<div class="footer__col-content-block">
-								<div class="footer__col-news-wrapper">
-									<div class="footer__col-news-block footer__col-news-block--image">
-										<div class="footer__col-news-block-image-wrapper">
-											<img src="http://placehold.it/200x200" alt="">
-										</div>
-									</div>
-									<div class="footer__col-news-block footer__col-news-block--content">
-										<a href="#" class="footer__col-news-header">
-											Заголовок новости
-										</a>
-										<p class="footer__col-news-short-desc">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										</p>
-										<p class="footer__col-news-published">17.08.2017</p>
-									</div>
-								</div>
-							</div>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:news.list",
+								"footercol",
+								Array(
+									"ACTIVE_DATE_FORMAT" => "d.m.Y",
+									"ADD_SECTIONS_CHAIN" => "Y",
+									"AJAX_MODE" => "N",
+									"AJAX_OPTION_ADDITIONAL" => "",
+									"AJAX_OPTION_HISTORY" => "N",
+									"AJAX_OPTION_JUMP" => "N",
+									"AJAX_OPTION_STYLE" => "Y",
+									"CACHE_FILTER" => "N",
+									"CACHE_GROUPS" => "Y",
+									"CACHE_TIME" => "36000000",
+									"CACHE_TYPE" => "A",
+									"CHECK_DATES" => "Y",
+									"DETAIL_URL" => "",
+									"DISPLAY_BOTTOM_PAGER" => "N",
+									"DISPLAY_DATE" => "Y",
+									"DISPLAY_NAME" => "Y",
+									"DISPLAY_PICTURE" => "Y",
+									"DISPLAY_PREVIEW_TEXT" => "Y",
+									"DISPLAY_TOP_PAGER" => "N",
+									"FIELD_CODE" => array("",""),
+									"FILTER_NAME" => "",
+									"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+									"IBLOCK_ID" => "2",
+									"IBLOCK_TYPE" => "news",
+									"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+									"INCLUDE_SUBSECTIONS" => "Y",
+									"MESSAGE_404" => "",
+									"NEWS_COUNT" => "3",
+									"PAGER_BASE_LINK_ENABLE" => "N",
+									"PAGER_DESC_NUMBERING" => "N",
+									"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+									"PAGER_SHOW_ALL" => "N",
+									"PAGER_SHOW_ALWAYS" => "N",
+									"PAGER_TEMPLATE" => ".default",
+									"PAGER_TITLE" => "Новости",
+									"PARENT_SECTION" => "",
+									"PARENT_SECTION_CODE" => "",
+									"PREVIEW_TRUNCATE_LEN" => "",
+									"PROPERTY_CODE" => array("",""),
+									"SET_BROWSER_TITLE" => "Y",
+									"SET_LAST_MODIFIED" => "N",
+									"SET_META_DESCRIPTION" => "Y",
+									"SET_META_KEYWORDS" => "Y",
+									"SET_STATUS_404" => "N",
+									"SET_TITLE" => "Y",
+									"SHOW_404" => "N",
+									"SORT_BY1" => "ACTIVE_FROM",
+									"SORT_BY2" => "SORT",
+									"SORT_ORDER1" => "DESC",
+									"SORT_ORDER2" => "ASC"
+								)
+							);?>
 						</div>
 					</div>
 				</div>
@@ -200,28 +219,19 @@
 					</div>
 				</div>
 				<div class="col-md-4 hidden-sm hidden-xs">
-					<div class="row">
-						<ul class="footer__links-menu">
-							<li class="footer__link-item">
-								<a href="#" class="footer__link">О программе</a>
-							</li>
-							<li class="footer__link-item">
-								<a href="#" class="footer__link">Рекомендации</a>
-							</li>
-							<li class="footer__link-item">
-								<a href="#" class="footer__link">Контакты</a>
-							</li>
-							<li class="footer__link-item">
-								<a href="#" class="footer__link">Новости</a>
-							</li>
-							<li class="footer__link-item">
-								<a href="#" class="footer__link">Каталог предприятий</a>
-							</li>
-							<li class="footer__link-item">
-								<a href="#" class="footer__link">Акции</a>
-							</li>
-						</ul>
-					</div>
+					<?$APPLICATION->IncludeComponent(
+						"bitrix:menu",
+						"bottom",
+						Array(
+							"ALLOW_MULTI_SELECT" => "N",
+							"CHILD_MENU_TYPE" => "left",
+							"DELAY" => "N",
+							"MAX_LEVEL" => "1",
+							"MENU_THEME" => "site",
+							"ROOT_MENU_TYPE" => "bottom",
+							"USE_EXT" => "N"
+						)
+					);?>
 				</div>
 				<div class="col-md-4 hidden-sm hidden-xs">
 					<div class="footer__auth-actions">
