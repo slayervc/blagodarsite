@@ -1,0 +1,60 @@
+.company-list {
+
+	&__item {
+		margin-bottom: 20px;
+		@include clearfix();
+	}
+
+	&__image-wrapper {
+		width: 30%;
+		float: left;
+	}
+
+	&__image {
+		position: relative;
+		width: 80px;
+		height: 80px;
+		margin: 0 auto;
+		border-radius: 50%;
+		overflow: hidden;
+		img {
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			position: absolute;
+			width: 100%;
+		}
+	}
+
+	&__content-wrapper {
+		float: left;
+		width: 70%;
+		padding-left: 15px;
+	}
+
+	&__content-header {
+		color: $main-color;
+		font-family: 'Open Sans';
+		font-weight: 600;
+		margin-top: 0;
+		margin-bottom: 20px;
+		a {
+			color: $main-color;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__content-main {
+		font-family: 'Open Sans';
+		font-size: 13px;
+		color: #000;
+		p {
+			margin-bottom: 0;
+		}
+	}
+
+}
+
+

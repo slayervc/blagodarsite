@@ -1,0 +1,61 @@
+.personal-content {
+	&__header {
+		font-size: 18px;
+		font-family: 'Open Sans', sans-serif;
+		color: $main-color;
+		margin-top: 0;
+		margin-bottom: 25px;
+		font-weight: 600;
+	}
+
+	&__table-wrapper {
+		border-radius: 5px;
+		overflow: hidden;
+	}
+
+	&__table {
+		border-collapse: collapse;
+		border-spacing: 0;
+		font-family: 'Open Sans';
+		font-size: 13px;
+		font-weight: 500;
+
+		tr {
+			td {
+				border-right: 1px solid #ebebeb;
+				&:last-child {
+					border-right: 0;
+				}
+			}
+		}
+
+		// border-radius: 5px;
+		&-head {
+			background: $main-color;
+			color: #fff;
+		}
+
+		&-price {
+			font-size: 15px;
+			text-align: center;
+			vertical-align: middle !important;
+			font-weight: 600;
+		}
+
+		&-status {
+			text-align: center;
+			vertical-align: middle !important;
+			font-weight: 600;
+			&--plus {
+				color: $main-color;
+			}
+			&--decrease {
+				color: darken($main-color, 10%);
+			}
+		}
+
+	}
+
+}
+
+

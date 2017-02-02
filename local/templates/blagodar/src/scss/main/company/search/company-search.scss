@@ -1,0 +1,73 @@
+$company-search-color: #f8fee0;
+$company-text-color: #8f8f8f;
+$company-vertical-padding: 10px;
+$company-horisontal-padding: 15px;
+$company-base-padding: $company-vertical-padding $company-horisontal-padding;
+.company-search {
+	border-radius: 8px;
+	border: 3px solid $company-search-color;
+	padding: 10px;
+	margin: 20px 0;
+
+	&__column {
+		@media screen and (max-width: $screen-md) {
+			margin-bottom: 15px;
+		}
+	}
+
+	&__name-badge {
+		font-family: 'Open Sans';
+		border-radius: 8px;
+		font-size: 15px;
+		text-align: center;
+		padding: $company-base-padding;
+		font-weight: 400;
+		background: $company-search-color;
+		color: $company-text-color;
+	}
+
+	&__input-wrapper {
+
+	}
+
+	&__input {
+		border: 1px solid transparent;
+		width: 100%;
+		padding: $company-base-padding;
+		font-size: 15px;
+		color: $company-text-color;
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__search-button {
+		$border-weight: 3px;
+		border-radius: 8px;
+		color: #fff;
+		background-color: $main-color;
+		font-weight: 600;
+		font-family: 'Open Sans';
+		border: $border-weight solid #fff;
+		box-shadow: 0px 0px 3px rgba(#000, .5);
+		padding-top: $company-vertical-padding - $border-weight;
+		padding-bottom: $company-vertical-padding - $border-weight;
+		padding-left: 40px;
+		padding-right: $company-horisontal-padding;
+		background-image: url($image-path + 'search-icon.png');
+		background-position: 15px center;
+		background-size: 16px;
+		background-repeat: no-repeat;
+
+		&:hover {
+			background-color: lighten($main-color, 10%);
+		}
+
+		@media screen and (max-width: $screen-md) {
+			width: 100%;
+			padding: $company-base-padding;
+		}
+
+	}
+
+}

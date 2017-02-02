@@ -1,0 +1,85 @@
+$input-text-color: #585757;
+
+.auth-block {
+	margin: 20px 0;
+	&__form {
+		
+
+		&--expanded {
+			padding: 20px;
+		}
+
+		&--bordered {
+			border-radius: 10px;
+			border: 1px solid rgba($main-color, .15);
+		}
+
+	}
+
+	&__form-header {
+		font-family: 'Open Sans';
+		font-weight: 700;
+		color: $main-color;
+		font-size: 18px;
+		margin-bottom: 30px;
+
+		&--centered {
+			text-align: center;
+		}
+
+	}
+
+	&__form-control {
+		
+		padding: 20px 17px;
+		color: $input-text-color;
+		font-family: 'Open Sans';
+		font-weight: 300;
+		font-size: 13px;
+		border: 1px solid #eeeeee;
+		&:focus {
+			border: 1px solid rgba($main-color, 0.3);
+			box-shadow: 0px 0px 3px rgba($main-color, .3);
+		}
+	}
+
+	&__help-link {
+		font-size: 12px;
+		font-family: 'Open Sans';
+		font-weight: 300;
+		margin-bottom: 5px;
+		color: $input-text-color;
+		display: block;
+		text-decoration: underline;
+		&:hover {
+			color: $input-text-color;
+			text-decoration: none;
+		}
+	}
+
+	&__button {
+		font-family: 'Open Sans';
+		font-size: 15px;
+		font-weight: 600;
+		color: #fff;
+		border-radius: 7px;
+		background: $main-color;
+		display: block;
+		width: auto;
+		border: none;
+		padding: 12px 20px;
+		border-bottom: 2px solid darken($main-color, 10%);
+
+		&--full {
+			width: 100%;
+		}
+
+		&:hover {
+			background: lighten($main-color, 10%);
+		}
+	}
+
+
+}
+
+

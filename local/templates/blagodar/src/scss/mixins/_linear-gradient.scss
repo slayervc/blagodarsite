@@ -1,0 +1,13 @@
+@mixin linear-horizontal-gradient($color-start, $color-end) {
+	background-color: $color-start;
+	background: -moz-linear-gradient(left,  $color-start 0%, $color-end 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  $color-start 0%, $color-end 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  $color-start 0%, $color-end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */	
+}
+
+@mixin linear-vertical-gradient($color-start, $color-end) {
+	background-color: $color-start;
+	background: -moz-linear-gradient(top,  $color-start 0%, $color-end 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  $color-start 0%, $color-end 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  $color-start 0%, $color-end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */	
+}

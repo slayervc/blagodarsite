@@ -1,0 +1,9 @@
+.footer {
+	padding-top: 20px;
+	background: #eee;
+}
+
+@import "./footer-content/content-block";
+@import "./main-block/main-foot";
+@import "./low-footer/low-foot";
+

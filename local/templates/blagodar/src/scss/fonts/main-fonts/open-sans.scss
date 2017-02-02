@@ -1,0 +1,16 @@
+$formats: ('ttf');
+$prefixes: (Regular: 400, Semibold: 600, Bold: 700, Light: 300);
+$font-family: 'Open Sans';
+
+
+@each $prefix, $font-weight in $prefixes {
+	@font-face {
+		font-family: $font-family;
+	    @each $format in $formats {
+	    	src: url($path-to-fonts + 'OpenSans-' + $prefix + '.' + $format);
+			font-weight: $font-weight;
+	    }
+	}
+}
+
+

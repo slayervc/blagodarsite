@@ -35,5 +35,6 @@
 !/bitrix/.settings_extra.php
 vendor/
 upload/
+node_modules/
 .phpintel
 
