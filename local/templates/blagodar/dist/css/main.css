@@ -321,15 +321,17 @@
 
 .partner-form { font-family: 'Open Sans'; font-size: 14px; }
 
+.partner-form__header { font-size: 16px; color: #000; font-weight: 700; }
+
 .partner-form--filled { background: #cecece; padding: 10px; }
 
 .partner-form__text-input { margin-bottom: 5px; border-radius: 3px; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); color: #557400; height: 36px; }
 
-.partner-form__text-input:hover { box-shadow: 0 0 3px rgba(0, 0, 0, 0.6); }
+.partner-form__text-input:hover, .partner-form__text-input:focus { outline: none; box-shadow: 0 0 4px rgba(0, 0, 0, 0.6); }
 
-.partner-form__button { display: block; height: 36px; border: 0; background-color: #8dc100; color: #fff; font-weight: 600; border-radius: 3px; text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); box-shadow: 0 0 3px rgba(122, 167, 0, 0.7); }
+.partner-form__button { display: block; height: 36px; border: 3px solid #fff; background-color: #8dc100; color: #fff; font-weight: 600; padding: 2px 15px; border-radius: 3px; text-shadow: 0 0 3px rgba(0, 0, 0, 0.3); box-shadow: 0 0 2px rgba(122, 167, 0, 0.7); }
 
-.partner-form__button:hover { background-color: #98d000; }
+.partner-form__button:hover { box-shadow: 0 0 5px rgba(122, 167, 0, 0.7); background-color: #98d000; }
 
 .partner-form__button--block { width: 100%; }
 

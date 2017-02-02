@@ -3,6 +3,12 @@
 	font-family: 'Open Sans';
 	font-size: 14px;
 
+	&__header {
+		font-size: 16px;
+		color: #000;
+		font-weight: 700;
+	}
+
 	&--filled {
 		background: #cecece;
 		padding: 10px;
@@ -14,26 +20,28 @@
 		box-shadow: 0 0 3px rgba(#000, .3);
 		color: darken($main-color, 10%);
 		height: 36px;
-		&:hover {
-			box-shadow: 0 0 3px rgba(#000, .6);
+		&:hover, &:focus {
+			outline: none;
+			box-shadow: 0 0 4px rgba(#000, .6);
 		}
 	}
 
 	
 
 	&__button {
-
 		$base-color: lighten($main-color, 5%);
 		display: block;
 		height: 36px;
-		border: 0;
+		border: 3px solid #fff;
 		background-color: $base-color;
 		color: #fff;
 		font-weight: 600;
+		padding: 2px 15px;
 		border-radius: 3px;
-		text-shadow: 0 0 2px rgba(#000, .3);
-		box-shadow: 0 0 3px rgba($main-color, .7);
+		text-shadow: 0 0 3px rgba(#000, .3);
+		box-shadow: 0 0 2px rgba($main-color, .7);
 		&:hover {
+			box-shadow: 0 0 5px rgba($main-color, .7);
 			background-color: lighten($base-color, 3%);
 		}
 		&--block {
