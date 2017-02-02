@@ -79,17 +79,19 @@
 		</div>
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(
-				"evrysoft:external.user.report",
-				"",
-				Array(
-					"DATE_AFTER" => "",
-					"DATE_BEFORE" => "",
-					"DEBUG" => "N",
-					"LIMIT" => "5",
-					"USE_PRELOAD" => "Y",
-					"VIEW_TYPE" => "TABLE"
-				)
-			);?>
+	"evrysoft:external.user.report", 
+	".default", 
+	array(
+		"DATE_AFTER" => "",
+		"DATE_BEFORE" => "",
+		"DEBUG" => "N",
+		"LIMIT" => "5",
+		"USE_PRELOAD" => "Y",
+		"VIEW_TYPE" => "BLOCK",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+);?>
 		</div>
 	</div>
 </div>
