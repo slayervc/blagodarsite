@@ -212,7 +212,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="footer__logo">
-						<img src="<?php echo SITE_TEMPLATE_PATH?>/images/logo.png">
+						<img src="<?php echo SITE_TEMPLATE_PATH?>/dist/images/logo.png">
 					</div>
 					<div class="footer__copyright">
 						© Copyright 2016. Все права защищены

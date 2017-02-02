@@ -1,0 +1,181 @@
+.footer {
+
+	&__content-block {
+		margin-bottom: 40px;
+	}
+
+	&__col-header {
+		@include clearfix();
+		margin-bottom: 10px;
+		&-block {
+			display: block;
+			margin: 0;
+			padding: 5px 15px;
+			font-family: 'Open Sans';
+			&--text {
+				font-size: 18px;
+				font-weight: 700;
+				float: left;
+				padding-left: 0;
+				padding-right: 0;
+			}
+			&--button {
+				$border-weight: 2px;
+				color: #fff;
+				background: $main-color;
+				float: right;
+				border-radius: 7px;
+				cursor: pointer;
+				padding: (5px - $border-weight) 15px; 
+				border: $border-weight solid #fff;
+				font-size: 15px;
+				font-weight: 600;
+				box-shadow: 0px 0px 3px rgba(#000, .2);
+				&:hover {
+					color: #fff;
+					text-decoration: none;
+				}
+			}
+		}		
+	}
+
+	&__col-main {
+		margin-bottom: 20px;
+	}
+
+	&__col-content-block {
+		// border: 1px solid red;
+		overflow: hidden;
+		border-radius: 5px;
+		height: 80px;
+		margin-bottom: 15px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+	}
+
+	&__col-news {
+		&-wrapper {
+			@include clearfix();
+			height: 100%;
+		}
+
+		&-block-image-wrapper {
+			overflow: hidden;
+			width: 67px;
+			height: 67px;
+			margin: auto;
+			position: relative;
+			border-radius: 50%;
+			img {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 100%;
+			}
+		}
+
+		&-block {
+			padding: 5px;
+			height: 100%;
+			float: left;
+			&--image {
+				width: 30%;
+			}
+			&--content {
+				width: 70%;
+			}
+		}		
+
+		&-header {
+			font-family: 'Open Sans';
+			font-weight: 700;
+			font-size: 15px;
+			color: $main-color;
+			&:hover {
+				text-decoration: underline;
+				color: darken($main-color, 10%);
+			}
+		}
+
+		&-short-desc {
+			font-family: 'Open Sans';
+			font-size: 13px;
+			margin-bottom: 0;
+			font-weight: 300;
+			color: #000;
+		}
+
+		&-published {
+			$published-color: #aeaeae;
+			font-family: 'Open Sans';
+			font-weight: 700;
+			font-size: 11px;
+			margin-bottom: 0;
+			color: $published-color;
+		}
+
+	}
+
+	&__col-image-link {
+		display: block;
+		height: 100%;
+		width: 100%;
+		border-radius: 5px;
+		background: lighten($main-color, 10%);
+		@include clearfix();
+		&-block {
+			float: left;
+			padding: 10px;
+			&--image {
+				width: 35%;
+				height: 100%;
+				position: relative;
+				overflow: hidden;
+				img {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					margin: auto;
+					width: 100%;
+				}
+			}
+			&--text {
+				color: #000;
+				font-size: 14px;
+				font-family: 'Open Sans';
+				height: 100%;
+				width: 65%;
+				text-align: left;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+
+	}
+
+	&__col-image-wrapper {
+		overflow: hidden;
+		position: relative;
+		height: 100%;
+		width: 100%;
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&__col-image-link-wrapper {
+
+	}
+
+}
+
+

@@ -79,23 +79,40 @@
 		</div>
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(
-	"evrysoft:external.user.report", 
-	".default", 
-	array(
-		"DATE_AFTER" => "",
-		"DATE_BEFORE" => "",
-		"DEBUG" => "Y",
-		"LIMIT" => "5",
-		"USE_PRELOAD" => "N",
-		"VIEW_TYPE" => "BLOCK",
-		"COMPONENT_TEMPLATE" => ".default",
-		"DONT_SHOW" => array(
-			0 => "transaction",
-		)
-	),
-	false
-);?>
+				"evrysoft:external.user.report", 
+				".default", 
+				array(
+					"DATE_AFTER" => "",
+					"DATE_BEFORE" => "",
+					"DEBUG" => "Y",
+					"LIMIT" => "5",
+					"USE_PRELOAD" => "N",
+					"VIEW_TYPE" => "BLOCK",
+					"COMPONENT_TEMPLATE" => ".default",
+					"DONT_SHOW" => array(
+						0 => "transaction",
+					)
+				),
+				false
+			);?>
+		</div>
+		<div class="col-md-12">
+			 <?$APPLICATION->IncludeComponent(
+				"evrysoft:external.user.report", 
+				".default", 
+				array(
+					"DATE_AFTER" => "",
+					"DATE_BEFORE" => "",
+					"DEBUG" => "N",
+					"LIMIT" => "5",
+					"USE_PRELOAD" => "Y",
+					"VIEW_TYPE" => "BLOCK",
+					"COMPONENT_TEMPLATE" => ".default"
+				),
+				false
+			);?>
 		</div>
 	</div>
 </div>
-<br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

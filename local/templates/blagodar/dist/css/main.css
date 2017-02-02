@@ -2,13 +2,13 @@
 
 @media screen and (min-width: 1170px) { .container { width: 940px; } }
 
-@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/fonts/OpenSans-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/dist/fonts/OpenSans-Regular.ttf"); font-weight: 400; }
 
-@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/fonts/OpenSans-Semibold.ttf"); font-weight: 600; }
+@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/dist/fonts/OpenSans-Semibold.ttf"); font-weight: 600; }
 
-@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/fonts/OpenSans-Bold.ttf"); font-weight: 700; }
+@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/dist/fonts/OpenSans-Bold.ttf"); font-weight: 700; }
 
-@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/fonts/OpenSans-Light.ttf"); font-weight: 300; }
+@font-face { font-family: "Open Sans"; src: url("/local/templates/blagodar/dist/fonts/OpenSans-Light.ttf"); font-weight: 300; }
 
 .header__head-block { padding: 25px 0; }
 
@@ -84,7 +84,7 @@
 
 .navigation__link-list { border: 1px solid red; }
 
-.navigation__icon { position: absolute; height: 25px; width: 25px; top: 50%; left: 50%; transform: translate(-50%, -50%); background-image: url("/local/templates/blagodar/images/home.png"); background-position: center center; background-size: 100%; display: block; }
+.navigation__icon { position: absolute; height: 25px; width: 25px; top: 50%; left: 50%; transform: translate(-50%, -50%); background-image: url("/local/templates/blagodar/dist/images/home.png"); background-position: center center; background-size: 100%; display: block; }
 
 .banner { margin: 20px 0; }
 
@@ -124,7 +124,7 @@
 
 .company-search__input:focus { outline: none; }
 
-.company-search__search-button { border-radius: 8px; color: #fff; background-color: #7aa700; font-weight: 600; font-family: 'Open Sans'; border: 3px solid #fff; box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); padding-top: 7px; padding-bottom: 7px; padding-left: 40px; padding-right: 15px; background-image: url("/local/templates/blagodar/images/search-icon.png"); background-position: 15px center; background-size: 16px; background-repeat: no-repeat; }
+.company-search__search-button { border-radius: 8px; color: #fff; background-color: #7aa700; font-weight: 600; font-family: 'Open Sans'; border: 3px solid #fff; box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); padding-top: 7px; padding-bottom: 7px; padding-left: 40px; padding-right: 15px; background-image: url("/local/templates/blagodar/dist/images/search-icon.png"); background-position: 15px center; background-size: 16px; background-repeat: no-repeat; }
 
 .company-search__search-button:hover { background-color: #9fda00; }
 
@@ -232,7 +232,7 @@
 
 .footer__col-news-wrapper:after { content: ''; display: table; clear: both; }
 
-.footer__col-news-block-image-wrapper { overflow: hidden; width: 67px; height: 67px; margin: auto; position: relative; border-radius: 0%; }
+.footer__col-news-block-image-wrapper { overflow: hidden; width: 67px; height: 67px; margin: auto; position: relative; border-radius: 50%; }
 
 .footer__col-news-block-image-wrapper img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; }
 
@@ -318,5 +318,19 @@
 .button--bottom-shadow { border-bottom: 2px solid #678e00; }
 
 .button--bordered { border: 3px solid #fff; box-shadow: 0px 0px 3px black; }
+
+.partner-form { font-family: 'Open Sans'; font-size: 14px; }
+
+.partner-form--filled { background: #cecece; padding: 10px; }
+
+.partner-form__text-input { margin-bottom: 5px; border-radius: 3px; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); color: #557400; height: 36px; }
+
+.partner-form__text-input:hover { box-shadow: 0 0 3px rgba(0, 0, 0, 0.6); }
+
+.partner-form__button { display: block; height: 36px; border: 0; background-color: #8dc100; color: #fff; font-weight: 600; border-radius: 3px; text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); box-shadow: 0 0 3px rgba(122, 167, 0, 0.7); }
+
+.partner-form__button:hover { background-color: #98d000; }
+
+.partner-form__button--block { width: 100%; }
 
 /*# sourceMappingURL=maps/main.css.map */

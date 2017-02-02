@@ -1,0 +1,36 @@
+.sidebar {
+	border-right: 1px solid lighten(#cecece, 5%);
+
+	&__info {
+		margin-bottom: 25px;
+	}
+	&__info-content {
+		font-family: 'Open Sans', Arial;
+		color: #585757;
+		margin-bottom: 5px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		&--small {
+			font-size: 13px;
+			font-weight: 200;
+		}
+		&--medium {
+			font-size: 15px;
+			font-weight: 500;
+		}
+	}
+
+	&__actions {
+		margin-top: 20px;
+	}
+
+	&__advertising {
+		img {
+			width: 100%;
+		}
+	}
+
+}
+
+

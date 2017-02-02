@@ -1,0 +1,47 @@
+.partner-form {
+
+	font-family: 'Open Sans';
+	font-size: 14px;
+
+	&--filled {
+		background: #cecece;
+		padding: 10px;
+	}
+
+	&__text-input {
+		margin-bottom: 5px;
+		border-radius: 3px;
+		box-shadow: 0 0 3px rgba(#000, .3);
+		color: darken($main-color, 10%);
+		height: 36px;
+		&:hover {
+			box-shadow: 0 0 3px rgba(#000, .6);
+		}
+	}
+
+	
+
+	&__button {
+
+		$base-color: lighten($main-color, 5%);
+		display: block;
+		height: 36px;
+		border: 0;
+		background-color: $base-color;
+		color: #fff;
+		font-weight: 600;
+		border-radius: 3px;
+		text-shadow: 0 0 2px rgba(#000, .3);
+		box-shadow: 0 0 3px rgba($main-color, .7);
+		&:hover {
+			background-color: lighten($base-color, 3%);
+		}
+		&--block {
+			width: 100%;
+		}
+	}
+
+
+}
+
+

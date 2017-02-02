@@ -1,0 +1,44 @@
+
+/*  */
+.button {
+	padding: 11px 20px;
+	border-radius: 5px;
+	width: auto;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	font-family: 'Open Sans', Arial, sans-serif;
+	background: $main-color;
+	display: inline-block;
+	&:hover, &:focus {
+		color: #fff;
+		text-decoration: none;
+		background: lighten($main-color, 5%);
+	}
+
+	&--small {
+		font-size: 13px;
+	}
+
+	&--large {
+		font-size: 17px;
+	}
+
+	&--full {
+		width: 100%;
+		display: block;
+	}
+
+	&--bottom-shadow {
+		border-bottom: 2px solid darken($main-color, 5%);
+	}
+
+	&--bordered {
+		border: 3px solid #fff;
+		box-shadow: 0px 0px 3px rgba(#000, 50%);
+	}
+
+
+}
+
+

@@ -1,0 +1,27 @@
+// Variables
+@import "variables/variables";
+@import "bootstrap-overwrite/container";
+
+// Mixins
+
+@import "mixins/font-face";
+@import "mixins/linear-gradient";
+@import "mixins/clearfix";
+
+// Font rules
+
+@import "fonts/main-fonts";
+
+// Main layout
+
+@import "header/header";
+@import "navigation/navigation";
+@import "main/main";
+@import "footer/footer";
+
+
+// Blocks
+
+@import "./blocks/blocks";
+
+

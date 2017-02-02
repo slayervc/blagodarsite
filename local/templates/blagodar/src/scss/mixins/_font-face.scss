@@ -1,0 +1,19 @@
+@mixin font-face($name, $formats, $url) {
+	@font-face {
+		font-family: $name;
+		@each $format in $formats {
+			src: url($url + $name + "." + $format) format (quote($format));
+		}
+	}
+}
+
+
+// $formats: 'ttf';
+
+// $font-url: $path-to-fonts + '/';
+
+
+// @include font-face($basic-font-name + '-Regular', $formats, $font-url);
+// @include font-face($basic-font-name + '-Bold', $formats, $font-url);
+// @include font-face($basic-font-name + '-Semibold', $formats, $font-url);
+// @include font-face($basic-font-name + '-Light', $formats, $font-url);

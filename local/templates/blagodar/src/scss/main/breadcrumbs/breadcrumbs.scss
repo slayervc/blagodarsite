@@ -1,0 +1,43 @@
+.breadcrumbs {
+	
+	margin: 25px 0;
+
+	&__list {
+		padding-left: 0;
+		margin-bottom: 0;
+		@include clearfix();
+	}
+
+
+	&__item {
+		list-style: none;
+		font-size: 12px;
+		float: left;
+		margin-right: 3px;
+		&:last-child {
+			margin-right: 0;
+		}
+		letter-spacing: normal;
+	}
+
+	&__link {
+		color: #000;
+		font-family: 'Open Sans';
+		font-weight: 700;
+
+		&--current {
+			color: $main-color;
+		}
+
+		&:hover {
+			text-decoration: none;
+			color: darken($main-color, 13%);
+		}
+
+	}
+
+
+
+}
+
+

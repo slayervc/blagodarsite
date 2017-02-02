@@ -15,7 +15,7 @@ $this->addExternalJs('/local/js/submit-multi-form.js');
 		<form name="<?php echo $arResult['FORM_OPTIONS']['FORM_ID'] ?>" 
 			  action="<?php echo $arResult['FORM_OPTIONS']['FORM_ACTION'] ?>" 
 			  method="POST" 
-			  class="form"
+			  class="form partner-form"
 		>
 			<input name="uri_alias" type="hidden" value="<?php echo $arParams['URI_ALIAS'] ?>">
 			<?php foreach ($arResult['SHOW_FIELDS'] as $field):?>
@@ -23,10 +23,10 @@ $this->addExternalJs('/local/js/submit-multi-form.js');
 				<?php if ($field == $arResult['PASSED_FIELD_STR']): ?>
 					<div class="row">
 						<div class="col-md-6">
-							<input type="text" name="FORM[<?php echo $field ?>]" class="form-control" placeholder="<?php echo GetMessage($field) ?>">
+							<input type="text" name="FORM[<?php echo $field ?>]" class="form-control partner-form__text-input" placeholder="<?php echo GetMessage($field) ?>">
 						</div>
 						<div class="col-md-6">
-							<input type="submit" class="btn btn-default btn-block" 
+							<input type="submit" class="partner-form__button partner-form__button--block" 
 								data-action="get-code" 
 								data-response-success="Код отправлен на номер:"
 								data-response-error="Ошибка:" value="Отправить код"
@@ -34,12 +34,12 @@ $this->addExternalJs('/local/js/submit-multi-form.js');
 						</div>
 					</div>
 					<?php else: ?>
-						<input type="text" class="form-control" name="FORM[<?php echo $field ?>]" placeholder="<?php echo GetMessage($field) ?>">
+						<input type="text" class="form-control partner-form__text-input" name="FORM[<?php echo $field ?>]" placeholder="<?php echo GetMessage($field) ?>">
 					<?php endif ?>
 				</div>
 			<?php endforeach ?>
 			<div class="form-group">
-				<input type="submit" class="btn btn-success" value="<?php echo GetMessage('SUBMIT_BUTTON') ?>">
+				<input type="submit" class="btn btn-success partner-form__button" value="<?php echo GetMessage('SUBMIT_BUTTON') ?>">
 			</div>
 		</form>
 	</div>

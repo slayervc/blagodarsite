@@ -3,12 +3,12 @@
 <head>
 	<title><?php $APPLICATION->ShowTitle(); ?></title>
 	<?php 
-		$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/jquery/dist/jquery.min.js');
-		$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/bootstrap/dist/js/bootstrap.min.js');
+		$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/libs/jquery/dist/jquery.min.js');
+		$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/libs/bootstrap/dist/js/bootstrap.min.js');
 	?>
 	<?php $APPLICATION->ShowHead(); ?>
-	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/css/main.css">
+	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/dist/css/main.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -19,12 +19,9 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-4 header__head-block">
 						<a href="/" class="header__logo">
-							<div class="header__logo-image-container">
-								<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/logo.png" alt="Комплекс-А">
-							</div>
-							<div class="header__logo-image-description">
-								<span>УНИВЕРСАЛЬНАЯ БОНУСНАЯ СИСТЕМА</span>
-							</div>
+
+								<img src="<?php echo SITE_TEMPLATE_PATH ?>/dist/images/logo.png" alt="Комплекс-А">
+
 						</a>
 					</div>
 					<div class="col-md-4 col-sm-4 header__head-block">
@@ -78,7 +75,7 @@
 			<div class="container">
 				<div class="row">
 					<a href="#">
-						<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/banner.jpg">
+						<img src="<?php echo SITE_TEMPLATE_PATH ?>/dist/images/banner.jpg">
 					</a>
 				</div>
 			</div>
