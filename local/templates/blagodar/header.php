@@ -19,12 +19,9 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-4 header__head-block">
 						<a href="/" class="header__logo">
-							<div class="header__logo-image-container">
+
 								<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/logo.png" alt="Комплекс-А">
-							</div>
-							<div class="header__logo-image-description">
-								<span>УНИВЕРСАЛЬНАЯ БОНУСНАЯ СИСТЕМА</span>
-							</div>
+
 						</a>
 					</div>
 					<div class="col-md-4 col-sm-4 header__head-block">
