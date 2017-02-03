@@ -17,12 +17,13 @@
 	&__text-input {
 		margin-bottom: 5px;
 		border-radius: 3px;
-		box-shadow: 0 0 3px rgba(#000, .3);
+		box-shadow: 0 0 2px rgba(#000, .3);
 		color: darken($main-color, 10%);
 		height: 36px;
+		border: none;
 		&:hover, &:focus {
 			outline: none;
-			box-shadow: 0 0 4px rgba(#000, .6);
+			box-shadow: 0 0 2px rgba(#000, .6);
 		}
 	}
 

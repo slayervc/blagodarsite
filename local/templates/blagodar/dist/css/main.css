@@ -315,6 +315,8 @@
 
 .button--full { width: 100%; display: block; }
 
+.button--download { width: 50%; text-align: center; }
+
 .button--bottom-shadow { border-bottom: 2px solid #678e00; }
 
 .button--bordered { border: 3px solid #fff; box-shadow: 0px 0px 3px black; }
@@ -325,9 +327,9 @@
 
 .partner-form--filled { background: #cecece; padding: 10px; }
 
-.partner-form__text-input { margin-bottom: 5px; border-radius: 3px; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); color: #557400; height: 36px; }
+.partner-form__text-input { margin-bottom: 5px; border-radius: 3px; box-shadow: 0 0 2px rgba(0, 0, 0, 0.3); color: #557400; height: 36px; border: none; }
 
-.partner-form__text-input:hover, .partner-form__text-input:focus { outline: none; box-shadow: 0 0 4px rgba(0, 0, 0, 0.6); }
+.partner-form__text-input:hover, .partner-form__text-input:focus { outline: none; box-shadow: 0 0 2px rgba(0, 0, 0, 0.6); }
 
 .partner-form__button { display: block; height: 36px; border: 3px solid #fff; background-color: #8dc100; color: #fff; font-weight: 600; padding: 2px 15px; border-radius: 3px; text-shadow: 0 0 3px rgba(0, 0, 0, 0.3); box-shadow: 0 0 2px rgba(122, 167, 0, 0.7); }
 

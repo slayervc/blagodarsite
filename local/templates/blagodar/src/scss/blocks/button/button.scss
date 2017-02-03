@@ -29,6 +29,12 @@
 		display: block;
 	}
 
+	&--download {
+		width: 50%;
+		text-align: center;
+		// margin: 0 auto;
+	}
+
 	&--bottom-shadow {
 		border-bottom: 2px solid darken($main-color, 5%);
 	}

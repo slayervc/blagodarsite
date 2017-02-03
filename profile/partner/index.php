@@ -84,7 +84,7 @@
 	array(
 		"DATE_AFTER" => "",
 		"DATE_BEFORE" => "",
-		"DEBUG" => "Y",
+		"DEBUG" => "N",
 		"LIMIT" => "5",
 		"USE_PRELOAD" => "Y",
 		"VIEW_TYPE" => "BLOCK",
