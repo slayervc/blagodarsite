@@ -1,10 +1,9 @@
 <?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 use Bitrix\Main\Config\Configuration;
-use Bitrix\Main\GroupTable;
 use EvrySoft\Helpers\ApiHelpers\ApiHelper;
 use EvrySoft\Helpers\ApiHelpers\ApiRequestHelper;
-
+use EvrySoft\Helpers\CheckRequestHelper;
 
 /**
 * 
@@ -21,6 +20,7 @@ class UserReportComponent extends CBitrixComponent
 		global $USER;
 		global $APPLICATION;
 
+		$this->arResult['REQUEST_PAGE'] = $APPLICATION->GetCurPage();
 		$this->arResult['REPORT_DATA']['HIDDEN_LIST'] = [];
 		$this->arResult['REPORT_DATA']['LIST'] = [];
 
@@ -46,6 +46,12 @@ class UserReportComponent extends CBitrixComponent
 		$http = new ApiRequestHelper;
 
 		$viewType = $this->getViewParam();
+
+
+		if (CheckRequestHelper::isAjax()) {
+			
+		}
+
 
 		$http->setMethod('GET')
 			 ->setHost($host)
