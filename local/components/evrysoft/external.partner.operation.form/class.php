@@ -55,7 +55,7 @@ class OperationFormComponent extends CBitrixComponent
 		$this->arResult['SHOW_FIELDS'] = $this->getShowFields();
 		$this->arResult['PASSED_FIELD_STR'] = $this->getPassedField();
 
-		if (CheckRequestHelper::isAjax()) {
+		if (CheckRequestHelper::isAjax() && $this->checkForm()) {
 
 			$APPLICATION->RestartBuffer();
 
@@ -180,9 +180,19 @@ class OperationFormComponent extends CBitrixComponent
 	}
 
 
-	private function getFormIdFromRequest()
+	protected function getFormIdFromRequest()
 	{
-		return $_REQUEST['FORM_ID'];
+		return $_REQUEST['form_id'];
+	}
+
+
+	/**
+	 * Check form ID from Request and formOptions
+	 * @return boolean
+	 */
+	protected function checkForm()
+	{
+		return (bool) $_REQUEST['form_id'] === $this->formOptions['FORM_ID'];
 	}
 
 

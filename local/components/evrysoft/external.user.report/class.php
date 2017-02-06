@@ -13,6 +13,13 @@ class UserReportComponent extends CBitrixComponent
 	
 	protected $page_limit = 5;
 
+	protected $convertedToFloat = [
+		'balance_before',
+		'balance_after',
+		'sum_comission_partner',
+		'sum_minus_partner',
+		'sum_plus_partner'
+	];
 
 	public function executeComponent()
 	{
@@ -28,8 +35,13 @@ class UserReportComponent extends CBitrixComponent
 
 		$userType = $USER->GetParam('USER_API_TYPE');
 
-		$client = new GuzzleHttp\Client;
+		$http = new ApiRequestHelper;
 
+
+		/**
+		 * Check on user permissions
+		 * TODO: Rework this method
+		 */
 		if ($USER->IsAdmin()) {
 			$userType = 'partner';
 			$password = 'mainpass';
@@ -41,17 +53,12 @@ class UserReportComponent extends CBitrixComponent
 			$host = Configuration::getValue('complex_api_host');
 		}
 
-		$url = rtrim($host, '/') . '/'. $uris[$userType]['report'];
 
-		$http = new ApiRequestHelper;
+		$url = rtrim($host, '/') . '/'. $uris[$userType]['report'];
 
 		$viewType = $this->getViewParam();
 
-
-		if (CheckRequestHelper::isAjax()) {
-			
-		}
-
+		$startPageId = isset($_REQUEST['NEXT_PAGE_ID']) ? $_REQUEST['NEXT_PAGE_ID'] : 0;
 
 		$http->setMethod('GET')
 			 ->setHost($host)
@@ -61,46 +68,103 @@ class UserReportComponent extends CBitrixComponent
 			 	'password' => $password,
 			 	'type' => 'json',
 			 	'xls' => 'false',
-			 	'start' => 0
+			 	'start' => $startPageId
 			]);
 
-
+		/**
+		 * Check if component params have a limit value
+		 */
 		if (intval($this->arParams['LIMIT']) > 0) {
 			$http->addQuery('limit', $this->arParams['LIMIT']);
 		}
 
 
+		/**
+		 * Make request
+		 */
 		$http->send();
 
+
+		/**
+		 * Set data with request response
+		 * @var array
+		 */
 		$data = $http->getArrayResponse();
 
+
+		/**
+		 * Set arResult fields after request
+		 */
 		$this->arResult['REPORT_DATA']['RESPONSE_STATUS'] = $data['status'];
 		$this->arResult['REPORT_DATA']['ROWS_COUNT'] = $data['info']['rows'];
 		$this->arResult['REPORT_DATA']['NEXT_PAGE_ID'] = $data['info']['next'];
 		$this->arResult['REPORT_DATA']['PREV_PAGE_ID'] = $data['info']['prev'];
 		$this->arResult['REPORT_DATA']['FULL_LIST'] = $data['info']['list'];
 
+
+		/**
+		 * Hidden fields for output
+		 * @var array
+		 */
 		$dontShowArray = [];
 
+
+		/**
+		 * Setter for hidden fields
+		 */
 		if (is_array($this->arParams['DONT_SHOW'])) {
 			$dontShowArray = $this->arParams['DONT_SHOW'];	
 		}
 
+
+		/**
+		 * 
+		 */
 		$this->arResult['REPORT_DATA']['HIDDEN_LIST'] = ApiHelper::makeHiddenArray($this->arResult['REPORT_DATA']['FULL_LIST'], $dontShowArray);
 
+
+		/**
+		 * Make sanitizied result list and list with headers
+		 */
 		$this->makeResultList();
 
-		if ($viewType == 'FILE') {
-			$this->InitComponentTemplate('xls_button');
-		} elseif ($viewType == 'TABLE') {
-			$this->InitComponentTemplate('table');
-		} elseif ($viewType == 'BLOCK') {
-			$this->InitComponentTemplate('block');
-		} else {
-			$this->InitComponentTemplate();
+
+		/**
+		 *	Main Output statement for ajax
+		 */
+		if (CheckRequestHelper::isAjax()) {
+			$APPLICATION->RestartBuffer();
+			$this->showJson();
 		}
 
-		$this->ShowComponentTemplate();
+
+		/**
+		 * Main Output statement for component view
+		 */
+		if ($viewType == 'FILE') {
+			$this->IncludeComponentTemplate('xls_button');
+		} elseif ($viewType == 'TABLE') {
+			$this->IncludeComponentTemplate('table');
+		} elseif ($viewType == 'BLOCK') {
+			$this->IncludeComponentTemplate('block');
+		} else {
+			$this->IncludeComponentTemplate();
+		}
+	}
+
+
+	/**
+	 * Return Json for page
+	 * @return json
+	 */
+	protected function showJson()
+	{
+		echo json_encode([
+			'list' => $this->arResult['REPORT_DATA']['LIST'],
+			'next_page' => $this->arResult['REPORT_DATA']['NEXT_PAGE_ID']
+		], JSON_UNESCAPED_UNICODE);
+
+		die();
 	}
 
 
@@ -129,7 +193,7 @@ class UserReportComponent extends CBitrixComponent
 
 	private function updateFloatListFields()
 	{
-		$this->arResult['REPORT_DATA']['LIST'] = $this->makeFloatFieldsInArray($this->arResult['REPORT_DATA']['LIST'], ['balance_before', 'balance_after', 'sum_comission_partner']);
+		$this->arResult['REPORT_DATA']['LIST'] = $this->makeFloatFieldsInArray($this->arResult['REPORT_DATA']['LIST'], $this->convertedToFloat);
 	}
 
 
@@ -145,6 +209,12 @@ class UserReportComponent extends CBitrixComponent
 
 
 
+	/**
+	 * Update array fields which needs update to float value
+	 * @param  array  $sourceArray main array
+	 * @param  array  $changeKeys  changes for array
+	 * @return array
+	 */
 	protected function makeFloatFieldsInArray(array $sourceArray, array $changeKeys)
 	{
 		foreach ($sourceArray as $listItemKey => $listItem) {
@@ -160,16 +230,14 @@ class UserReportComponent extends CBitrixComponent
 	}
 
 	
+
+	/**
+	 * Get view type from component
+	 * @return string
+	 */
 	protected function getViewParam()
 	{
 		return $this->arParams['VIEW_TYPE'];
-	}
-
-
-
-	protected function getCurrentReportPage()
-	{
-		return $_REQUEST['page'];
 	}
 
 

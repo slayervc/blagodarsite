@@ -1,18 +1,27 @@
-import AjaxRequest from './AjaxRequest';
-
+import $ from "jquery";
 export default class PageLoader {
 
-	constructor(container) {
-		this.container = container;
-		this.requester = new AjaxRequest;
+	/**
+	 * @param  Object options
+	 * @return void
+	 */
+	constructor(options) {
+		this.container = $(options.container)
+		this.template = options.template
 	}
 
-	setUrl(url){
-		this.requester.setRequestUrl(url);
+
+	updateContainer() {
+		this.container.append(this.renderPage())
 	}
 
-	makeRequest() {
-		return this.requester.send();
+	setData(dataObj){
+		this.data = dataObj
 	}
+
+	renderPage(){
+		return this.template(this.data)
+	}
+
 
 }

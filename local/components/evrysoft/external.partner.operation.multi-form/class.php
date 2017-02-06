@@ -49,7 +49,7 @@ class OperationMultiFormComponent extends OperationFormComponent
 		$this->arResult['RESPONSE_DATA'] = [];
 
 
-		if (CheckRequestHelper::isAjax()) {			
+		if (CheckRequestHelper::isAjax() && $this->checkForm()) {
 			$this->app->RestartBuffer();
 
 			if ($_REQUEST['type'] == 'get-code') {
@@ -72,6 +72,7 @@ class OperationMultiFormComponent extends OperationFormComponent
 		}
 
 	}
+
 
 
 	public function sendCodeGenRequest()

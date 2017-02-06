@@ -1,23 +1,47 @@
-import PageLoader from './libs/PageLoader';
-import $ from 'jquery';
+import PageLoader from './libs/PageLoader'
+import $ from 'jquery'
 
 $(document).ready(() => {
 
-	var loader = new PageLoader('[data-report]');
+	var loadButton = $('a[data-page]');
+	var startButtonText = loadButton.html();
+	var actionUri = loadButton.attr('href');
 
-	var button = $('[data-page]');
+	var pageLoader = new PageLoader({
+		container: '.personal-content__report-container',
+		template: require('./templates/handlebars/report-block.handlebars'),
+	});
 
-	loader.setUrl(button.attr('href'));
+	loadButton.on('click', (event) => {
+		event.preventDefault();
+		var target = $(event.currentTarget);
 
-	console.log(button.attr('href'));
+		target.html('...');
 
-	// var res = loader.makeRequest({
-	// 	page_id: button.attr('data-page')
-	// });
+		$.ajax({
+			url: actionUri,
+			type: 'GET',
+			data: {NEXT_PAGE_ID: target.attr('data-page')},
+		}).then((response) => {
 
-	// res.done((res) => {
-	// 	console.log(res)
-	// });
+			var resData = JSON.parse(response);
+			console.log(resData.list);
+
+			target.html(startButtonText);
+
+			target.attr('data-page', resData.next_page);
+
+			pageLoader.setData({blocks: resData.list});
+
+			pageLoader.updateContainer();
+
+			if (resData.next_page === -1) {
+				target.remove();
+			}
+
+		});
+
+	});
 
 });
 

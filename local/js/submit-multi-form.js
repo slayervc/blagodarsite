@@ -49,6 +49,8 @@ $(document).ready(function (){
 				formData[$(el).attr('name')] = $(el).val();
 			});
 
+			formData.form_id = $(form).attr('name');
+
 			console.log(formData);
 
 			// Remove all alerts after click

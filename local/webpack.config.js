@@ -22,7 +22,8 @@ const config = {
 				query: {
 					presets: ['es2015']
 				}
-			}
+			},
+			{test: /\.handlebars$/, loader: "handlebars-loader"}
 		]
 	}
 

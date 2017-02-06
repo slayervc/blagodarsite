@@ -6,7 +6,7 @@
 	</div>
 	<hr>
 	<div class="well">
-		<?php var_dump($arResult) ?>
+		<?php var_dump($arResult['REPORT_DATA']['LIST']) ?>
 	</div>
 <?php endif ?>
 
