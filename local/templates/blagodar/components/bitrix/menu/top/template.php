@@ -15,18 +15,34 @@
 			</div>
 			<div class="navbar-collapse collapse navigation__nav-wrapper">
 				<ul class="nav navbar-nav navigation__nav">
-					<li>
-						<a href="/" class="navigation__link navigation__link--icon-wrap navigation__link--active hidden-xs">
-							<i class="navigation__icon"></i>
-						</a>
-					</li>
-
 					<?foreach($arResult as $arItem):?>
 						<?if ($arItem["PERMISSION"] > "D"):?>
-							<li><a href="<?=$arItem["LINK"]?>" class="navigation__link"><nobr><?=$arItem["TEXT"]?></nobr></a></li>
+							<?php if ($arItem['LINK'] == '/'): ?>
+								<li>
+									<a href="/" class="navigation__link 
+										navigation__link--icon-wrap 
+										hidden-xs
+										<?php if ($arItem['SELECTED']): ?>
+											navigation__link--active
+										<?php endif ?>"
+									>
+										<i class="navigation__icon"></i>
+									</a>
+								</li>
+							<?php else: ?>
+							<li>
+								<a href="<?=$arItem["LINK"]?>" 
+								   class="navigation__link
+									<?php if ($arItem['SELECTED']): ?>
+										navigation__link--active
+									<?php endif ?>
+								">
+									<?=$arItem["TEXT"]?>
+								</a>
+							</li>
+							<?php endif ?>
 						<?endif?>
 					<?endforeach?>
-
 				</ul>
 			</div>
 		</div>
