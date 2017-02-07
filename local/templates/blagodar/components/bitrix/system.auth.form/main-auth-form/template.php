@@ -33,7 +33,6 @@
 				<div class="col-xs-6">
 					<div class="auth-block__help-links">
 						<a href="<?php echo $arResult['AUTH_REGISTER_URL'] ?>" class="auth-block__help-link">Регистрация</a>
-						<a href="<?php echo $arResult['AUTH_FORGOT_PASSWORD_URL'] ?>" class="auth-block__help-link">Забыли пароль?</a>
 					</div>
 				</div>
 				<div class="col-xs-6">
