@@ -17,9 +17,9 @@ class OnBeforeProlog
 		$curPage = $APPLICATION->GetCurPage();
 
 		if ($APPLICATION->GetFileAccessPermission($curPage) == 'D') {
-
-			$APPLICATION->ThrowException("Нет доступа к странице: $curPage");
 			
+			LocalRedirect('/', true, 301);
+
 		}
 
 	}
