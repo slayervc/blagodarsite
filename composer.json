@@ -7,7 +7,7 @@
     "minimum-stability": "dev",
     "autoload": {
     	"psr-4": {
-    		"EvrySoft\\": "ext-libs/"
+    		"EvrySoft\\": "local/ext-libs"
     	}
     }
 }
