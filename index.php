@@ -9,26 +9,26 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 						<div class="col-md-6">
 							 <?$APPLICATION->IncludeComponent(
 								"bitrix:system.auth.form",
-								"main-auth-form",
+								"partner-auth",
 								Array(
 									"CLIENT_TYPE" => "Partner",
 									"FORGOT_PASSWORD_URL" => "auth/forgot-password.php",
-									"PROFILE_URL" => "profile/client/",
-									"REGISTER_URL" => "/auth/register.php",
-									"SHOW_ERRORS" => "Y"
+									"PROFILE_URL" => "profile/partner/",
+									"REGISTER_URL" => "/",
+									"SHOW_ERRORS" => "N"
 								)
 							);?>
 						</div>
 						<div class="col-md-6">
 							 <?$APPLICATION->IncludeComponent(
 								"bitrix:system.auth.form",
-								"main-auth-form",
+								"client-auth",
 								Array(
 									"CLIENT_TYPE" => "Client",
 									"FORGOT_PASSWORD_URL" => "/auth/forgot-password.php",
-									"PROFILE_URL" => "profile/partner/",
+									"PROFILE_URL" => "profile/client/",
 									"REGISTER_URL" => "/auth/register.php",
-									"SHOW_ERRORS" => "Y"
+									"SHOW_ERRORS" => "N"
 								)
 							);?>
 						</div>
