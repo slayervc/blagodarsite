@@ -10,7 +10,9 @@ $arComponentParameters = array(
 			'VALUES' => [
 				'LEVEL' => 'LEVEL',
 				'BLOCKED' => 'BLOCKED',
-				'ID' => 'ID'
+				'ID' => 'ID',
+				'CAN_CREATE_AGENTS' => 'CAN_CREATE_AGENTS',
+				'MIN_BALANCE' => 'MIN_BALANCE'
 			],
 			'PARENT' => 'BASE'
 		],

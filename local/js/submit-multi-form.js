@@ -16,8 +16,6 @@ $(document).ready(function (){
 
 		inputs = inputs.not('[type="submit"]');
 
-		// console.log(form_id);
-
 		if ($(this).attr('data-action') == 'get-code') {
 			var loginVal = inputs.filter('[name="FORM[login]"]').val();
 			var alert = makeLoadAlert('Downloading...', 'alert-info');

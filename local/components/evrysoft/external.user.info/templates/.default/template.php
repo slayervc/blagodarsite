@@ -1,10 +1,8 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
 
-<?php if ($arParams['DEBUG'] == 'Y' && $USER->IsAdmin()): ?>
-	<p class="text-center alert alert-warning">
-		<strong>Debug mode enabled</strong>
-	</p>
-<?php endif ?>
+<?php 
+	// var_dump($arResult);
+ ?>
 <div class="row">
 	<div class="col-md-12 sidebar__menu">
 		<button role="button" 

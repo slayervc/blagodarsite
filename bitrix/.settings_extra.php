@@ -1,6 +1,11 @@
 <?php 
 return Array(
 
+	'complex_api_token' => [
+		'value' => 'token_to_gen_sms__kcq5cb_vm25mvun3PcWSR',
+		'readonly' => true
+	],
+
 	'complex_api_host' => [
 		'value' => 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/',
 		'readonly' => true
@@ -24,7 +29,7 @@ return Array(
 			'partner' => [
 				'info' => 'partners/getinfo',
 				'partner-list' => 'partners/getpartnerslist',
-				'add-partner-balace' => 'partners/addbalancepartner',
+				'add-partner-balance' => 'partners/addbalancepartner',
 				'gen-reg-code' => 'partners/genregcode/',
 				'regclient' => 'partners/regclient/',
 				'get-client-info' => 'partners/getinfoclient/',
