@@ -18,18 +18,20 @@
 	</div>
 	<div class="col-md-12 collapse sidebar__wrapper">
 		<?php foreach ($arResult['USER_SHOW_DATA'] as $arKey => $arValue): ?>
-			<div class="sidebar__info sidebar__info--full">
-				<p class="sidebar__info-content sidebar__info-content--small">
-					<?php if (!empty(GetMessage($arKey))): ?>
-						<?php echo GetMessage($arKey) ?>
-					<?php else: ?>
-						<?php echo $arKey ?>
-					<?php endif ?>
-				</p>
-				<p class="sidebar__info-content sidebar__info-content--medium">
-					<?php echo $arValue ?>
-				</p>
-			</div>
+			<?php if (!empty($arValue)): ?>
+				<div class="sidebar__info sidebar__info--full">
+					<p class="sidebar__info-content sidebar__info-content--small">
+						<?php if (!empty(GetMessage($arKey))): ?>
+							<?php echo GetMessage($arKey) ?>
+						<?php else: ?>
+							<?php echo $arKey ?>
+						<?php endif ?>
+					</p>
+					<p class="sidebar__info-content sidebar__info-content--medium">
+						<?php echo $arValue ?>
+					</p>
+				</div>
+			<?php endif ?>
 		<?php endforeach ?>
 	</div>
 </div>
