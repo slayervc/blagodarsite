@@ -14,8 +14,7 @@ $APPLICATION->SetTitle("авторизация");
 						"FORGOT_PASSWORD_URL" => "forgot-password.php",
 						"PROFILE_URL" => "",
 						"REGISTER_URL" => "",
-						"SHOW_ERRORS" => "Y",
-						"COMPONENT_TEMPLATE" => "main-auth-form"
+						"SHOW_ERRORS" => "Y"
 					),
 					false
 				);?>

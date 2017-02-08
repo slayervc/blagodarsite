@@ -11,22 +11,24 @@ $(document).ready(function (){
 
 		var formAction = $(form).attr('action');
 		var formMethod = $(form).attr('method');
-
+		var form_id = $(form).attr('name');
 		var inputs = $(form).find('input');
 
 		inputs = inputs.not('[type="submit"]');
 
+		// console.log(form_id);
+
 		if ($(this).attr('data-action') == 'get-code') {
 			var loginVal = inputs.filter('[name="FORM[login]"]').val();
 			var alert = makeLoadAlert('Downloading...', 'alert-info');
-			// return;
 
-			var codeRequest = makeGetCodeRequest(formAction, loginVal);
+			var codeRequest = makeGetCodeRequest(formAction, loginVal, form_id);
 
 			_self.parent().find('.alert').remove();
 			_self.parent().append(alert);
 
 			codeRequest.then(function(response){
+				console.log(response);
 				response = JSON.parse(response);
 
 				_self.parent().find('.alert').remove();
@@ -105,7 +107,7 @@ $(document).ready(function (){
 	});	
 
 
-	var makeGetCodeRequest = function(formAction, login) {
+	var makeGetCodeRequest = function(formAction, login, formId) {
 
 		var clientLogin = login;
 
@@ -114,7 +116,8 @@ $(document).ready(function (){
 			method: 'POST',
 			data: {
 				type: 'get-code',
-				login: clientLogin
+				login: clientLogin,
+				form_id: formId
 			},
 		});
 		

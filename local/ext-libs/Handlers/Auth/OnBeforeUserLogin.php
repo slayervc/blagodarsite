@@ -24,9 +24,14 @@ class OnBeforeUserLogin
 		$host = Configuration::getValue('complex_api_host');
 		$uris = Configuration::getValue('complex_api_uris');
 
-		$login_type = strtolower($_REQUEST['CLIENT_TYPE']);
+		$arFields['login_type'] = strtolower($_REQUEST['CLIENT_TYPE']);
 
-		$uri = $uris[$login_type]['info'];
+		if (!$arFields['login_type']) {
+			$APPLICATION->ThrowException('Авторизация без типа пользователя');
+			return false;
+		}
+
+		$uri = $uris[$arFields['login_type']]['info'];
 
 		$client = new HttpClient([
 			'base_uri' => $host
@@ -43,7 +48,22 @@ class OnBeforeUserLogin
 
 		// Check if password is correct
 		if (CheckPassword::checkByLogin($login, $password)) {
-			return true;
+
+			$user_id = \CUser::GetByLogin($login)->Fetch()['ID'];
+
+			$user_groups = \Bitrix\Main\UserTable::getUserGroupIds($user_id);
+
+			foreach ($user_groups as $userGroupId) {
+				$userGroupData = \CGroup::GetById($userGroupId)->Fetch();
+
+				$userGroupData['STRING_ID'] = strtolower($userGroupData['STRING_ID']);
+
+				if ($userGroupData['STRING_ID'] == $arFields['login_type'] || $userGroupData['ID'] == 1) {
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		/* TODO: Make helper for requests */
@@ -78,7 +98,7 @@ class OnBeforeUserLogin
 			
 				$user_email = !empty($res['email']) ? $res['email'] : 'email.field@email.field';
 
-				$userDataLogin = ($login_type == 'partner') ? $res['login'] : $res['tel'];
+				$userDataLogin = ($arFields['login_type'] == 'partner') ? $res['login'] : $res['tel'];
 
 				$userData = [
 					'LOGIN' => $userDataLogin,
@@ -92,7 +112,9 @@ class OnBeforeUserLogin
 
 				$user_id = $user->Add($userData);
 
-				if ($login_type == 'partner') {
+
+
+				if ($arFields['login_type'] == 'partner') {
 					$group_id = 6;
 				} else {
 					$group_id = 5;

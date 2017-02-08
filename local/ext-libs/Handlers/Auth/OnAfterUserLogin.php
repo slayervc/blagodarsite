@@ -18,6 +18,7 @@ class OnAfterUserLogin
 
 		global $USER;
 
+
 		if ($USER->IsAdmin()) {
 			return true;
 		}
@@ -26,7 +27,7 @@ class OnAfterUserLogin
 
 		$uris = Configuration::getValue('complex_api_uris');
 
-		$login_type = strtolower($_REQUEST['CLIENT_TYPE']);
+		$login_type = $arFields['login_type'];
 
 		$client = new HttpClient();
 		

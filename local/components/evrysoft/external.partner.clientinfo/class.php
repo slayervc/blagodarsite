@@ -50,6 +50,16 @@ class ClientInfoComponent extends CBitrixComponent
 	}
 
 
+	/**
+	 * Check form ID from Request and formOptions
+	 * @return boolean
+	 */
+	protected function checkForm()
+	{
+		return (bool) $_REQUEST['form_id'] === $this->formOptions['FORM_ID'];
+	}
+
+
 	protected function getResponseFromClField($field, $returnBody = true)
 	{
 		global $USER;

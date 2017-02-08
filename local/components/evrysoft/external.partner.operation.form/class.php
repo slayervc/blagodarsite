@@ -192,7 +192,7 @@ class OperationFormComponent extends CBitrixComponent
 	 */
 	protected function checkForm()
 	{
-		return (bool) $_REQUEST['form_id'] === $this->formOptions['FORM_ID'];
+		return $_REQUEST['form_id'] == $this->formOptions['FORM_ID'];
 	}
 
 

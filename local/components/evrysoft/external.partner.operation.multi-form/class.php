@@ -64,7 +64,6 @@ class OperationMultiFormComponent extends OperationFormComponent
 
 				echo $request->getJsonResponse();
 			}
-
 		
 			die();
 		} else {
