@@ -1,8 +1,5 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
 
-<?php 
-	// var_dump($arResult);
- ?>
 <div class="row">
 	<div class="col-md-12 sidebar__menu">
 		<a role="button" 
@@ -32,6 +29,9 @@
 					</div>
 				<?php endif ?>
 			<?php endforeach ?>
+			<?php if ($arResult['USER_ALL_DATA']['CAN_CREATE_AGENTS'] || $USER->IsAdmin()): ?>
+				<a href="/profile/partner/agent" class="button button--bordered button--small">Agent</a>
+			<?php endif ?>
 		</div>
 	</div>
 </div>

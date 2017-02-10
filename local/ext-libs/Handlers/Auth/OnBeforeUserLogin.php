@@ -66,9 +66,6 @@ class OnBeforeUserLogin
 			return false;
 		}
 
-		/* TODO: Make helper for requests */
-
-
 		$response = $client->request('GET', $uri, [
 			'verify' => false,
 			'http_errors' => false,
@@ -82,7 +79,9 @@ class OnBeforeUserLogin
 
 		if ($response->getStatusCode() !== 200) {
 			$error = json_decode($response->getBody());
-			$GLOBALS['APPLICATION']->ThrowException($error->info);
+
+			$APPLICATION->throwException($error->info);
+			
 			return false;
 		} else {
 			

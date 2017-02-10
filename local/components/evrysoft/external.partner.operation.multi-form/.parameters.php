@@ -7,9 +7,12 @@ $fields = [
 	'sum' => 'P_SUM',
 	'login' => 'CL_LOGIN',
 	'name' => 'CL_NAME',
-	'login_or_ean13' => 'CL_LOGIN_OR_EAN13',
+	'login' => 'CL_LOGIN_OR_EAN13',
 	'code' => 'CL_CODE',
-	'partner_id' => 'PARTNER_ID'
+	'partner_id' => 'PARTNER_ID',
+	'name' => 'NAME',
+	'descr' => 'DESCR',
+	'category_id' => 'CATEGORY_ID',
 ];
 
 
@@ -18,6 +21,16 @@ $arComponentParameters = array(
 		'DEBUG' => [
 			'NAME' => 'DEBUG',
 			'TYPE' => 'CHECKBOX'
+		],
+		'REQUEST_API_METHOD' => [
+			'NAME' => 'Метод запроса к API',
+			'TYPE' => 'LIST',
+			'VALUES' => [
+				'GET' => 'GET',
+				'POST' => 'POST'
+			],
+			'DEFAULT' => 'GET',
+			'PARENT' => 'BASE'
 		],
 		'FORM_HEADER' => [
 			'NAME' => 'FORM_HEADER',

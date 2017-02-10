@@ -4,7 +4,7 @@ $MESS['SUBMIT_BUTTON'] = 'Отправить';
 $MESS['sum'] = 'Сумма бонусов';
 $MESS['login'] = 'Номер клиента';
 $MESS['login_or_ean13'] = 'Логин клиента или ean13';
-$MESS['partner_id'] = 'Индентификатор партнёра';
+$MESS['partner_id'] = 'Идентификатор партнёра';
 $MESS['code'] = 'Код из СМС';
 $MESS['name'] = 'ФИО клиента';
 $MESS['SUBMIT_BUTTON'] = 'Отправить';
@@ -19,6 +19,19 @@ $MESS['add-client-balance'] = 'Пополнить баланс клиенту';
 $MESS['add-client-balance-proc'] = 'Пополнение баланс клиента процентом от переданной суммы';
 $MESS['gen-balance-code'] = 'Отправить клиенту SMS с кодом для списания';
 $MESS['remove-client-balance'] = 'Списание с баланс клиента';
-$MESS['report'] = 'partners/getreport';
+$MESS['add-category'] = 'Добавить категорию';
+$MESS['set-category'] = 'Изменить категорию по ее ID';
+$MESS['get-categories'] = 'Получить список категорий';
+$MESS['get-category-info'] = 'Информация категории по ее ID';
+$MESS['get-cities-list'] = 'Получить список городов';
+$MESS['add-partner-by-agent'] = 'Добавить партнера';
+$MESS['set-partner-by-agent'] = 'Добавить партнера';
+$MESS['get-partners-list-agent'] = 'Получить список партнеров';
+$MESS['get-info-partner-agent'] = 'Информация по партнеру по ID';
+
+
+
+
+
 
 

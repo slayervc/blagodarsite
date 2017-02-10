@@ -7,6 +7,8 @@ $fields = [
 	'sum' => 'P_SUM',
 	'login' => 'CL_LOGIN',
 	'name' => 'CL_NAME',
+	'category_name' => 'CATEGORY_NAME',
+	'category_id' => 'CATEGORY_ID',
 	'login_or_ean13' => 'CL_LOGIN_OR_EAN13',
 	'code' => 'CL_CODE',
 	'partner_id' => 'PARTNER_ID'
@@ -46,6 +48,15 @@ $arComponentParameters = array(
 			'VALUES' => $uris['partner'],
 			'PARENT' => 'BASE'
 		],
+		'REQUEST_API_METHOD' => [
+			'NAME' => 'REQUEST_API_METHOD',
+			'TYPE' => 'LIST',
+			'VALUES' => [
+				'GET' => 'GET',
+				'POST' => 'POST'
+			],
+			'DEFAULT' => 'GET'
+		]
 	),
 );
 

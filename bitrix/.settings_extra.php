@@ -37,7 +37,16 @@ return Array(
 				'add-client-balance-proc' => 'partners/addbalanceproc/',
 				'gen-balance-code' => 'partners/gencode/',
 				'remove-client-balance' => 'partners/removebalance/',
-				'report' => 'partners/getreport'
+				'report' => 'partners/getreport',
+				'add-category' => 'partners/addcategory',
+				'set-category' => 'partners/setcategory',
+				'get-categories' => 'partners/getcategories',
+				'get-category-info' => 'partners/getcategoryinfo',
+				'get-cities-list' => 'partners/getcitieslist',
+				'add-partner-by-agent' => 'partners/addpartnerbyagent',
+				'set-partner-by-agent' => 'partners/setpartnerbyagent',
+				'get-partners-list-agent' => 'partners/getpartnerslistagent',
+				'get-info-partner-agent' => 'partners/getinfopartneragent'
 			],
 		],
 		'readonly' => true

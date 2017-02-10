@@ -85,7 +85,7 @@ class OperationMultiFormComponent extends OperationFormComponent
 		$uri .= $_REQUEST['login'];
 
 		$http->setHost($this->host)
-			 ->setMethod('GET')
+			 ->setMethod($this->arParams['REQUEST_API_METHOD'])
 			 ->setRequestUri($uri)
 			 ->setQuery($this->getUserData());
 

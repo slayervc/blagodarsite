@@ -93,7 +93,7 @@ class OperationFormComponent extends CBitrixComponent
 		$this->addQueryArrayData($this->getUserData());
 
 
-		$http->setMethod('GET')
+		$http->setMethod($this->arParams['REQUEST_API_METHOD'])
 			 ->setHost($this->host)
 			 ->setRequestUri($uri)
 			 ->setQuery($this->queryData);

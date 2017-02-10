@@ -16,7 +16,9 @@
 				<div class="form-group">
 					<input type="text" 
 						   class="form-control partner-form__text-input" 
-						   name="FORM[<?php echo $field ?>]" 
+						   name="FORM[<?php if ($field == 'category_name' || $field == 'name'): ?>
+						   		name
+						   <?php endif ?>]" 
 						   placeholder="<?php echo GetMessage($field) ?>"
 					>
 				</div>
