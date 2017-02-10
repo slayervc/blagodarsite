@@ -26,7 +26,7 @@
 		"DATE_BEFORE" => "",
 		"DATE_AFTER" => "",
 		"COMPONENT_TEMPLATE" => ".default",
-		"DEBUG" => "Y",
+		"DEBUG" => "N",
 		"LIMIT" => "5",
 		"USE_PRELOAD" => "N",
 		"VIEW_TYPE" => "BLOCK",
