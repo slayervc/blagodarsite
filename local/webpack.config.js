@@ -3,7 +3,8 @@ var path = require('path');
 const config = {
 
 	entry: {
-		reportLoader: './assets/js/report-loader.js'
+		reportLoader: './assets/js/report-loader.js',
+		operationFormSubmit: './assets/js/operation-form-submit.js'
 	},
 
 	output: {

@@ -8,12 +8,16 @@ use GuzzleHttp\Client;
 
 
 /**
+* OperationFormComponent | evrysoft:external.partner.operation.form
+*
 * 
 */
 class OperationFormComponent extends CBitrixComponent
 {
 	
 	protected $formOptions = [];
+
+	protected $requestData;
 
 	protected $userData = [];
 
@@ -77,26 +81,41 @@ class OperationFormComponent extends CBitrixComponent
 	 */
 	public function sendRequest()
 	{
+
+		// echo var_dump($_REQUEST['FORM']);
+		// die();
+
 		$http = new ApiRequestHelper();
 
 		$uriAlias = $this->getUriAliasFromRequest();
 
+
 		$uri = Configuration::getValue('complex_api_uris')['partner'][$uriAlias];
+
+		// var_dump($uri);
+
+		// die();
 
 		$passed = $this->getPassedField();
 
 		if(!empty($passed)){
 			$uri .= $this->formRequest[$passed];
 		}
-		$this->addQueryData('type', 'json');
-		$this->addQueryArrayData($this->formRequest);
-		$this->addQueryArrayData($this->getUserData());
+		$this->addRequestData('type', 'json');
+		$this->addRequestArrayData($this->formRequest);
+		$this->addRequestArrayData($this->getUserData());
 
 
 		$http->setMethod($this->arParams['REQUEST_API_METHOD'])
 			 ->setHost($this->host)
-			 ->setRequestUri($uri)
-			 ->setQuery($this->queryData);
+			 ->setRequestUri($uri);
+
+
+		if ($this->arParams['REQUEST_API_METHOD'] == 'GET') {
+			$http->setQuery($this->requestData);
+		} else {
+			$http->setRequestOption('form_params', $this->requestData);
+		}
 
 		$http->send();
 
@@ -196,15 +215,15 @@ class OperationFormComponent extends CBitrixComponent
 	}
 
 
-	protected function addQueryData($key, $value)
+	protected function addRequestData($key, $value)
 	{
-		$this->queryData[$key] = $value;
+		$this->requestData[$key] = $value;
 	}
 
-	protected function addQueryArrayData(array $inputArr)
+	protected function addRequestArrayData(array $inputArr)
 	{
 		foreach ($inputArr as $inputKey => $inputVal) {
-			$this->queryData[$inputKey] = $inputVal;
+			$this->requestData[$inputKey] = $inputVal;
 		}
 	}
 

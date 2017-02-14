@@ -65,11 +65,8 @@
 );?>
 		</div>
 		<div class="col-md-12">
-			<?$APPLICATION->IncludeComponent(
-	"evrysoft:external.partner.operation.form", 
-	".default", 
-	array(
-		"DEBUG" => "N",
+			<?$APPLICATION->IncludeComponent("evrysoft:external.partner.operation.form", ".default", array(
+	"DEBUG" => "N",
 		"FIELDS" => array(
 			0 => "sum",
 			1 => "partner_id",
@@ -79,7 +76,10 @@
 		"COMPONENT_TEMPLATE" => ".default",
 		"REQUEST_API_METHOD" => "GET"
 	),
-	false
+	false,
+	array(
+	"ACTIVE_COMPONENT" => "N"
+	)
 );?>
 		</div>
 		<div class="col-md-12">

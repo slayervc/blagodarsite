@@ -1,13 +1,15 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
-<?php $this->addExternalJs('/local/js/submit-multi-form.js'); ?>
+<?php $this->addExternalJs('/local/js/operationFormSubmit.js'); ?>
 
 <div class="row">
 	<div class="col-md-12">
+
 		<form name="<?php echo $arResult['FORM_OPTIONS']['FORM_ID'] ?>" 
 			  action="<?php echo $arResult['FORM_OPTIONS']['FORM_ACTION'] ?>" 
 			  method="POST" 
 			  class="form partner-form"
 		>
+			<div data-alert-container></div>
 			<input name="uri_alias" type="hidden" value="<?php echo $arParams['URI_ALIAS'] ?>">
 			<h2 class="partner-form__header">
 				<?php echo GetMessage($arParams['URI_ALIAS']) ?>
@@ -16,9 +18,7 @@
 				<div class="form-group">
 					<input type="text" 
 						   class="form-control partner-form__text-input" 
-						   name="FORM[<?php if ($field == 'category_name' || $field == 'name'): ?>
-						   		name
-						   <?php endif ?>]" 
+						   name="FORM[<?php if ($field == 'category_name' || $field == 'name'): ?>name<?php else: ?><?php echo $field ?><?php endif ?>]" 
 						   placeholder="<?php echo GetMessage($field) ?>"
 					>
 				</div>

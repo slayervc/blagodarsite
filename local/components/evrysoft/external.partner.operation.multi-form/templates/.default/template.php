@@ -1,6 +1,6 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
 <?php 
-$this->addExternalJs('/local/js/submit-multi-form.js'); 
+$this->addExternalJs('/local/js/operationFormSubmit.js'); 
 ?>
 
 <div class="row">

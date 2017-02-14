@@ -30,7 +30,9 @@
 				<?php endif ?>
 			<?php endforeach ?>
 			<?php if ($arResult['USER_ALL_DATA']['CAN_CREATE_AGENTS'] || $USER->IsAdmin()): ?>
-				<a href="/profile/partner/agent" class="button button--bordered button--small">Agent</a>
+			<div class="sidebar__info sidebar__info--full col-md-12 col-sm-6 col-xs-6">
+				<a href="/profile/partner/agent" class="button button--small button-full">Дилер</a>
+			</div>
 			<?php endif ?>
 		</div>
 	</div>

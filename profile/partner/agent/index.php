@@ -16,23 +16,23 @@
 		</div>
 		<div class="col-md-6">
 			 <?$APPLICATION->IncludeComponent(
-				"evrysoft:external.partner.operation.form", 
-				".default", 
-				array(
-					"COMPONENT_TEMPLATE" => ".default",
-					"DEBUG" => "N",
-					"FIELDS" => array(
-						0 => "category_name",
-					),
-					"FORM_HEADER" => "Добавление категории",
-					"MULTI_FIELD" => "",
-					"PASSED_FIELD" => "",
-					"REQUEST_API_METHOD" => "POST",
-					"URI_ALIAS" => "add-category",
-					"URI_ALIAS_MULTI" => "info"
-				),
-				false
-			);?>
+	"evrysoft:external.partner.operation.form", 
+	".default", 
+	array(
+		"COMPONENT_TEMPLATE" => ".default",
+		"DEBUG" => "N",
+		"FIELDS" => array(
+			0 => "category_name",
+		),
+		"FORM_HEADER" => "Добавление категории",
+		"MULTI_FIELD" => "",
+		"PASSED_FIELD" => "",
+		"REQUEST_API_METHOD" => "GET",
+		"URI_ALIAS" => "add-category",
+		"URI_ALIAS_MULTI" => "info"
+	),
+	false
+);?>
 		</div>
 		<div class="col-md-6">
 			<?$APPLICATION->IncludeComponent(
