@@ -1,4 +1,25 @@
 <div class="alert{{#each classes }} {{this}}{{/each}}">
-	{{ content }}
+	{{#content }}
+		{{#isObj info}}
+			{{#info}}
+				<p>Баланс: {{balance}}</p>
+				<p>ID карты: {{ean13}}</p>
+				<p>ФИО: {{name}}</p>
+				<p>email: 
+					{{#if email}}
+						{{email}}
+					{{else}}
+						-
+					{{/if}}
+				</p>
+			{{/info}}
+		{{else}}
+			{{#isObj this}}
+				{{info}}
+			{{else}}
+				{{this}}
+			{{/isObj}}
+		{{/isObj}}
+	{{/content}}
 </div>
 

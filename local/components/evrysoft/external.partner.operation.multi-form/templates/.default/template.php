@@ -5,10 +5,12 @@ $this->addExternalJs('/local/js/operationFormSubmit.js');
 
 <div class="row">
 	<div class="col-md-12">
+		<div id="error-container-<?php echo $arResult['FORM_OPTIONS']['FORM_ID']?>"></div>
 		<form name="<?php echo $arResult['FORM_OPTIONS']['FORM_ID'] ?>" 
 			  action="<?php echo $arResult['FORM_OPTIONS']['FORM_ACTION'] ?>" 
 			  method="POST" 
 			  class="form partner-form"
+			  data-alert-container="#error-container-<?php echo $arResult['FORM_OPTIONS']['FORM_ID']?>"
 		>
 		<h2 class="partner-form__header">
 			<?php echo $arParams['FORM_HEADER'] ?>

@@ -13,97 +13,70 @@ $(document).ready(() => {
 
 		var form = new OperationFormSubmit(_self.parents('form'))
 
-		form.setAlertContainer('div[data-alert-container]')
-
 		form.makeAlert('info', 'Ожидание ответа от сервера...')
 
 		form.displayAlerts()
 
-		// var resPromise = form.sendFormRequest()
-
-		// inputs = inputs.not('[type="submit"]');
-
 		if (_self.attr('data-action') == 'get-code') {
-	// 		var loginVal = inputs.filter('[name="FORM[login]"]').val();
-	// 		var alert = makeLoadAlert('Downloading...', 'alert-info');
 
-	// 		var codeRequest = makeGetCodeRequest(formAction, loginVal, form_id);
+			var inputs = form.getFormInputs()
 
-	// 		_self.parent().find('.alert').remove();
-	// 		_self.parent().append(alert);
+			var login = $.trim(inputs.filter('[name="FORM[login]"]').val());
 
-	// 		codeRequest.then(function(response){
-	// 			console.log(response);
-	// 			response = JSON.parse(response);
+			form.sendCodeGenRequest({
+				type: 'get-code',
+				login: login,
+				form_id: form.form.form_id
+			})
+			.then((response) => {
+				form.clearAlertContainer()
 
-	// 			_self.parent().find('.alert').remove();
+				response = JSON.parse(response)
 
-	// 			var alertClass = 'alert-success';
-	// 			var message = _self.attr('data-response-success') + ' ' + response.info;
+				if (response.status == 'ERROR') {
+					form.makeAlert('danger', response)
+				} else if(response.status == 'OK') {
+					form.makeAlert('success', `Код отправлен на номер ${response.info}`)
+				}
 
-	// 			if (response.status == 'ERROR')
-	// 				alertClass = 'alert-danger';
+				form.displayAlerts()
+			})
 
-	// 			var resAlert = makeLoadAlert(message, alertClass);
-				
-	// 			_self.parent().append(resAlert);
-
-	// 		});
 		} else {
-	// 		var formData = {};
 
-	// 		inputs.each(function(index, el) {
-	// 			formData[$(el).attr('name')] = $.trim($(el).val());
-	// 		});
+			let inputs = form.form.inputs.toArray()
+			let formData = {}
 
-	// 		formData.form_id = $(form).attr('name');
+			inputs.forEach((el, index) => {
+				formData[$(el).attr('name')] = $.trim($(el).val())
+			})
 
-	// 		console.log(formData);
+			formData['form_id'] = form.form.form_id
 
-	// 		// Remove all alerts after click
-	// 		$('.alert').remove();
+			form.sendFormRequest({
+				method: 'POST',
+				data: formData 
+			})
+			.then((response) => {
+				form.clearAlertContainer()
+				console.log(response)
 
-	// 		var preloader = '<p class="alert alert-info preloader">Downloading...</p>';
+				response = JSON.parse(response)
 
-	// 		$(form).prepend(preloader);
+				if (response.status == 'ERROR') {
+					form.makeAlert('danger', response)
+				} else if(response.status == 'OK') {
+					form.makeAlert('success', response)
+				}
 
-	// 		// Send Ajax Request
+				form.displayAlerts()
+			})
 	
 		}
 
-	});	
-
-
-	// var makeGetCodeRequest = function(formAction, login, formId) {
-
-	// 	var clientLogin = login;
-
-	// 	return $.ajax({
-	// 		url: formAction,
-	// 		method: 'POST',
-	// 		data: {
-	// 			type: 'get-code',
-	// 			login: clientLogin,
-	// 			form_id: formId
-	// 		},
-	// 	});
-		
-	// }
-
-	// var makeLoadAlert = function (message, alert_class) {
-		
-	// 	var template = $('<div></div>');
-
-	// 	template.addClass('alert');
-
-	// 	template.addClass(alert_class);
-
-	// 	// Insert Data
-	// 	template.html('<p>'+ message +'</p>');
-
-	// 	return template;
-
-	// }
-
+	});
 
 });
+
+
+

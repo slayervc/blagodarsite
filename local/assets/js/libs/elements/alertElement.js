@@ -19,7 +19,6 @@ export default class alertElement {
 		this.alertContent = content
 	}
 
-
 	render() {
 		return this.template({
 			content: this.alertContent,

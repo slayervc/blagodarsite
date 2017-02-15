@@ -20,12 +20,18 @@ const config = {
 				test: /\.js$/, 
 				loader: 'babel-loader',
 				exclude: /node_modules/,
-				query: {
+				options: {
 					presets: ['es2015']
 				}
 			},
-			{test: /\.handlebars$/, loader: "handlebars-loader"}
-		]
+			{
+				test: /\.handlebars$/, loader: "handlebars-loader", 
+				options: {
+					helperDirs: __dirname + "/assets/js/templates/handlebars/helpers"
+				}
+			}
+		],
+			
 	}
 
 

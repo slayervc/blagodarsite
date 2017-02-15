@@ -92,10 +92,6 @@ class OperationFormComponent extends CBitrixComponent
 
 		$uri = Configuration::getValue('complex_api_uris')['partner'][$uriAlias];
 
-		// var_dump($uri);
-
-		// die();
-
 		$passed = $this->getPassedField();
 
 		if(!empty($passed)){
@@ -207,6 +203,7 @@ class OperationFormComponent extends CBitrixComponent
 
 	/**
 	 * Check form ID from Request and formOptions
+	 * 
 	 * @return boolean
 	 */
 	protected function checkForm()

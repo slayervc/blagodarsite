@@ -1,6 +1,6 @@
-import alertElement from "./elements/alertElement"
 import $ from "jquery"
-
+import alertElement from "./elements/alertElement"
+import AlertContainer from "./AlertContainer/AlertContainer"
 
 export default class OperationFormSubmit {
 
@@ -11,26 +11,31 @@ export default class OperationFormSubmit {
 	 * @param  {[type]} options [description]
 	 * @return {[type]}         [description]
 	 */
-	constructor(form, options = null) {
+	constructor(form) {
 
-		this.form            = $(form)
-		this.form.formAction = this.form.attr('action')
-		this.form.formMethod = this.form.attr('method')
-		this.form.form_id    = this.form.attr('name')
-		this.form.inputs     = this.form.find('input')
-		this.form.inputs     = this.form.inputs.not('[type="submit"]')
-		this.options = options
+		this.form                  = $(form)
+		this.form.formAction       = this.form.attr('action')
+		this.form.formMethod       = this.form.attr('method')
+		this.form.form_id          = this.form.attr('name')
+		this.form.inputs           = this.form.find('input')
+		this.form.inputs           = this.form.inputs.not('[type="submit"]')
+		this.alertContainerElement = $(this.form.attr('data-alert-container'))
+		this.alertContainer        = AlertContainer
 
 	}
+
+
+	getFormInputs() {
+		return this.form.inputs
+	}
+
 
 	/**
 	 * [setContainerAlert description]
 	 * @param {[type]} alertContainer [description]
 	 */
 	setAlertContainer(alertContainer) {
-		this.alertContainer = this.form.children(alertContainer)
-		this.alertContainer.alerts = []
-		// console.log(this.alertContainer)
+		this.alertContainer.setContainer($(alertContainer))
 	}
 
 	makeAlert(alertType, content) {
@@ -41,35 +46,44 @@ export default class OperationFormSubmit {
 
 		element.setContent(content)
 
-		this.alertContainer.alerts.push(element.render())
-
-		console.log(this.alertContainer.alerts)
+		this.alertContainer.push(element.render())
 
 	}
 
 
 	displayAlerts() {
-		this.alertContainer.alerts.forEach((el, index, arr,) => {
-			this.alertContainer.html(el)
+
+		this.alertContainer = $.uniqueSort(this.alertContainer)
+
+		// Clear the contianer element
+		this.alertContainerElement.html('')
+
+		// Append all errors to alertContainerElement
+		this.alertContainer.forEach((el, index, arr) => {
+			this.alertContainerElement.prepend(el)
 		})
 	}
 
 
 	clearAlertContainer(alert_id = null) {
 		if (alert_id) {
-			this.alertContainer.alerts.splice(alert_id, 1)
+			this.alertContainer.splice(alert_id, 1)
 		} else {
-			this.alertContainer.alerts = []
+			this.alertContainer = []
 		}
 	}
 
-	// sendFormRequest() {
-	// 	var formPromise = $.ajax(this.form.formAction, {
-	// 		method: this.form.formMethod,
-	// 		data: formData
-	// 	});
-	// }
 
+	sendFormRequest(reqOptions) {
+		return $.ajax(this.form.formAction, reqOptions);
+	}
+
+	sendCodeGenRequest(dataObj) {
+		return this.sendFormRequest({
+			method: 'POST',
+			data: dataObj
+		})
+	}
 
 }
 
@@ -77,39 +91,3 @@ export default class OperationFormSubmit {
 
 
 
-// .done(function(res){
-// 			console.log(res);
-
-// 			$(form).find('.preloader').remove();
-
-// 			var alertContent;
-
-// 			if (typeof(JSON.parse(res) == 'object')) {
-// 				var data = JSON.parse(res);
-// 				alertContent = data.info;
-// 			} else {
-// 				var data = res;
-// 				alertContent = data;
-// 			}
-
-// 			var alert = $('<div></div>');
-
-// 			if (typeof(alertContent) == 'object') {
-// 				for (var alertKey in alertContent) {
-// 					alert.append('<p>' + alertKey + ' : ' + alertContent[alertKey] + '</p>');
-// 				}
-// 			} else {
-// 				alert.prepend('<p>' + alertContent + '</p>');
-// 			}
-
-// 			alert.addClass('alert');
-
-// 			if (data.status === 'ERROR') {
-// 				alert.addClass('alert-danger');
-// 			} else {
-// 				alert.addClass('alert-success');
-// 			}
-
-// 			$(form).prepend(alert);
-
-// 		})

@@ -49,6 +49,7 @@ class OperationMultiFormComponent extends OperationFormComponent
 		$this->arResult['RESPONSE_DATA'] = [];
 
 
+
 		if (CheckRequestHelper::isAjax() && $this->checkForm()) {
 			$this->app->RestartBuffer();
 
@@ -60,6 +61,7 @@ class OperationMultiFormComponent extends OperationFormComponent
 				echo $data;
 
 			} else {
+				
 				$request = $this->sendRequest();
 
 				echo $request->getJsonResponse();
@@ -79,6 +81,10 @@ class OperationMultiFormComponent extends OperationFormComponent
 		$http = new ApiRequestHelper();
 
 		$uri_alias = $this->arParams['URI_ALIAS_MULTI'];
+
+		// var_dump($uri_alias);
+
+		// die();
 
 		$uri = Configuration::getValue('complex_api_uris')['partner'][$uri_alias];
 
