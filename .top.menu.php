@@ -22,13 +22,6 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Рекомендации", 
-		"/recomendations/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
 		"Новости", 
 		"/news/", 
 		Array(), 

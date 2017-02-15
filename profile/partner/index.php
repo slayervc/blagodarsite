@@ -69,16 +69,16 @@
 	"DEBUG" => "N",
 		"FIELDS" => array(
 			0 => "sum",
-			1 => "partner_id",
+			1 => "login",
 		),
-		"PASSED_FIELD" => "",
-		"URI_ALIAS" => "add-partner-balance",
+		"PASSED_FIELD" => "1",
+		"URI_ALIAS" => "add-client-balance",
 		"COMPONENT_TEMPLATE" => ".default",
 		"REQUEST_API_METHOD" => "GET"
 	),
 	false,
 	array(
-	"ACTIVE_COMPONENT" => "N"
+	"ACTIVE_COMPONENT" => "Y"
 	)
 );?>
 		</div>
