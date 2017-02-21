@@ -9,6 +9,7 @@
 	font-weight: 600;
 	font-family: 'Open Sans', Arial, sans-serif;
 	background: $main-color;
+	border: 0px solid transparent;
 	display: inline-block;
 	&:hover, &:focus {
 		color: #fff;
@@ -39,8 +40,18 @@
 		border-bottom: 2px solid darken($main-color, 5%);
 	}
 
+	&--disabled {
+		&:hover, &:focus {
+			opacity: .8;
+			color: #fff;
+			background: $main-color;
+			cursor: wait;
+		}
+		cursor: wait;
+	}
+
 	&--bordered {
-		border: 3px solid #fff;
+		border: 2px solid #fff;
 		box-shadow: 0px 0px 3px rgba(#000, 50%);
 	}
 

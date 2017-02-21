@@ -37,7 +37,8 @@
 		"COMPONENT_TEMPLATE" => ".default",
 		"MULTI_FIELD" => "2",
 		"URI_ALIAS_MULTI" => "gen-balance-code",
-		"REQUEST_API_METHOD" => "GET"
+		"REQUEST_API_METHOD" => "GET",
+		"ALERTS_IN_FORMS" => "Y"
 	),
 	false
 );?>
@@ -59,14 +60,18 @@
 		"COMPONENT_TEMPLATE" => ".default",
 		"MULTI_FIELD" => "2",
 		"URI_ALIAS_MULTI" => "gen-reg-code",
-		"REQUEST_API_METHOD" => "GET"
+		"REQUEST_API_METHOD" => "GET",
+		"ALERTS_IN_FORMS" => "Y"
 	),
 	false
 );?>
 		</div>
 		<div class="col-md-12">
-			<?$APPLICATION->IncludeComponent("evrysoft:external.partner.operation.form", ".default", array(
-	"DEBUG" => "N",
+			<?$APPLICATION->IncludeComponent(
+	"evrysoft:external.partner.operation.form", 
+	".default", 
+	array(
+		"DEBUG" => "N",
 		"FIELDS" => array(
 			0 => "sum",
 			1 => "login",
@@ -74,11 +79,12 @@
 		"PASSED_FIELD" => "1",
 		"URI_ALIAS" => "add-client-balance",
 		"COMPONENT_TEMPLATE" => ".default",
-		"REQUEST_API_METHOD" => "GET"
+		"REQUEST_API_METHOD" => "GET",
+		"ALERTS_IN_FORMS" => "Y"
 	),
 	false,
 	array(
-	"ACTIVE_COMPONENT" => "Y"
+		"ACTIVE_COMPONENT" => "Y"
 	)
 );?>
 		</div>
@@ -90,11 +96,12 @@
 		"DEBUG" => "N",
 		"COMPONENT_TEMPLATE" => ".default",
 		"FIELDS" => array(
-			0 => "login",
+			0 => "login_or_ean13",
 		),
 		"PASSED_FIELD" => "0",
 		"URI_ALIAS" => "get-client-info",
-		"REQUEST_API_METHOD" => "GET"
+		"REQUEST_API_METHOD" => "GET",
+		"ALERTS_IN_FORMS" => "Y"
 	),
 	false
 );?>

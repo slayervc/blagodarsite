@@ -1,0 +1,18 @@
+.form-textarea {
+	resize: both;
+
+	&--vertical {
+		resize: vertical;
+	}
+
+	&--horizontal {
+		resize: horizontal;
+	}
+
+	&--static {
+		resize: none;
+	}
+
+}
+
+

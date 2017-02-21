@@ -55,7 +55,14 @@ $arComponentParameters = array(
 				'GET' => 'GET',
 				'POST' => 'POST'
 			],
-			'DEFAULT' => 'GET'
+			'DEFAULT' => 'GET',
+			'PARENT' => 'BASE'
+		],
+		'ALERTS_IN_FORMS' => [
+			'NAME' => 'ALERTS_IN_FORMS',
+			'TYPE' => 'CHECKBOX',
+			'PARENT' => 'BASE',
+			'DEFAULT' => 'Y'
 		]
 	),
 );

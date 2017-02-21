@@ -309,7 +309,7 @@
 .footer__low-foot { padding: 20px 0; }
 
 /*  */
-.button { padding: 11px 20px; border-radius: 5px; width: auto; color: #fff; font-size: 15px; font-weight: 600; font-family: 'Open Sans', Arial, sans-serif; background: #7aa700; display: inline-block; }
+.button { padding: 11px 20px; border-radius: 5px; width: auto; color: #fff; font-size: 15px; font-weight: 600; font-family: 'Open Sans', Arial, sans-serif; background: #7aa700; border: 0px solid transparent; display: inline-block; }
 
 .button:hover, .button:focus { color: #fff; text-decoration: none; background: #8dc100; }
 
@@ -323,7 +323,11 @@
 
 .button--bottom-shadow { border-bottom: 2px solid #678e00; }
 
-.button--bordered { border: 3px solid #fff; box-shadow: 0px 0px 3px black; }
+.button--disabled { cursor: wait; }
+
+.button--disabled:hover, .button--disabled:focus { opacity: .8; color: #fff; background: #7aa700; cursor: wait; }
+
+.button--bordered { border: 2px solid #fff; box-shadow: 0px 0px 3px black; }
 
 .partner-form { font-family: 'Open Sans'; font-size: 14px; }
 
@@ -340,5 +344,13 @@
 .partner-form__button:hover { box-shadow: 0 0 5px rgba(122, 167, 0, 0.7); background-color: #98d000; }
 
 .partner-form__button--block { width: 100%; }
+
+.form-textarea { resize: both; }
+
+.form-textarea--vertical { resize: vertical; }
+
+.form-textarea--horizontal { resize: horizontal; }
+
+.form-textarea--static { resize: none; }
 
 /*# sourceMappingURL=maps/main.css.map */

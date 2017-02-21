@@ -40,7 +40,7 @@ return Array(
 				'report' => 'partners/getreport',
 				'add-category' => 'partners/addcategory',
 				'set-category' => 'partners/setcategory/',
-				'get-categories' => 'partners/getcategories',
+				'get-categories' => 'partners/getcategorieslist',
 				'get-category-info' => 'partners/getcategoryinfo/',
 				'get-cities-list' => 'partners/getcitieslist',
 				'add-partner-by-agent' => 'partners/addpartnerbyagent',

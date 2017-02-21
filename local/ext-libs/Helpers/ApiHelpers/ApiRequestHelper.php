@@ -23,7 +23,7 @@ class ApiRequestHelper
 
 	protected $query_string;
 
-	protected $response;
+	public $response;
 
 
 	public function __construct($host = null)
@@ -143,8 +143,12 @@ class ApiRequestHelper
 	 */
 	public function setRequestOption($key, $option)
 	{
-		$this->request_options[$key] = $option;
-
+		if ($key == null) {
+			$this->request_options[] = $option;
+		}else {
+			$this->request_options[$key] = $option;
+		}
+		
 		return $this;
 	}
 
@@ -198,6 +202,12 @@ class ApiRequestHelper
 			$this->makeRequestUrl(), 
 			$this->request_options
 		);
+	}
+
+
+	public function getStatusCode()
+	{
+		return $this->response->getStatusCode();
 	}
 
 

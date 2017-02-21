@@ -3,12 +3,18 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<div id="error-container-<?php echo $arResult['FORM_OPTIONS']['FORM_ID'] ?>"></div>
+		<?php if ($arParams['ALERTS_IN_FORMS'] == 'Y'): ?>
+			<div id="error-container-<?php echo $arResult['FORM_OPTIONS']['FORM_ID'] ?>"></div>	
+		<?php endif ?>
 		<form name="<?php echo $arResult['FORM_OPTIONS']['FORM_ID'] ?>" 
 			  action="<?php echo $arResult['FORM_OPTIONS']['FORM_ACTION'] ?>" 
 			  method="POST" 
 			  class="form partner-form"
-			  data-alert-container="#error-container-<?php echo $arResult['FORM_OPTIONS']['FORM_ID']?>"
+			  <?php if ($arParams['ALERTS_IN_FORMS'] == 'Y'): ?>
+			  	data-alert-container="#error-container-<?php echo $arResult['FORM_OPTIONS']['FORM_ID']?>"
+			  <?php else: ?>
+				data-alert-container="#error-container-global"
+			  <?php endif ?>
 		>
 			<input name="uri_alias" type="hidden" value="<?php echo $arParams['URI_ALIAS'] ?>">
 			<h2 class="partner-form__header">

@@ -79,6 +79,12 @@ $arComponentParameters = array(
 			'ADDITIONAL_VALUES' => 'N',
 			'VALUES' => $uris['partner'],
 			'PARENT' => 'BASE'
+		],
+		'ALERTS_IN_FORMS' => [
+			'NAME' => 'ALERTS_IN_FORMS',
+			'TYPE' => 'CHECKBOX',
+			'PARENT' => 'BASE',
+			'DEFAULT' => 'Y'
 		]
 	),
 );
