@@ -1,13 +1,21 @@
+import ScreenPopupAddCategory from "./../Components/ScreenPopupAddCategory/ScreenPopupAddCategory.vue"
+import MoonLoader from "vue-spinner/src/MoonLoader.vue"
+import _ from "lodash"
 export default {
 	data() {
 		return {
-			categoryList: [],
+			categoryList: {},
 			editedCategory: null,
 			categoryErrors: null,
-			categoryEditLoading: false
+			categoryEditLoading: false,
+			loaded: false,
+			showPopup: false
 		}
 	},
 	methods: {
+		sortCategories(categories) {
+			return _.orderBy(categories, 'id', 'desc')
+		},
 		showPopup() {
 			this.$parent.showPopup = true
 		},
@@ -50,16 +58,36 @@ export default {
 
 	},
 
-	directives: {
 
+	components: {
+		'screen-popup': ScreenPopupAddCategory,
+		'preloader': MoonLoader
+	},
+
+	directives: {
 		'category-focus': {
 			inserted: (el) => {
 				el.focus()
 			}
 		}
-
 	},
 	created() {
-		this.categoryList = this.$parent.categoryList
+		// Fetch data form backend
+		this.$http.get('', {
+			params: {
+				type: 'get-category-list'	
+			}
+		})
+		.then((res) => {
+			this.categoryList.count = res.body.info.count
+			if (res.body.info.count !== 0) {
+				let dataList = res.body.info.list
+				this.categoryList.list = this.sortCategories(dataList)	
+			} else {
+				this.categoryList.list = null
+			}
+
+			this.loaded = true
+		})
 	}
 }

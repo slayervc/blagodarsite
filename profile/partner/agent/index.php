@@ -11,7 +11,7 @@
 		</div>
 		<div class="col-md-12">
 			<?$APPLICATION->IncludeComponent(
-				"evrysoft:external.partner.categories.app",
+				"evrysoft:external.partner.agent.app",
 				"",
 				Array()
 			);?>
