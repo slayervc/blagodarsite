@@ -69,6 +69,20 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 								</div>
 							</div>
 						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-12">
+									<input type="date" class="form-control auth-block__form-control" name="REGISTER[BIRTH_DATE]" placeholder="Дата рождения (опционально)">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" class="form-control auth-block__form-control" name="REGISTER[AGENT_CODE]" placeholder="Код агента (опционально)">
+								</div>
+							</div>
+						</div>
 						<input id="form-submit" type="submit" class="auth-block__button auth-block__button--full" name="register_submit_button" value="<?=GetMessage("AUTH_REGISTER")?>">
 					</form>
 				</div>
