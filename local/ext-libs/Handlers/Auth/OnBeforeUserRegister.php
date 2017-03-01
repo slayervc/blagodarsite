@@ -24,6 +24,12 @@ class OnBeforeUserRegister
 
 		$client = new HttpClient();
 
+		$birthDate = $_REQUEST['REGISTER']['BIRTH_DATE'];
+
+		// var_dump($_REQUEST['REGISTER']['AGENT_CODE']);
+
+		// die();
+
 		$url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/add';
 	
 		$response = $client->request('GET', $url, [
@@ -35,7 +41,9 @@ class OnBeforeUserRegister
 					$arFields['LAST_NAME'], 
 					$arFields['NAME'], 
 					$arFields['SECOND_NAME']
-				),		
+				),
+				'birth_date' => strtotime($birthDate),
+				'agent_code' => $_REQUEST['REGISTER']['AGENT_CODE'],
 				'code' => $_REQUEST['REGISTER']['USER_PHONE_CODE'],
 				'email' => $arFields['EMAIL'],
 				'type' => 'json'
@@ -48,27 +56,29 @@ class OnBeforeUserRegister
 			$GLOBALS['APPLICATION']->ThrowException($error->info);
 			return false;
 		} else {
+			var_dump($response->getBody());
+			die();
 			return true;
 		}
 	}
 
 
-	public function testUser(&$arFields)
-	{
+	// public function testUser(&$arFields)
+	// {
 
-		$testMobile = 2222;
+	// 	$testMobile = 2222;
 
-		$arFields['LOGIN'] = $arFields['PERSONAL_MOBILE'];
+	// 	$arFields['LOGIN'] = $arFields['PERSONAL_MOBILE'];
 
-		if ($testMobile == $_REQUEST['REGISTER']['USER_PHONE_CODE']) {
-			return true;	
-		} else {
+	// 	if ($testMobile == $_REQUEST['REGISTER']['USER_PHONE_CODE']) {
+	// 		return true;	
+	// 	} else {
 
-			$GLOBALS['APPLICATION']->ThrowException(['error' => 'USER_PHONE_CODE FAILED']);
-			return false;
-		}
+	// 		$GLOBALS['APPLICATION']->ThrowException(['error' => 'USER_PHONE_CODE FAILED']);
+	// 		return false;
+	// 	}
 
-	}
+	// }
 
 
 }

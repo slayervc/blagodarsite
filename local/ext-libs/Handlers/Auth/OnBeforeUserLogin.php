@@ -56,7 +56,7 @@ class OnBeforeUserLogin
 			foreach ($user_groups as $userGroupId) {
 				$userGroupData = \CGroup::GetById($userGroupId)->Fetch();
 
-				$userGroupData['STRING_ID'] = strtolower($userGroupData['STRING_ID']);
+				$userGroupData['STRING_ID'] = trim(strtolower($userGroupData['STRING_ID']));
 
 				if ($userGroupData['STRING_ID'] == $arFields['login_type'] || $userGroupData['ID'] == 1) {
 					return true;
@@ -87,7 +87,6 @@ class OnBeforeUserLogin
 			
 			$user_id = \CUser::GetByLogin($login)->Fetch()['ID'];
 
-
 			if (!$user_id) {
 				$res = json_decode($response->getBody(), true)['info'];
 
@@ -109,17 +108,18 @@ class OnBeforeUserLogin
 					'EMAIL' => $user_email
 				];
 
+				$group = \CGroup::GetList($by = "c_sort", $order = "asc", [
+					"STRING_ID" => $arFields['login_type']
+				]);
+
+				if (!$group_id = $group->Fetch()['ID']) {
+					throw new \Exception("В системе нет группы с кодом {$arFields['login_type']}");
+				}
+
+				// Add user
 				$user_id = $user->Add($userData);
 
-
-
-				if ($arFields['login_type'] == 'partner') {
-					$group_id = 6;
-				} else {
-					$group_id = 5;
-				}
-				
-
+				// Check if user added and passed group for him
 				if (intval($user_id) > 0) {
 					$user->Update($user_id, [
 						'GROUP_ID' => [$group_id]
