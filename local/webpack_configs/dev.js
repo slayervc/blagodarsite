@@ -4,7 +4,7 @@ module.exports = function(env) {
 		entry: {
 			reportLoader: './resources/js/report-loader.js',
 			operationFormSubmit: './resources/js/operation-form-submit.js',
-			category_app: './resources/vue/category_app.js'
+			agent_app: './resources/vue/agent_app.js'
 		},
 
 		devtool: 'cheap-module-source-map',
