@@ -2,6 +2,7 @@
 
 use Bitrix\Main\Config\Configuration;
 use GuzzleHttp\Client;
+use EvrySoft\Helpers\ApiHelpers\ApiRequestHelper;
 
 
 /**
@@ -9,6 +10,11 @@ use GuzzleHttp\Client;
 */
 class UserInfoComponent extends CBitrixComponent
 {
+
+	protected $userData;
+
+	protected $userType;
+
 	
 	public function executeComponent()
 	{
@@ -16,21 +22,24 @@ class UserInfoComponent extends CBitrixComponent
 		global $USER;
 
 		// USER data from authorized request
-		$userData = $USER->GetParam('USER_EXT_INFO');
+		$this->userData = $USER->GetParam('USER_EXT_INFO');
+
+		// Client|Partner
+		$this->userType = $USER->GetParam('USER_API_TYPE');
+		
 
 		if (!$USER->IsAdmin()){
-			$this->arResult['EXT_REQUEST_STATUS'] = $userData['status'];
-			$this->arResult['USER_ALL_DATA'] = array_change_key_case($userData['info'], CASE_UPPER);
+			$this->arResult['EXT_REQUEST_STATUS'] = $this->userData['status'];
+			$this->arResult['USER_ALL_DATA'] = array_change_key_case($this->userData['info'], CASE_UPPER);
 			$this->arResult['USER_SHOW_DATA'] = [];
 			$this->arResult['USER_HIDDEN_DATA'] = [];
 
 			foreach ($this->arParams['DONT_SHOW'] as $hideParam) {
 				$param = strtolower($hideParam);
-				if (array_key_exists($param, $userData['info'])) {
-					$this->arResult['USER_HIDDEN_DATA'][$hideParam] = $userData['info'][$param];
+				if (array_key_exists($param, $this->userData['info'])) {
+					$this->arResult['USER_HIDDEN_DATA'][$hideParam] = $this->userData['info'][$param];
 				}
 			}
-
 
 			$this->arResult['USER_SHOW_DATA'] = $this->makeShowDataArray();
 
@@ -73,6 +82,21 @@ class UserInfoComponent extends CBitrixComponent
 		$this->arResult['EXT_REQUEST_STATUS'] = $data['status'];
 
 		$this->arResult['USER_SHOW_DATA'] = array_change_key_case($data['info'], CASE_UPPER);
+	}
+
+
+
+	/**
+	 * [makeUserRequest description]
+	 * @return [type] [description]
+	 */
+	public function makeUserRequest()
+	{
+		$http = new ApiRequestHelper;
+
+		$http->setHost(Configuration::getValue('complex_api_host'));
+		$http->setRequestUri(Configuration::getValue('complex_api_uris')[$userType][]);
+
 	}
 
 }
