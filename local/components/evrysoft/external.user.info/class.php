@@ -29,23 +29,8 @@ class UserInfoComponent extends CBitrixComponent
 		
 
 		if (!$USER->IsAdmin()){
-			$this->arResult['EXT_REQUEST_STATUS'] = $this->userData['status'];
-			$this->arResult['USER_ALL_DATA'] = array_change_key_case($this->userData['info'], CASE_UPPER);
-			$this->arResult['USER_SHOW_DATA'] = [];
-			$this->arResult['USER_HIDDEN_DATA'] = [];
-
-			foreach ($this->arParams['DONT_SHOW'] as $hideParam) {
-				$param = strtolower($hideParam);
-				if (array_key_exists($param, $this->userData['info'])) {
-					$this->arResult['USER_HIDDEN_DATA'][$hideParam] = $this->userData['info'][$param];
-				}
-			}
-
-			$this->arResult['USER_SHOW_DATA'] = $this->makeShowDataArray();
-
-		}
-
-		if ($USER->IsAdmin()) {
+			$this->makeUserRequest();
+		}else {
 			$this->makeAdminRequest();
 		}
 
@@ -92,10 +77,37 @@ class UserInfoComponent extends CBitrixComponent
 	 */
 	public function makeUserRequest()
 	{
+
+		global $USER;
+
 		$http = new ApiRequestHelper;
 
-		$http->setHost(Configuration::getValue('complex_api_host'));
-		$http->setRequestUri(Configuration::getValue('complex_api_uris')[$userType][]);
+		$http->setMethod('GET')
+			 ->setHost(Configuration::getValue('complex_api_host'))
+			 ->setRequestUri(Configuration::getValue('complex_api_uris')[$this->userType]['info'])
+			 ->setQuery([
+				'login'    => $USER->GetParam('USER_EXT_INFO')['info']['login'],
+				'password' => $USER->GetParam('API_PASSWD'),
+				'type'     => 'json'
+			]);
+
+		$http->send();
+		
+		$response = $http->getArrayResponse();
+
+		$this->arResult['EXT_REQUEST_STATUS'] = $response['status'];
+		$this->arResult['USER_ALL_DATA'] = array_change_key_case($response['info'], CASE_UPPER);
+		$this->arResult['USER_SHOW_DATA'] = [];
+		$this->arResult['USER_HIDDEN_DATA'] = [];
+
+		foreach ($this->arParams['DONT_SHOW'] as $hideParam) {
+			$param = strtolower($hideParam);
+			if (array_key_exists($param, $response['info'])) {
+				$this->arResult['USER_HIDDEN_DATA'][$hideParam] = $response['info'][$param];
+			}
+		}
+
+		$this->arResult['USER_SHOW_DATA'] = $this->makeShowDataArray();
 
 	}
 
