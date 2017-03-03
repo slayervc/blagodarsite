@@ -1,13 +1,11 @@
 var path = require('path');
-module.exports = function(env) {
+module.exports = function(env, settings) {
 	return {
-		entry: {
-			reportLoader: './resources/js/report-loader.js',
-			operationFormSubmit: './resources/js/operation-form-submit.js',
-			agent_app: './resources/vue/agent_app.js'
-		},
+		entry: settings.entry,
 
 		devtool: 'cheap-module-source-map',
+
+		resolve: settings.resolve,
 
 		output: {
 			filename: '[name].js',

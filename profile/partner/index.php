@@ -2,21 +2,21 @@
 	$APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 ?><div class="col-md-4 sidebar">
 	 <?$APPLICATION->IncludeComponent(
-		"evrysoft:external.user.info", 
-		".default", 
-		array(
-			"COMPONENT_TEMPLATE" => ".default",
-			"DEBUG" => "N",
-			"DONT_SHOW" => array(
-				0 => "LEVEL",
-				1 => "BLOCKED",
-				2 => "ID",
-				3 => "CAN_CREATE_AGENTS"
-			),
-			"URI" => ""
+	"evrysoft:external.user.info", 
+	".default", 
+	array(
+		"COMPONENT_TEMPLATE" => ".default",
+		"DEBUG" => "N",
+		"DONT_SHOW" => array(
+			0 => "LEVEL",
+			1 => "BLOCKED",
+			2 => "ID",
+			3 => "CAN_CREATE_AGENTS",
 		),
-		false
-	);?>
+		"URI" => ""
+	),
+	false
+);?>
 </div>
 <div class="col-md-8 personal-content">
 	<div class="row">

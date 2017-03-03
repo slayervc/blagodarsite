@@ -1,4 +1,3 @@
-import ScreenPopupAddCategory from "./../Components/ScreenPopupAddCategory/ScreenPopupAddCategory.vue"
 import MoonLoader from "vue-spinner/src/MoonLoader.vue"
 import _ from "lodash"
 export default {
@@ -13,9 +12,11 @@ export default {
 		}
 	},
 	methods: {
+		// sorted via id from big to low
 		sortCategories(categories) {
 			return _.orderBy(categories, 'id', 'desc')
 		},
+		// 
 		showPopup() {
 			this.$parent.showPopup = true
 		},
@@ -60,7 +61,7 @@ export default {
 
 
 	components: {
-		'screen-popup': ScreenPopupAddCategory,
+		// 'screen-popup': ScreenPopupAddCategory,
 		'preloader': MoonLoader
 	},
 

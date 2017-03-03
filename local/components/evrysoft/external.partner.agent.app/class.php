@@ -38,15 +38,15 @@ class PartnerCategoryList extends CBitrixComponent
 		global $APPLICATION;
 		global $USER;
 
-		$this->app         = $APPLICATION;
-		$this->user        = $USER;
-		$this->http        = new ApiRequestHelper();
-		$this->context     = Application::getInstance()->getContext();
-		$this->request     = $this->context->getRequest();
-		$this->response    = $this->context->getResponse();
-		$this->userLogin   = $this->getUserLogin();
+		$this->app          = $APPLICATION;
+		$this->user         = $USER;
+		$this->http         = new ApiRequestHelper();
+		$this->context      = Application::getInstance()->getContext();
+		$this->request      = $this->context->getRequest();
+		$this->response     = $this->context->getResponse();
+		$this->userLogin    = $this->getUserLogin();
 		$this->userPassword = $this->getUserPassword();
-		$this->apiHost     = $this->getApiHost();
+		$this->apiHost      = $this->getApiHost();
 
 		$this->uriList = Configuration::getValue('complex_api_uris')['partner'];
 
@@ -68,6 +68,14 @@ class PartnerCategoryList extends CBitrixComponent
 					break;
 				case 'add-category':
 					$this->arResult['API_RESPONSE'] = $this->addCategory($this->request->get('data'));
+				case 'get-partners-list-agent':
+					$this->arResult['API_RESPONSE'] = $this->getPartnerList();
+					break;
+				case 'get-cities-list':
+					$this->arResult['API_RESPONSE'] = $this->getInfoFromApi('get-cities-list');
+					break;
+				case 'add-partner-by-agent':
+					$this->arResult['API_RESPONSE'] = $this->addPartner();
 					break;
 			}
 			
@@ -78,6 +86,95 @@ class PartnerCategoryList extends CBitrixComponent
 		}
 	}
 
+
+	public function addPartner()
+	{
+		// Getting only passed data to API
+		$passed = $this->request->getPostList()['data'];
+
+
+		// Make HTTP and send request
+		
+		$this->http->setHost($this->apiHost)
+				   ->setMethod('POST')
+				   ->setRequestUri($this->uriList['add-partner-by-agent'])
+				   ->setQuery([
+				   		'login' => $this->userLogin,
+				   		'password' => $this->userPassword,
+				   		'type' => 'json'
+				   	]);
+
+		$this->http->setRequestOption('form_params', [
+			'name' => $passed['name'],
+			'category_id' => $passed['category_id'],
+			'city_id' => $passed['city_id'],
+			'show_in_cat' => $passed['showInCatalog'],
+			'login' => $passed['partner_login'],
+			'password' => $passed['partner_password'],
+			'email' => $passed['email'],
+			'phones' => $passed['phones'],
+			'prog_info' => $passed['prog_info']
+			// 'proc_agent' => $passed['proc_agent'],
+			// 'proc' => $passed['proc'],
+		]);
+
+		$this->http->send();
+
+		$this->response->setStatus($this->http->getStatusCode());
+		$this->response->flush();
+
+		return $this->http->getResponse();
+	}
+
+
+	/**
+	 * Send request for get categories
+	 * 
+	 * @return json with categories
+	 */
+	protected function getPartnerList()
+	{
+		$this->http->setHost($this->apiHost)
+				   ->setRequestUri($this->uriList['get-partners-list-agent'])
+				   ->setMethod('GET');
+
+		$this->http->setQuery([
+			'login' => $this->userLogin,
+			'password' => $this->userPassword,
+			'type' => 'json'
+		]);
+
+		$this->http->send();
+
+		$this->response->setStatus($this->http->getStatusCode());
+		$this->response->flush();
+
+		// return json_encode(['login' => $this->userLogin, 'password' => $this->userPassword]);
+		return $this->http->getResponse();
+	}
+
+
+	protected function getInfoFromApi($uriKey, $queryOptions = null)
+	{
+		$this->http->setHost($this->apiHost);
+		$this->http->setRequestUri($this->uriList[$uriKey]);
+		$this->http->setMethod('GET');
+
+		$this->http->setQuery([
+			'login' => $this->userLogin,
+			'password' => $this->userPassword,
+			'type' => 'json'
+		]);
+
+		if ($queryOptions) {
+			foreach ($queryOptions as $queryKey => $queryValue) {
+				$this->http->addQuery($queryKey, $queryValue);
+			}
+		}
+
+		$this->http->send();
+		return $this->http->getResponse();
+	}
 
 	/**
 	 * Make request to API for create new category
@@ -101,10 +198,9 @@ class PartnerCategoryList extends CBitrixComponent
 
 		$this->http->send();
 
-		$statusCode = $this->http->getStatusCode();
 		$response = $this->http->getArrayResponse();
 
-		$this->response->setStatus($statusCode);
+		$this->response->setStatus($this->http->getStatusCode());
 		$this->response->flush();
 
 		if (strtolower($response['status']) !== 'ok') {

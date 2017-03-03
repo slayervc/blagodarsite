@@ -1,0 +1,38 @@
+.popup{
+		height: 100%;
+		width: 100%;
+		top:0;
+		left:0;
+		z-index: 999;
+		position: fixed;
+		background: rgba(#000, .4);
+		&__container {
+			z-index: 9999;
+			position: absolute;
+			height: 50%;
+			width: 75%;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		&__form {
+			display: block;
+			border-radius: 5px;
+			box-shadow: 1px 1px 3px rgba(#000, .8);
+			padding: 30px;
+			background: #fff;
+		}
+		&__preloader {
+			display: block;
+			padding: 30px;
+			background: #fff;
+		}
+		&__close {
+			position: absolute;
+			right: 5px;
+			cursor: pointer;
+			top: 5px;
+		}
+	}

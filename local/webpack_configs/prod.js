@@ -3,14 +3,11 @@ var webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
-module.exports = function (env) {
+module.exports = function (env, settings) {
 
   return {
-    entry: {
-        reportLoader: './resources/js/report-loader.js',
-        operationFormSubmit: './resources/js/operation-form-submit.js',
-        category_app: './resources/vue/category_app.js'
-    },
+    entry: settings.entry,
+    resolve: settings.resolve,
 
     output: {
         filename: '[name].js',

@@ -41,10 +41,12 @@ class OnBeforeUserLogin
 
 		$password = $arFields['PASSWORD'];
 
+
 		if ($password == 'external_password') {
 			$APPLICATION->ThrowException('Неверный пароль');
 			return false;
 		}
+
 
 		// Check if password is correct
 		if (CheckPassword::checkByLogin($login, $password)) {
@@ -88,8 +90,11 @@ class OnBeforeUserLogin
 			$user_id = \CUser::GetByLogin($login)->Fetch()['ID'];
 
 			if (!$user_id) {
+
 				$res = json_decode($response->getBody(), true)['info'];
 
+				// var_dump($res);
+				// die();
 				$user = new \CUser;
 
 				$user_name = explode(' ', $res['name']);
@@ -102,11 +107,20 @@ class OnBeforeUserLogin
 					'LOGIN' => $userDataLogin,
 					'PASSWORD' => $_REQUEST['USER_PASSWORD'],
 					'CONFIRM_PASSWORD' => $_REQUEST['USER_PASSWORD'],
-					'NAME' => $user_name[1],
-					'LAST_NAME' => $user_name[0],
-					'SECOND_NAME' => $user_name[2],
 					'EMAIL' => $user_email
 				];
+
+				if (count($user_name) == 1) {
+					$userData['NAME'] = $user_name[0];
+				} elseif (count($user_name) == 2) {
+					$userData['NAME'] = $user_name[0];
+					$userData['SECOND_NAME'] = $user_name[1];
+				} else {
+					$userData['NAME'] = $user_name[1];
+					$userData['LAST_NAME'] = $user_name[2];
+					$userData['SECOND_NAME'] = $user_name[0];
+				}
+
 
 				$group = \CGroup::GetList($by = "c_sort", $order = "asc", [
 					"STRING_ID" => $arFields['login_type']
@@ -127,6 +141,7 @@ class OnBeforeUserLogin
 
 					return true;
 				} else {
+					$APPLICATION->ThrowException('Пароль не должен быть менее 6 символов');
 					return false;
 				}
 

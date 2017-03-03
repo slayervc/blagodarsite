@@ -56,8 +56,9 @@ class ApiRequestHelper
 
 
 	/**
-	 * [setRequestUri description]
-	 * @param [type] $uri [description]
+	 * Set request uri method
+	 * 
+	 * @param string $uri
 	 */
 	public function setRequestUri($uri)
 	{
@@ -112,12 +113,10 @@ class ApiRequestHelper
 	 */
 	public function setQuery($query)
 	{
-		$this->query_string = $query;
-
-		if ($this->method == 'GET') {
-			$this->setRequestOption('query', $this->query_string);
-		}
-
+		$this->query_string = $query;	
+		
+		$this->setRequestOption('query', $this->query_string);
+	
 		return $this;
 	}
 
@@ -153,6 +152,8 @@ class ApiRequestHelper
 	}
 
 
+
+
 	/**
 	 * Return response in JSON
 	 * 
@@ -177,6 +178,7 @@ class ApiRequestHelper
 
 	/**
 	 * [getJsonResponse description]
+	 * 
 	 * @return [type] [description]
 	 */
 	public function getJsonResponse()
