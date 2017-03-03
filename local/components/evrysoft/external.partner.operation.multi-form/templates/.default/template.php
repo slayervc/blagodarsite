@@ -26,14 +26,15 @@ $this->addExternalJs('/local/js/operationFormSubmit.js');
 				<div class="form-group">
 				<?php if ($field == $arResult['PASSED_FIELD_STR']): ?>
 					<div class="row">
-						<div class="col-md-6 col-xs-6">
+						<div class="col-md-6 col-xs-12">
 							<input type="text" name="FORM[<?php echo $field ?>]" 
 								   class="form-control partner-form__text-input" 
 								   placeholder="<?php echo GetMessage($field) ?>"
 							>
 						</div>
-						<div class="col-md-6 col-xs-6">
-							<input type="submit" class="partner-form__button partner-form__button--block" 
+						<div class="col-md-6 col-xs-12">
+							<input type="submit" 
+								class="partner-form__button partner-form__button--block"
 								data-action="get-code" 
 								data-response-success="Код отправлен на номер:"
 								data-response-error="Ошибка:" value="Отправить код"

@@ -12,6 +12,12 @@
 						-
 					{{/if}}
 				</p>
+				{{#if tel}}
+					<p>Телефон: {{tel}}</p>
+				{{/if}}
+				{{#if partner}}
+					<p>Кем зарегистрирован: {{partner}}</p>
+				{{/if}}
 			{{/info}}
 		{{else}}
 			{{#isObj this}}

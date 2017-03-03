@@ -77,7 +77,6 @@ class UserInfoComponent extends CBitrixComponent
 	 */
 	public function makeUserRequest()
 	{
-
 		global $USER;
 
 		$http = new ApiRequestHelper;
@@ -86,10 +85,15 @@ class UserInfoComponent extends CBitrixComponent
 			 ->setHost(Configuration::getValue('complex_api_host'))
 			 ->setRequestUri(Configuration::getValue('complex_api_uris')[$this->userType]['info'])
 			 ->setQuery([
-				'login'    => $USER->GetParam('USER_EXT_INFO')['info']['login'],
 				'password' => $USER->GetParam('API_PASSWD'),
 				'type'     => 'json'
 			]);
+
+		if ($this->userType == 'client') {
+			$http->addQuery('login', $USER->GetParam('USER_EXT_INFO')['info']['tel']);
+		} else {
+			$http->addQuery('login', $USER->GetParam('USER_EXT_INFO')['info']['login']);
+		}
 
 		$http->send();
 		

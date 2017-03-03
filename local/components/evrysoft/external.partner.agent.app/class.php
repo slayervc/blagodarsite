@@ -112,6 +112,7 @@ class PartnerCategoryList extends CBitrixComponent
 			'login' => $passed['partner_login'],
 			'password' => $passed['partner_password'],
 			'email' => $passed['email'],
+			'descr' => $passed['descr'],
 			'phones' => $passed['phones'],
 			'prog_info' => $passed['prog_info']
 			// 'proc_agent' => $passed['proc_agent'],

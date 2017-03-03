@@ -26,10 +26,6 @@ class OnBeforeUserRegister
 
 		$birthDate = $_REQUEST['REGISTER']['BIRTH_DATE'];
 
-		// var_dump($_REQUEST['REGISTER']['AGENT_CODE']);
-
-		// die();
-
 		$url = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1/clients/add';
 	
 		$response = $client->request('GET', $url, [
@@ -51,15 +47,16 @@ class OnBeforeUserRegister
 		]);
 
 		/* Handle HTTP BadRequest code 400 */
-		if ($response->getStatusCode() == 400) {
+		if ($response->getStatusCode() == 200) {
+			return true;
+		} else {
 			$error = json_decode($response->getBody());
 			$GLOBALS['APPLICATION']->ThrowException($error->info);
 			return false;
-		} else {
-			var_dump($response->getBody());
-			die();
-			return true;
 		}
+
+
+
 	}
 
 

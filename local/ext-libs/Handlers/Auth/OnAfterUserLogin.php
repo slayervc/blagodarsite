@@ -17,10 +17,15 @@ class OnAfterUserLogin
 	{
 
 		global $USER;
-
+		global $APPLICATION;
 
 		if ($USER->IsAdmin()) {
 			return true;
+		}
+
+		if ($arFields['RESULT_MESSAGE']['TYPE'] == 'ERROR') {
+			$APPLICATION->ThrowException($arFields['RESULT_MESSAGE']['ERROR']);
+			return false;
 		}
 
 		$host = Configuration::getValue('complex_api_host');
@@ -47,6 +52,7 @@ class OnAfterUserLogin
 			]
 		]);
 
+
 		$user_info = json_decode($response->getBody(), true);
 
 		$USER->SetParam('API_PASSWD', $password);
@@ -59,7 +65,7 @@ class OnAfterUserLogin
 		if ($USER->GetParam('USER_EXT_INFO')['status'] == 'OK') {
 			LocalRedirect("/profile/{$login_type}/", true, 303);
 		} else {
-			LocalRedirect("/", true, 303);
+			// $APPLICATION->ThrowException('Временные ошибки при авторизации');
 		}
 
 	}

@@ -3,14 +3,12 @@
 		<div v-if="loading < 100" class="col-md-12 loading">
 			Loading ({{loading}}%)
 		</div>
-		<div v-else class="row">
-			<div class="col-md-12">
-				<transition name="slide-fade" mode="out-in">
-					<keep-alive>
-						<router-view></router-view>
-					</keep-alive>
-				</transition>
-			</div>
+		<div v-else class="col-md-12">
+			<transition name="slide-fade" mode="out-in">
+				<keep-alive>
+					<router-view></router-view>
+				</keep-alive>
+			</transition>
 		</div>
 	</div>
 </template>

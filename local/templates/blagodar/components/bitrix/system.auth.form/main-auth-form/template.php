@@ -1,11 +1,18 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
-<?if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR']):?>
-	<?php foreach ($arResult['ERROR_MESSAGE']['MESSAGE'] as $error): ?>
+<?if ($arResult['ERROR_MESSAGE']):?>
+	<?php if (is_array($arResult['ERROR_MESSAGE']['MESSAGE'])): ?>
+		<?php foreach ($arResult['ERROR_MESSAGE']['MESSAGE'] as $error): ?>
+			<div class="alert alert-danger">
+				<p class="text-center"><?php echo $error ?></p>
+			</div>
+		<?php endforeach ?>
+	<?php else: ?>
 		<div class="alert alert-danger">
-			<p class="text-center"><?php echo $error ?></p>
+			<p class="text-center"><?php echo $arResult['ERROR_MESSAGE']['MESSAGE'] ?></p>
 		</div>
-	<?php endforeach ?>
+	<?php endif ?>
+	
 <? endif ?>
 
 	<div class="auth-block__form">

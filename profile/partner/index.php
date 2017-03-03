@@ -22,26 +22,26 @@
 	<div class="row">
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(
-	"evrysoft:external.partner.operation.multi-form", 
-	".default", 
-	array(
-		"DEBUG" => "N",
-		"FIELDS" => array(
-			0 => "sum",
-			1 => "login",
-			2 => "code",
-		),
-		"PASSED_FIELD" => "1",
-		"URI_ALIAS" => "remove-client-balance",
-		"FORM_HEADER" => "Списание баланса с клиента",
-		"COMPONENT_TEMPLATE" => ".default",
-		"MULTI_FIELD" => "2",
-		"URI_ALIAS_MULTI" => "gen-balance-code",
-		"REQUEST_API_METHOD" => "GET",
-		"ALERTS_IN_FORMS" => "Y"
-	),
-	false
-);?>
+				"evrysoft:external.partner.operation.multi-form", 
+				".default", 
+				array(
+					"DEBUG" => "N",
+					"FIELDS" => array(
+						0 => "sum",
+						1 => "login",
+						2 => "code",
+					),
+					"PASSED_FIELD" => "1",
+					"URI_ALIAS" => "remove-client-balance",
+					"FORM_HEADER" => "Списание баланса с клиента",
+					"COMPONENT_TEMPLATE" => ".default",
+					"MULTI_FIELD" => "2",
+					"URI_ALIAS_MULTI" => "gen-balance-code",
+					"REQUEST_API_METHOD" => "GET",
+					"ALERTS_IN_FORMS" => "Y"
+				),
+				false
+			);?>
 		</div>
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(
@@ -68,25 +68,47 @@
 		</div>
 		<div class="col-md-12">
 			<?$APPLICATION->IncludeComponent(
-	"evrysoft:external.partner.operation.form", 
-	".default", 
-	array(
-		"DEBUG" => "N",
-		"FIELDS" => array(
-			0 => "sum",
-			1 => "login",
-		),
-		"PASSED_FIELD" => "1",
-		"URI_ALIAS" => "add-client-balance",
-		"COMPONENT_TEMPLATE" => ".default",
-		"REQUEST_API_METHOD" => "GET",
-		"ALERTS_IN_FORMS" => "Y"
-	),
-	false,
-	array(
-		"ACTIVE_COMPONENT" => "Y"
-	)
-);?>
+				"evrysoft:external.partner.operation.form", 
+				".default", 
+				array(
+					"DEBUG" => "N",
+					"FIELDS" => array(
+						0 => "sum",
+						1 => "login",
+					),
+					"PASSED_FIELD" => "1",
+					"URI_ALIAS" => "add-client-balance",
+					"COMPONENT_TEMPLATE" => ".default",
+					"REQUEST_API_METHOD" => "GET",
+					"ALERTS_IN_FORMS" => "Y"
+				),
+				false,
+				array(
+					"ACTIVE_COMPONENT" => "Y"
+				)
+			);?>
+		</div>
+		<div class="col-md-12">
+			<?$APPLICATION->IncludeComponent(
+				"evrysoft:external.partner.operation.form", 
+				".default", 
+				array(
+					"DEBUG" => "N",
+					"FIELDS" => array(
+						0 => "sum",
+						1 => "login",
+					),
+					"PASSED_FIELD" => "1",
+					"URI_ALIAS" => "add-client-balance-proc",
+					"COMPONENT_TEMPLATE" => ".default",
+					"REQUEST_API_METHOD" => "GET",
+					"ALERTS_IN_FORMS" => "Y"
+				),
+				false,
+				array(
+					"ACTIVE_COMPONENT" => "Y"
+				)
+			);?>
 		</div>
 		<div class="col-md-12">
 			 <?$APPLICATION->IncludeComponent(

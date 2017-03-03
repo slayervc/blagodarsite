@@ -1,5 +1,5 @@
 <template>
-	<div class="partner-list">
+	<div class="row partner-list">
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-12">
@@ -19,7 +19,7 @@
 							<div class="row">
 								<div class="col-md-12 form-horizontal">
 									<label class="control-label col-sm-2" for="newName">
-										Имя партнера
+										Наименование
 									</label>
 									<div class="col-sm-10">
 										<input v-model="newPartner.name" name="newName" class="form-control" type="text" placeholder="Имя">
@@ -28,11 +28,6 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							<div v-if="error" class="col-md-12">
-								<div class="alert alert-danger">
-									<span>{{error}}</span>
-								</div>
-							</div>
 							<h3>Данные пользователя</h3>
 							<div class="row">
 								<div class="col-md-12">
@@ -45,7 +40,7 @@
 										<input v-model="newPartner.partner_password" type="password" class="form-control" placeholder="Пароль">
 									</div>
 									<div class="form-group">
-										<label>Полное описание клиента</label>
+										<label>Полное описание партнера</label>
 										<textarea v-model="newPartner.descr" placeholder="Полное описание" class="form-control"></textarea>
 									</div>
 									<div class="form-group">
@@ -99,6 +94,11 @@
 								<div class="col-xs-6">
 									<button class="button button--full" @click="showCreateNewPartnerForm = false">Отмена</button>
 								</div>								
+							</div>
+						</div>
+						<div v-if="error" class="panel-footer">
+							<div class="alert alert-danger">
+								<span>{{error}}</span>
 							</div>
 						</div>
 					</div>
