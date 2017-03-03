@@ -28,6 +28,8 @@
 
 .header__logo:hover { text-decoration: none; }
 
+.header__logo-picture { width: 100%; }
+
 .header__logo-image-container { margin-bottom: 10px; max-width: 220px; margin-left: 0; margin-right: auto; }
 
 @media screen and (max-width: 960px) { .header__logo-image-container { margin: 0 auto; } }

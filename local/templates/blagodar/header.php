@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-4 header__head-block">
 						<a href="/" class="header__logo text-center">
-							<img src="<?php echo SITE_TEMPLATE_PATH ?>/dist/images/logo.png" alt="Благодарю">
+							<img class="header__logo-picture" src="<?php echo SITE_TEMPLATE_PATH ?>/dist/images/logo.png" alt="Благодарю">
 						</a>
 					</div>
 					<div class="col-md-4 col-sm-4 header__head-block">
