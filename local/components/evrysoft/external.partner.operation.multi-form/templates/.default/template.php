@@ -2,6 +2,7 @@
 <?php 
 $this->addExternalJs('/local/js/operationFormSubmit.js'); 
 ?>
+
 <div class="row">
 	<div class="col-md-12">
 		<?php if ($arParams['ALERTS_IN_FORMS'] == 'Y'): ?>
@@ -47,12 +48,11 @@ $this->addExternalJs('/local/js/operationFormSubmit.js');
 				</div>
 			<?php endforeach ?>
 			<div class="form-group">
-				<input type="submit" class="partner-form__button" value="<?php echo GetMessage('SUBMIT_BUTTON') ?>">
+				<input type="submit" class="partner-form__button" value="<?php echo GetMessage("SUBMIT_{$arParams['URI_ALIAS']}") ?>">
 			</div>
 		</form>
 	</div>
 </div>
-
 
 
 
