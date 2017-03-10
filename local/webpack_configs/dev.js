@@ -38,7 +38,7 @@ module.exports = function(env, settings) {
 						helperDirs: path.resolve(__dirname + "./../resources/js/templates/handlebars/helpers")
 					}
 				}
-			],		
+			],
 		},
 	}
 };
