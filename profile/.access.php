@@ -1,7 +1,8 @@
-<?php 
-
-$PERM["partner"]["*"]="D";
-$PERM["partner"]["G6"]="R";
+<?
+$PERM["client"]["6"]="X";
+$PERM["client"]["7"]="X";
 $PERM["client"]["*"]="D";
-$PERM["client"]["G5"]="R";
-
+$PERM["partner"]["6"]="X";
+$PERM["partner"]["7"]="X";
+$PERM["partner"]["*"]="D";
+?>

@@ -23,8 +23,16 @@
 						</a>
 					</div>
 					<div class="col-md-4 col-sm-4 header__head-block">
-						<div class="header__settings-fields">
-						</div>
+						<?
+						$APPLICATION -> IncludeComponent(
+							"evrysoft:external.city.select.form",
+							".default",
+							Array(
+							),
+							false
+						);
+
+						?>
 					</div>
 					<div class="col-md-4 col-sm-4 header__head-block">
 						<div class="header__auth-container header__auth-container--basic">
@@ -72,9 +80,17 @@
 		<div class="banner">
 			<div class="container">
 				<div class="row">
-					<a href="#">
-						<img src="<?php echo SITE_TEMPLATE_PATH ?>/dist/images/banner.jpg">
-					</a>
+					<?$APPLICATION->IncludeComponent(
+						"bitrix:advertising.banner",
+						"",
+						Array(
+							"CACHE_TIME" => "0",
+							"CACHE_TYPE" => "A",
+							"NOINDEX" => "N",
+							"QUANTITY" => "1",
+							"TYPE" => "TOP"
+						)
+					);?>
 				</div>
 			</div>
 		</div>

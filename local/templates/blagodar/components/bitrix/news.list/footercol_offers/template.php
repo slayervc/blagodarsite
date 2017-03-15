@@ -25,7 +25,7 @@ $footercol_offersCounter = -1;
 	?>
 
 	<div class="footer__col-content-block" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-		<a href="#" class="footer__col-image-link" style="background: <?echo $footercol_offersColors[$footercol_offersCounter]?>">
+		<a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="footer__col-image-link" style="background: <?echo $footercol_offersColors[$footercol_offersCounter]?>">
 
 			<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
 				<div class="footer__col-image-link-block footer__col-image-link-block--image">
