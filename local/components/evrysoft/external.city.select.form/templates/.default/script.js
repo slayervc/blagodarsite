@@ -1,6 +1,6 @@
 var Dialog = new BX.CDialog({
     title: "Выберите Ваш город",
-    content: 	'<input type="text" id="city_name" onkeyup="searchCity()">\
+    content: 	'<input type="text" id="city_name" autocomplete="off" placeholder="Название города" onkeyup="searchCity()">\
                 <div id="cityList"></div>',
 
     resizable: false,

@@ -213,7 +213,7 @@ class CatalogImporter
     }
 
     //Возвращает массив id городов ядра
-    public function receiveCityList(){
+    public function receiveCityList($onlyId = true){
         curl_setopt($this->curl, CURLOPT_URL, self :: SERVER_URL . '/adm/cities/getlist?type=json');
         $out = curl_exec($this->curl);
         $out = json_decode($out, true);
@@ -221,8 +221,11 @@ class CatalogImporter
         //"вышелушеваем" id городов из разветвленной структуры ответа
         $cityList = $out['info']['list'];
 
-        foreach ($cityList as $key => $city){
-            $cityList[$key] = $city['id'];
+        if ($onlyId) {
+
+            foreach ($cityList as $key => $city) {
+                $cityList[$key] = $city['id'];
+            }
         }
 
         return $cityList;

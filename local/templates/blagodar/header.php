@@ -24,6 +24,7 @@
 					</div>
 					<div class="col-md-4 col-sm-4 header__head-block">
 						<?
+
 						$APPLICATION -> IncludeComponent(
 							"evrysoft:external.city.select.form",
 							".default",
@@ -31,6 +32,8 @@
 							),
 							false
 						);
+
+						$commonCityFilter = $_SESSION['SESS_CURRENT_CITY']['BITRIX_ID'] ? Array('PROPERTY_city' => $_SESSION['SESS_CURRENT_CITY']['BITRIX_ID']) : false;
 
 						?>
 					</div>

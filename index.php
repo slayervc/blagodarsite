@@ -35,28 +35,9 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 	</div>
 </div>
  <?php endif ?>
-<div class="col-md-12">
-	<div class="company-search">
-		<div class="row">
-			<div class="col-md-3 company-search__column">
-				<div class="company-search__name-badge">
-					 Каталог компаний
-				</div>
-			</div>
-			<div class="col-md-6 col-xs-8 company-search__column">
-				<div class="company-search__input-wrapper">
- <input type="text" class="company-search__input" placeholder="Введите назавние компании или вид деятельности">
-				</div>
-			</div>
-			<div class="col-md-3 col-xs-4 company-search__column">
- <button class="company-search__search-button pull-right">
-				Найти </button>
-			</div>
-		</div>
-	</div>
-</div>
+<?$APPLICATION->IncludeComponent("evrysoft:external.catalog.search");?>
 	<?
-		$mainPageCatalogFilter = Array('>PROPERTY_mainpage_order' => '0');
+		$mainPageCatalogFilter = Array('>PROPERTY_mainpage_order' => '0', 'PROPERTY_city' => $_SESSION['SESS_CURRENT_CITY']['CORE_ID']);
 	?>
 	<?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
@@ -99,7 +80,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 		"PAGER_TITLE" => "Новости",
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
-		"PREVIEW_TRUNCATE_LEN" => "",
+		"PREVIEW_TRUNCATE_LEN" => "60",
 		"PROPERTY_CODE" => array("",""),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
@@ -109,8 +90,8 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 		"SET_TITLE" => "Y",
 		"SHOW_404" => "N",
 		"SORT_BY1" => "PROPERTY_mainpage_order",
-		//"SORT_BY2" => "NAME",
+		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "ASC",
-		//"SORT_ORDER2" => "ASC"
+		"SORT_ORDER2" => "ASC"
 	)
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -69,14 +69,7 @@ $this->setFrameMode(true);
 
 						<? if ($arParams["DISPLAY_PREVIEW_TEXT"] != "N" && $arItem["PREVIEW_TEXT"]): ?>
 							<div class="company-list__content-main">
-								<p>
-									<?
-										$str = $arItem["PREVIEW_TEXT"];
-										$str = strlen($str) > 63 ? substr($str, 0, strpos($str, ' ', 60)) . '...' : $str;
-										//$str = mb_strlen($str) > 63 ? mb_substr($str, 0, 60) . '...' : $str;
-										echo $str;
-									?>
-								</p>
+								<p><?echo $arItem["PREVIEW_TEXT"];?></p>
 							</div>
 						<? endif; ?>
 
@@ -88,3 +81,7 @@ $this->setFrameMode(true);
 		</div>
 	</div>
 </div>
+
+<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
+	<br /><?=$arResult["NAV_STRING"]?>
+<?endif;?>

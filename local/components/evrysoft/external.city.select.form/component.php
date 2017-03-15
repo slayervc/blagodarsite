@@ -27,8 +27,13 @@ class CitySelector
         );
 
         $city = $cityList -> GetNextElement();
-        $properties = $city ? $city -> GetProperties() : false;
-        $this -> currentCity['CORE_ID'] = $properties ? $properties['CORE_ID']['VALUE'] : false;
+
+        if ($city) {
+            $properties = $city->GetProperties();
+            $this -> currentCity['CORE_ID'] = $properties ? $properties['CORE_ID']['VALUE'] : false;
+            $this -> currentCity['BITRIX_ID'] = $city -> fields['ID'];
+        }
+
         $_SESSION['SESS_CURRENT_CITY'] = $this -> currentCity;
     }
 }
@@ -53,6 +58,8 @@ if (! $citySelector -> currentCity && $_SESSION['SESS_CITY_ID'] > 0){
 if (! $citySelector -> currentCity || ! $citySelector -> currentCity['CITY_NAME']){
     $citySelector -> SetCity(CitySelector :: DEFAULT_CITY);
 }
+
+//$commonCityFilter = $citySelector -> currentCity['BITRIX_ID'] ? Array('PROPERTY_city' => currentCity['BITRIX_ID']) : false;
 
 $arResult['CURRENT_CITY'] = $citySelector -> currentCity['CITY_NAME'];
 $this->IncludeComponentTemplate();

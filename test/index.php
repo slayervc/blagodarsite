@@ -7,6 +7,8 @@ $APPLICATION->SetTitle("test page");
 CModule::IncludeModule('statistic');
 CModule::IncludeModule('iblock');
 
+var_dump($_SESSION['SESS_CURRENT_CITY']);
+
 /*var_dump($_SESSION['SESS_CURRENT_CITY']);
 
 if ($_SESSION['SESS_CITY_ID'] > 0)
