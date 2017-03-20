@@ -1,6 +1,8 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
 <?php $this->addExternalJs('/local/js/operationFormSubmit.js'); ?>
 
+<!-- <?php var_dump($arParams['URI_ALIAS']) ?> -->
+
 <div class="row">
 	<div class="col-md-12">
 		<?php if ($arParams['ALERTS_IN_FORMS'] == 'Y'): ?>
@@ -30,7 +32,7 @@
 				</div>
 			<?php endforeach ?>
 			<div class="form-group">
-				<input type="submit" class="partner-form__button" value="<?php echo GetMessage('SUBMIT_BUTTON') ?>">
+				<input type="submit" class="partner-form__button" value="<?php echo GetMessage("SUBMIT_{$arParams['URI_ALIAS']}") ?>">
 			</div>
 		</form>
 	</div>
