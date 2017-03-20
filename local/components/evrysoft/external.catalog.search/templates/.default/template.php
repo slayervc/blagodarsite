@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-6 col-xs-8 company-search__column">
                 <div class="company-search__input-wrapper">
-                    <input type="text" id="catalogSearchRequest" class="company-search__input" placeholder="Введите назавние компании или вид деятельности" value="<?echo $arResult['CATALOG_SEARCH_REQUEST']?>">
+                    <input type="text" id="catalogSearchRequest" class="company-search__input" onkeypress="catalogSearchRequestOnKeyPress(event)" placeholder="Введите назавние компании или вид деятельности" value="<?echo $arResult['CATALOG_SEARCH_REQUEST']?>">
                 </div>
             </div>
             <div class="col-md-3 col-xs-4 company-search__column">

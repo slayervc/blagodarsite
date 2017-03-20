@@ -1,5 +1,7 @@
 <?php
 
+namespace EvrySoft\Helpers;
+
 class CatalogImporter
 {
 

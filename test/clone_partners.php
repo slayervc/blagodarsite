@@ -1,12 +1,12 @@
 <?
+use EvrySoft\Helpers\CatalogImporter;
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Клонировать партнеров");
 
-require($_SERVER["DOCUMENT_ROOT"]."/test/partner_import.php");
 
 $importer = new CatalogImporter();
-//$importer -> UpdateCatalog();
-var_dump($importer -> receiveCityList(false));
+$importer -> UpdateCatalog();
+//var_dump($importer -> receiveCityList(false));
 /*$partnerList = $importer -> getPartnerList(1);
 $categoryList = $importer -> getCategoryList();
 $cityList = $importer -> ReceiveCityList();

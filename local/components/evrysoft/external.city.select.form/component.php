@@ -7,12 +7,27 @@ CModule::IncludeModule('iblock');
 
 class CitySelector
 {
+    private static $instance;
+
     const BLOCK_ID = 6, //Инфоблок "Города"
-          DEFAULT_CITY = 568; //Иркутск
+        DEFAULT_CITY = 568; //Иркутск
 
     public $currentCity = false;
 
-    function SetCity($cityId){
+    private function __construct(){}
+    private function __clone(){}
+    private function __wakeup(){}
+
+    public static function getInstance(){
+
+        if (empty(self :: $instance)){
+            self :: $instance = new self();
+        }
+
+        return self :: $instance;
+    }
+
+    function setCity($cityId){
         $cityList = CCity::GetList(
             false,
             array('CITY_ID' => $cityId)
@@ -38,10 +53,10 @@ class CitySelector
     }
 }
 
-$citySelector = new CitySelector();
+$citySelector = CitySelector :: getInstance();
 
 if (!empty($_GET['set_city'])){ //Если был вызов из диалога выбора города
-    $citySelector -> SetCity($_GET['set_city']);
+    $citySelector -> setCity($_GET['set_city']);
 }
 
 //Если город уже выбран
@@ -51,12 +66,12 @@ if (! $citySelector -> currentCity && $_SESSION['SESS_CURRENT_CITY'] > 0){
 
 //Если город не был выбран, но его удалось определить по IP
 if (! $citySelector -> currentCity && $_SESSION['SESS_CITY_ID'] > 0){
-    $citySelector -> SetCity($_SESSION['SESS_CITY_ID']);
+    $citySelector -> setCity($_SESSION['SESS_CITY_ID']);
 }
 
 //Если город никак не был установлен, устанавливаем город по дефолту
 if (! $citySelector -> currentCity || ! $citySelector -> currentCity['CITY_NAME']){
-    $citySelector -> SetCity(CitySelector :: DEFAULT_CITY);
+    $citySelector -> setCity(CitySelector :: DEFAULT_CITY);
 }
 
 //$commonCityFilter = $citySelector -> currentCity['BITRIX_ID'] ? Array('PROPERTY_city' => currentCity['BITRIX_ID']) : false;

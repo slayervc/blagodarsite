@@ -60,9 +60,9 @@ $this->setFrameMode(true);
 							<h4 class="company-list__content-header">
 								<? if (!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])): ?>
 									<a href="<? echo $arItem["DETAIL_PAGE_URL"] ?>"
-									   class="footer__col-news-header"><? echo $arItem["NAME"] ?></a>
+									   class="footer__col-news-header"><?echo str_replace('&amp;quot;', '"', $arItem["NAME"]); ?></a>
 								<? else: ?>
-									<b><? echo $arItem["NAME"] ?></b><br/>
+									<b><? echo str_replace('&amp;quot;', '"', $arItem["NAME"]); ?></b><br/>
 								<? endif; ?>
 							</h4>
 						<? endif; ?>
