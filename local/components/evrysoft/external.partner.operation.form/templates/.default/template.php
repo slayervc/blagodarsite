@@ -1,8 +1,6 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die(); ?>
 <?php $this->addExternalJs('/local/js/operationFormSubmit.js'); ?>
 
-<!-- <?php var_dump($arParams['URI_ALIAS']) ?> -->
-
 <div class="row">
 	<div class="col-md-12">
 		<?php if ($arParams['ALERTS_IN_FORMS'] == 'Y'): ?>
@@ -27,7 +25,12 @@
 					<input type="text" 
 						   class="form-control partner-form__text-input" 
 						   name="FORM[<?php if ($field == 'category_name' || $field == 'name'): ?>name<?php else: ?><?php echo $field ?><?php endif ?>]" 
-						   placeholder="<?php echo GetMessage($field) ?>"
+						   placeholder="<?php 
+								if ($arParams['URI_ALIAS'] == 'add-client-balance-proc' && $field == 'sum') {
+									echo GetMessage($field . '_proc');
+								} else { 
+									echo GetMessage($field);
+								}?>"
 					>
 				</div>
 			<?php endforeach ?>
