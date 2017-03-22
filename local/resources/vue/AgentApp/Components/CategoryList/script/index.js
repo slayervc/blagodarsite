@@ -1,5 +1,5 @@
 import MoonLoader from "vue-spinner/src/MoonLoader.vue"
-import _ from "lodash"
+import _orderBy from "lodash/orderBy"
 export default {
 	data() {
 		return {
@@ -14,7 +14,7 @@ export default {
 	methods: {
 		// sorted via id from big to low
 		sortCategories(categories) {
-			return _.orderBy(categories, 'id', 'desc')
+			return _orderBy(categories, 'id', 'desc')
 		},
 		// 
 		showPopup() {

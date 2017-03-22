@@ -46,7 +46,6 @@
 	}
 </style>
 <script>
-import _ from 'lodash'
 import MoonLoader from "vue-spinner/src/MoonLoader.vue"
 
 export default {
