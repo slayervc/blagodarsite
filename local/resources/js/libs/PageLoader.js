@@ -11,6 +11,11 @@ export default class PageLoader {
 	}
 
 
+	clearContainer(){
+		this.container.html('')
+	}
+
+
 	updateContainer() {
 		this.container.append(this.renderPage())
 	}

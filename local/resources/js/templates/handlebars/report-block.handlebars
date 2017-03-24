@@ -28,20 +28,27 @@
 			<div class="col-md-6 text-left">
 				<strong>Операция: {{ operation_descr }} </strong>
 			</div>
-			<div class="col-md-6 text-right">
-				Клиент/Контрагент : {{ client }}
-			</div>
+			{{#if client}}
+				<div class="col-md-6 text-right">
+					Клиент/Контрагент : {{ client }}
+				</div>
+			{{/if}}
+			{{#if partner}}
+				<div class="col-md-6 text-right">
+					Партнер : {{ partner }}
+				</div>
+			{{/if}}
 			<div class="col-md-6 text-left">
 				<strong>
 					{{#if sum_minus_partner }}
-						Списано: <span class="sum">{{ sum_minus_partner }}</span>
+						Списано: <span class="sum"> {{ sum_minus_partner }}</span>
 					{{else}}
-						Зачислено: <span class="sum">{{ sum_plus_partner }}</span>
+						Зачислено: <span class="sum"> {{ sum_plus_partner }}</span>
 					{{/if}}
 				</strong>
 			</div>
 			<div class="col-md-6 text-right">
-				<strong>Комиссия:</strong><span class="sum">{{ sum_comission_partner }}</span>
+				<strong>Комиссия:</strong><span class="sum"> {{ sum_comission_partner }}</span>
 			</div>
 		</div>
 	</div>

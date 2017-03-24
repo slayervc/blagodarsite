@@ -22,6 +22,12 @@
 <?php else: ?>
 	<h3 class="personal-content__report-header">
 		Отчет по выполненым операциям
+		<button id="refresh-report" 
+				class="pull-right btn btn-default"
+				data-refresh-uri="<?php echo $arResult['REQUEST_PAGE'] ?>"
+		>
+			<i class="glyphicon glyphicon-refresh"></i> Обновить
+		</button>
 	</h3>
 	<div class="row">
 		<div class="col-md-12 personal-content__report-container">
@@ -55,9 +61,16 @@
 							<div class="col-md-6 text-left">
 								<strong>Операция: <?php echo $blockData['operation_descr'] ?></strong>
 							</div>
-							<div class="col-md-6 text-right">
-								Клиент/Контрагент : <?php echo $blockData['client'] ?>
-							</div>
+							<?php if ($blockData['client']): ?>
+								<div class="col-md-6 text-right">
+									Клиент/Контрагент : <?php echo $blockData['client'] ?>
+								</div>
+							<?php endif ?>
+							<?php if ($blockData['partner']): ?>
+								<div class="col-md-6 text-right">
+									Партнер : <?php echo $blockData['partner'] ?>
+								</div>
+							<?php endif ?>
 							<div class="col-md-6 text-left">
 								<strong>
 									<?php if ($blockData['sum_minus_partner']): ?>
@@ -82,41 +95,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="panel panel-default">
-					<div class="panel-heading">
-						<div class="panel-title">
-							<div class="row">
-								<div class="col-md-6 pull-left">
-									<?php echo $blockData['date'] ?>
-								</div>
-								<div class="col-md-6 pull-right text-right">
-									<strong>
-										Баланс:
-									</strong> 
-									<span class="balance balance--before">
-										<?php echo $blockData['balance_before'] ?>
-									</span>
-									<span class="balance balance--arrow">
-										>
-									</span>
-									<span class="balance balance--after">
-										<?php echo $blockData['balance_after'] ?>
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-6 text-left">
-								<strong>Операция: <?php echo $blockData['operation_descr'] ?></strong>
-							</div>
-							<div class="col-md-6 text-right">
-								Клиент/Контрагент : <?php echo $blockData['client'] ?>
-							</div>
-						</div>
-					</div>
-				</div> -->
 			<?php endforeach ?>
 		</div>
 	</div>

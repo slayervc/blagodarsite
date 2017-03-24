@@ -35,7 +35,13 @@
 										<?php if ($USER->IsAdmin()): ?>
 											<a href="<?php echo "/profile/partner" ?>"><?php echo $USER->GetFullName() ?></a>
 										<?php else: ?>
-											<a href="<?php echo "/profile/{$USER->GetParam('USER_API_TYPE')}" ?>"><?php echo $USER->GetFullName() ?></a>
+											<a href="<?php echo "/profile/{$USER->GetParam('USER_API_TYPE')}" ?>">
+												<?php if ($USER->GetParam('USER_API_TYPE') == 'partner'): ?>
+													<?php echo $USER->GetLogin() ?>
+												<?php else: ?>
+													<?php echo $USER->GetFullName() ?>
+												<?php endif ?>
+											</a>
 										<?php endif ?>
 									</span>
 								</div>

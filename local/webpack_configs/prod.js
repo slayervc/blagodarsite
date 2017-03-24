@@ -21,9 +21,9 @@ module.exports = function (env, settings) {
             {
                 test: /\.js$/, 
                 loader: 'babel-loader',
-                options: {
-                    presets: ['es2015']
-                },
+                // options: {
+                //     presets: ['es2015']
+                // },
                 exclude: /(node_modules)/
             },
             {

@@ -1,6 +1,7 @@
 <?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 use Bitrix\Main\Config\Configuration;
+use Bitrix\Main\Application; 
 use EvrySoft\Helpers\ApiHelpers\ApiHelper;
 use EvrySoft\Helpers\ApiHelpers\ApiRequestHelper;
 use EvrySoft\Helpers\CheckRequestHelper;
@@ -27,6 +28,8 @@ class UserReportComponent extends CBitrixComponent
 		global $USER;
 		global $APPLICATION;
 
+		$request = Application::getInstance()->getContext()->getRequest();
+
 		$this->arResult['REQUEST_PAGE'] = $APPLICATION->GetCurPage();
 		$this->arResult['REPORT_DATA']['HIDDEN_LIST'] = [];
 		$this->arResult['REPORT_DATA']['LIST'] = [];
@@ -52,7 +55,6 @@ class UserReportComponent extends CBitrixComponent
 			$login = $USER->GetLogin();
 			$host = Configuration::getValue('complex_api_host');
 		}
-
 
 		$url = rtrim($host, '/') . '/'. $uris[$userType]['report'];
 
@@ -134,6 +136,11 @@ class UserReportComponent extends CBitrixComponent
 		 */
 		if (CheckRequestHelper::isAjax()) {
 			$APPLICATION->RestartBuffer();
+
+			if ($request->getQuery('type') == 'refresh') {
+				$this->showReportJson();
+			}
+
 			$this->showJson();
 		}
 
@@ -150,6 +157,16 @@ class UserReportComponent extends CBitrixComponent
 		} else {
 			$this->IncludeComponentTemplate();
 		}
+	}
+
+
+	protected function showReportJson()
+	{
+		echo json_encode([
+			'list' => $this->arResult['REPORT_DATA']['LIST']
+		], JSON_UNESCAPED_UNICODE);
+
+		die();
 	}
 
 
