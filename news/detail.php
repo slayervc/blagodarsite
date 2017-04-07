@@ -1,11 +1,11 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Предложения");
+$APPLICATION->SetTitle("Title");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"blagofar_offers",
 	Array(
-		"ACTIVE_DATE_FORMAT" => "",
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_ELEMENT_CHAIN" => "N",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
@@ -20,19 +20,18 @@ $APPLICATION->SetTitle("Предложения");
 		"CHECK_DATES" => "Y",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
-		"DISPLAY_DATE" => "N",
+		"DISPLAY_DATE" => "Y",
 		"DISPLAY_NAME" => "Y",
-		"DISPLAY_PICTURE" => "Y",
-		"DISPLAY_PREVIEW_TEXT" => "N",
+		"DISPLAY_PICTURE" => "N",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"ELEMENT_CODE" => "",
 		"ELEMENT_ID" => $_REQUEST["ID"],
 		"FIELD_CODE" => array("",""),
-		"IBLOCK_ID" => "4",
-		"IBLOCK_TYPE" => "offers",
+		"IBLOCK_ID" => "2",
+		"IBLOCK_TYPE" => "news",
 		"IBLOCK_URL" => "",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
-		"MEDIA_PROPERTY" => "",
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",
@@ -49,8 +48,6 @@ $APPLICATION->SetTitle("Предложения");
 		"SET_STATUS_404" => "N",
 		"SET_TITLE" => "Y",
 		"SHOW_404" => "N",
-		"SLIDER_PROPERTY" => "",
-		"TEMPLATE_THEME" => "blue",
 		"USE_PERMISSIONS" => "N",
 		"USE_SHARE" => "N"
 	)

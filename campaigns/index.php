@@ -6,7 +6,7 @@ $APPLICATION->SetTitle("Title");
 if ($commonCityFilter) {
 	$APPLICATION->IncludeComponent(
 		"bitrix:news.list",
-		"",
+		"offers_pallet",
 		Array(
 			"ACTIVE_DATE_FORMAT" => "d.m.Y",
 			"ADD_SECTIONS_CHAIN" => "Y",

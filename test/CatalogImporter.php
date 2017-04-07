@@ -1,7 +1,5 @@
 <?php
 
-namespace EvrySoft\Helpers;
-
 class CatalogImporter
 {
 
@@ -49,7 +47,7 @@ class CatalogImporter
     }
 
     private function log($message){
-        $message = date("m.d.y H:i:s") . '   ' . $message . PHP_EOL;
+        $message = date("d.m.y H:i:s") . '   ' . $message . PHP_EOL;
         file_put_contents($_SERVER["DOCUMENT_ROOT"] . self :: LOG_FILE, $message, FILE_APPEND);
     }
 

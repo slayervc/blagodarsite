@@ -1,8 +1,12 @@
 <?
-use EvrySoft\Helpers\CatalogImporter;
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Клонировать партнеров");
 
+CModule::IncludeModule('statistic');
+CModule::IncludeModule('iblock');
+
+include ('CatalogImporter.php');
+
+$APPLICATION->SetTitle("Клонировать партнеров");
 
 $importer = new CatalogImporter();
 $importer -> UpdateCatalog();

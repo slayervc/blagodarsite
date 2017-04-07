@@ -140,17 +140,19 @@
 
 .company-list__image img { left: 0; top: 50%; transform: translateY(-50%); position: absolute; width: 100%; }
 
-.company-list__content-wrapper { float: left; width: 70%; padding-left: 15px; }
+.company-list__content-wrapper { float: left; width: 70%; padding-left: 15px; max-height: 90px; overflow: hidden;}
 
 .company-list__content-header { color: #7aa700; font-family: 'Open Sans'; font-weight: 600; margin-top: 0; margin-bottom: 20px; }
 
-.company-list__content-header a { color: #7aa700; }
+.company-list__content-header a { color: #7aa700; display: block; max-height: 50px; overflow: hidden; }
 
 .company-list__content-header a:hover { text-decoration: underline; }
 
 .company-list__content-main { font-family: 'Open Sans'; font-size: 13px; color: #000; }
 
 .company-list__content-main p { margin-bottom: 0; }
+
+@media screen and (max-width: 767px) { .company-list__content-header a, .company-list__content-wrapper {max-height: inherit;}}
 
 .content { margin-bottom: 20px; }
 

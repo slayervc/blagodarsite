@@ -50,7 +50,7 @@ if ($_SESSION['SESS_CURRENT_CITY']['CORE_ID']) {
 			"PAGER_TITLE" => "Предприятия",
 			"PARENT_SECTION" => "",
 			"PARENT_SECTION_CODE" => "",
-			"PREVIEW_TRUNCATE_LEN" => "20",
+			"PREVIEW_TRUNCATE_LEN" => "",
 			"PROPERTY_CODE" => array("", ""),
 			"SET_BROWSER_TITLE" => "Y",
 			"SET_LAST_MODIFIED" => "N",

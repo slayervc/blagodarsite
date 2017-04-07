@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог предприятий");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
-	"",
+	"blagodar_catalog",
 	Array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_ELEMENT_CHAIN" => "N",

@@ -9,6 +9,7 @@
 	<?php $APPLICATION->ShowHead(); ?>
 	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/dist/css/main.css">
+	<link rel="stylesheet" href="<?php echo SITE_TEMPLATE_PATH ?>/dist/css/additional.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
