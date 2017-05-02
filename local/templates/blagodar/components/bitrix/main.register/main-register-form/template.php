@@ -65,7 +65,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 									<input type="text" class="form-control auth-block__form-control" name="REGISTER[USER_PHONE_CODE]" placeholder="Код полученный из смс">
 								</div>
 								<div class="col-md-6">
-									<button id="get_code_button" class="btn auth-block__button auth-block__button--full" data-get-code-url="http://<?php echo $_SERVER['HTTP_HOST'] ?>/code/auth/get">Получить код</button>
+									<button id="get_code_button" class="btn auth-block__button auth-block__button--full" data-get-code-url="http://<?php echo $_SERVER['HTTP_HOST'] ?>/ext-pages/auth/get-auth-code.php">Получить код</button>
 								</div>
 							</div>
 						</div>

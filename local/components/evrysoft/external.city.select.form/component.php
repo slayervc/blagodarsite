@@ -9,8 +9,8 @@ class CitySelector
 {
     private static $instance;
 
-    const BLOCK_ID = 6, //Инфоблок "Города"
-        DEFAULT_CITY = 568; //Иркутск
+    const BLOCK_ID = 5, //Инфоблок "Города"
+        DEFAULT_CITY = 570; //Иркутск
 
     public $currentCity = false;
 
@@ -34,6 +34,7 @@ class CitySelector
         );
 
         $this -> currentCity = $cityList->Fetch();
+
         if (! $this -> currentCity) return;
 
         $cityList = CIBlockElement :: GetList(

@@ -30,7 +30,7 @@ if ($commonCityFilter) {
 			"FIELD_CODE" => array("", ""),
 			"FILTER_NAME" => "commonCityFilter",
 			"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-			"IBLOCK_ID" => "3",
+			"IBLOCK_ID" => "4",
 			"IBLOCK_TYPE" => "offers",
 			"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
 			"INCLUDE_SUBSECTIONS" => "Y",

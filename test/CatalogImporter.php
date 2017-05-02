@@ -6,7 +6,7 @@ class CatalogImporter
     const SERVER_URL = 'https://xn----8sbntbegpkx.xn--p1ai/v1.1',
           SERVER_LOGIN = 'SYSTEM',
           SERVER_PASSWORD = '94jc09ePOnbedw',
-          BLOCK_ID = 5, //Инфоблок "Партнеры"
+          BLOCK_ID = 6, //Инфоблок "Партнеры"
           HASH_FILE = '/upload/catalog/hash.json',
           LOG_FILE = '/upload/catalog/import.log',
           LOGO_IMG_DIR = '/upload/catalog/logos',
