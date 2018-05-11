@@ -1,5 +1,5 @@
 /*    Company list    */
-.company-list__image img { border-radius: 50%; }
+.company-list__image img {/* border-radius: 50%; */}
 .company-list__content-wrapper { max-height: 90px; overflow: hidden;}
 .company-list__content-header a { display: block; max-height: 50px; overflow: hidden;}
 .company-list__date {
@@ -267,6 +267,7 @@
 	max-width: 100%;
 	border-radius: 5px;
 	margin: 10px 10px 25px 0;
+	height: auto !important;
 }
 
 .content-news h1,
@@ -331,3 +332,23 @@
 	height: auto;
 }
 
+.categories{
+    -webkit-columns:290px;
+    -moz-columns:290px;
+    columns:290px;
+    padding-top:60px;
+    font-size:13px;
+    padding-bottom:20px
+}
+.categories__item{
+    padding-left:10px;
+    margin-bottom:7px;
+    color:#000
+}
+.categories__item a{
+    color:#000
+}
+.categories__item span{
+    color:#7aa700;
+    margin-left:5px
+}

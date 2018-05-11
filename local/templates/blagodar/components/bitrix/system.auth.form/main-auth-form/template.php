@@ -16,6 +16,7 @@
 <? endif ?>
 
 	<div class="auth-block__form">
+		<a name="login"></a>
 		<h4 class="auth-block__form-header text-center">
 			Авторизация 
 		</h4>

@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("test page");
+//var_dump($_SESSION['SESS_CURRENT_CITY']);
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"partners_pallet",
@@ -55,5 +56,28 @@ $APPLICATION->SetTitle("test page");
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC"
+	)
+);?><br>
+ <?$APPLICATION->IncludeComponent(
+	"bitrix:player",
+	"",
+	Array(
+		"ADVANCED_MODE_SETTINGS" => "N",
+		"AUTOSTART" => "N",
+		"HEIGHT" => "300",
+		"MUTE" => "N",
+		"PATH" => "/upload/medialibrary/1cf/1cfeeb52dbaa0a16f8ed323bbbadd32f.mp4",
+		"PLAYBACK_RATE" => "1",
+		"PLAYER_ID" => "",
+		"PLAYER_TYPE" => "auto",
+		"PRELOAD" => "N",
+		"REPEAT" => "none",
+		"SHOW_CONTROLS" => "Y",
+		"SIZE_TYPE" => "fluid",
+		"SKIN" => "",
+		"SKIN_PATH" => "/bitrix/components/bitrix/player/videojs/skins",
+		"START_TIME" => "0",
+		"VOLUME" => "90",
+		"WIDTH" => "400"
 	)
 );?><br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

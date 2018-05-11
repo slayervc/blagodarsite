@@ -30,7 +30,8 @@
 		"LIMIT" => "5",
 		"USE_PRELOAD" => "N",
 		"VIEW_TYPE" => "BLOCK",
-		"DONT_SHOW" => ['transaction']
+		"DONT_SHOW" => array(
+		)
 	),
 	false
 );

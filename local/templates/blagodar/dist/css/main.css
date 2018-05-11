@@ -14,13 +14,64 @@
 
 .header__head-block:after { content: ''; display: table; clear: both; }
 
-.header__auth-container { padding: 15px; border-radius: 5px; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); background: #f5f5f5; }
+.header__auth-container { padding: 10px 15px; border-radius: 5px; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); background: #f5f5f5; }
+.header__head-block span { }
 
 .header__auth-container:after { content: ''; display: table; clear: both; }
 
 @media screen and (min-widthh: 564px) { .header__auth-container { width: 100%; margin: 0 auto; } }
 
-@media screen and (min-width: 768px) { .header__auth-container { width: 100%; margin: 0 auto; } }
+
+@media screen and (min-width: 768px) { .header__auth-container { width: 100%; margin: 0 auto;  min-height: 68px;}
+ .header__head-block{
+
+
+}
+ }
+@media screen and (max-width: 768px) {
+ .header__head-block { padding: 0 0; }
+
+.header__head-block:after { content: ''; display: table; clear: both; }
+
+.header__auth-container { 
+		max-width: 280px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+	/*padding: 0 15px;*/
+	 /*border-radius: 0; box-shadow: none; background: none;*/
+	
+	 }
+
+.header__main{
+	padding-bottom: 15px;
+}
+
+.header__auth-container  .header__auth-button{
+			float: left !important;
+ }
+ .header__head-block span{
+		padding-top: 10px;
+		padding-bottom: 5px;
+	}
+	.navigation__nav-toggler{
+		padding: 10px;
+	}
+}
+ .header__head-block-1{
+		display: flex;
+    align-items: center;
+
+ }
+.map-btn{
+	color: #7aa707 !important;
+}
+@media screen and (max-width: 767px) {
+.header__head-block{
+	width: 100%;
+}
+
+}
 
 @media screen and (min-width: 960px) { .header__auth-container { width: 285px; margin-left: auto; margin-right: 0; } }
 
@@ -42,7 +93,13 @@
 
 .header__auth-button { border: none; padding: 5px 15px; font-size: 13px; font-family: 'Open Sans'; background-color: #7aa700; color: #fff; text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); font-weight: 600; }
 
-@media screen and (max-width: 960px) { .header__auth-button { margin-top: 15px; width: 100%; } }
+@media screen and (max-width: 960px) { .header__auth-button { 
+	}
+	.header__auth-button--expanded{
+		
+	margin-top: 15px; width: 100%; 
+	} 
+}
 
 .header__auth-button:hover { box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2); background: #89bb00; color: #fff; }
 
@@ -90,6 +147,12 @@
 
 .banner img { width: 100%; }
 
+@media screen and (max-width: 768px) { #get_code_button { margin-top: 10px; } .navigation__nav-toggler {   padding: 10px; }}
+
+@media screen and (max-width: 960px) { #get_code_button { margin-top: 10px; } }
+
+@media screen and (max-width: 564px) { #get_code_button { margin-top: 10px; } }
+
 .auth-block { margin: 20px 0; }
 
 .auth-block__form--expanded { padding: 20px; }
@@ -100,7 +163,7 @@
 
 .auth-block__form-header--centered { text-align: center; }
 
-.auth-block__form-control { padding: 20px 17px; color: #585757; font-family: 'Open Sans'; font-weight: 300; font-size: 13px; border: 1px solid #eeeeee; }
+.auth-block__form-control { margin-bottom: 15px; padding: 0 17px; color: #585757; font-family: 'Open Sans'; font-weight: 300; font-size: 13px; border: 1px solid #eeeeee; min-height: 42px;}
 
 .auth-block__form-control:focus { border: 1px solid rgba(122, 167, 0, 0.3); box-shadow: 0px 0px 3px rgba(122, 167, 0, 0.3); }
 
@@ -140,19 +203,17 @@
 
 .company-list__image img { left: 0; top: 50%; transform: translateY(-50%); position: absolute; width: 100%; }
 
-.company-list__content-wrapper { float: left; width: 70%; padding-left: 15px; max-height: 90px; overflow: hidden;}
+.company-list__content-wrapper { float: left; width: 70%; padding-left: 15px; }
 
 .company-list__content-header { color: #7aa700; font-family: 'Open Sans'; font-weight: 600; margin-top: 0; margin-bottom: 20px; }
 
-.company-list__content-header a { color: #7aa700; display: block; max-height: 50px; overflow: hidden; }
+.company-list__content-header a { color: #7aa700; }
 
 .company-list__content-header a:hover { text-decoration: underline; }
 
 .company-list__content-main { font-family: 'Open Sans'; font-size: 13px; color: #000; }
 
 .company-list__content-main p { margin-bottom: 0; }
-
-@media screen and (max-width: 767px) { .company-list__content-header a, .company-list__content-wrapper {max-height: inherit;}}
 
 .content { margin-bottom: 20px; }
 
@@ -176,9 +237,11 @@
 
 .sidebar__menu { display: none; }
 
-@media screen and (max-width: 960px) { .sidebar__menu { display: block; } }
+@media screen and (max-width: 960px) { .sidebar__menu { display: block;} .sidebar__wrapper{ margin-top: 15px;}}
+.sidebar__wrapper { display: block !important; height: auto !important; }
+.sidebar__wrapper .col-xs-6{ display: block; width: 100%; }
 
-@media screen and (min-width: 960px) { .sidebar__wrapper { display: block !important; height: auto !important; } }
+@media screen and (min-width: 960px) {  }
 
 .sidebar__info { margin-bottom: 25px; }
 
@@ -358,3 +421,78 @@
 .form-textarea--static { resize: none; }
 
 /*# sourceMappingURL=maps/main.css.map */
+.tabs__content.active{
+		/*display: none;*/
+		display: block;
+}
+.tabs__content{
+		display: none;
+}
+.tabs__btn{
+	display: inline-block;
+	cursor: pointer;
+}
+.btn-22  {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		-webkit-flex-wrap: wrap;
+		-moz-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		-o-flex-wrap: wrap;
+		flex-wrap: wrap;
+		margin: 0 -10px;
+}
+
+.btn-22 > *{
+	margin: 0 10px 15px;
+}
+@media screen and (max-width: 960px) {
+	.footer__logo{
+		display: none;
+	}
+	.footer__main-foot{
+		padding: 0;
+		padding-bottom: 10px;
+	}
+	.banner{
+		margin: 0;
+	}
+	.auth-block__form--bordered{
+		border: none;
+	}
+	.auth-block__form--expanded{
+		padding: 0 ;
+	}
+	.auth-block__form-control{
+		margin-bottom: 5px;
+	}
+	.auth-block__form-header{
+		margin-bottom: 0;
+		margin-top: 10px;
+	}
+}
+
+.navbar-header .header__head-block-1{
+		margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+}
+.navbar-header .header__head-block-1 .map-btn {
+	color: #FFF !important;
+}
+.auth-block__form h4{
+	margin-bottom: 15px;
+}
+
+
+@media screen and (max-width: 960px) {  
+	.footer__content-block{
+		margin-bottom: 0;
+	}
+	.footer__main-foot{
+		margin-top: -15px;
+	}
+ }

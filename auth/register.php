@@ -1,8 +1,17 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("регистрация");
-$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . "/js/submit-to-api.js");
-?><?$APPLICATION->IncludeComponent(
+$APPLICATION->SetPageProperty("NOT_SHOW_NAV_CHAIN", "Y");
+//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . "/js/submit-to-api.js");
+?>
+
+<? $APPLICATION->IncludeComponent(
+	"evrysoft:external.register.form",
+	"",
+	array()
+); ?>
+
+<?/*$APPLICATION->IncludeComponent(
 	"bitrix:main.register", 
 	"main-register-form", 
 	array(
@@ -31,7 +40,7 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . "/js/submit-to-api.js");
 		"CLIENT_TYPE" => "Client"
 	),
 	false
-);?>
+);*/?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
 

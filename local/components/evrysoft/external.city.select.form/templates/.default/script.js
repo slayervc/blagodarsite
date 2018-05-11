@@ -34,7 +34,9 @@ function searchCity(){
                 list += '<H5>' + region + '</H5><UL>';
             }
 
-            list += '<LI><A href="' + window.location.origin + window.location.pathname + '?set_city=' + cities[i].CITY_ID + '">' + cities[i].CITY_NAME + '</A></LI>';
+            url = window.location.search ? window.location.origin + window.location.pathname + window.location.search + '&set_city=' :
+            window.location.origin + window.location.pathname + '?set_city=';
+            list += '<LI><A href="' + url + cities[i].CITY_ID + '">' + cities[i].CITY_NAME + '</A></LI>';
         }
 
         if (list) list += '</UL>';

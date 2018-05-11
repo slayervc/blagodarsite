@@ -22,6 +22,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 		
 ?>
 		<div class="col-md-8 col-md-offset-2">
+			<a name="reg"></a>
 			<div class="auth-block">
 				<h4 class="auth-block__form-header auth-block__form-header--centered">
 					Регистрация

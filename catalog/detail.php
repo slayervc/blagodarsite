@@ -28,7 +28,7 @@ $APPLICATION->SetTitle("Каталог предприятий");
 		"ELEMENT_CODE" => "",
 		"ELEMENT_ID" => $_REQUEST["ID"],
 		"FIELD_CODE" => array("NAME","PREVIEW_PICTURE","DETAIL_TEXT",""),
-		"IBLOCK_ID" => "5",
+		"IBLOCK_ID" => "6",
 		"IBLOCK_TYPE" => "partners",
 		"IBLOCK_URL" => "",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
@@ -39,7 +39,7 @@ $APPLICATION->SetTitle("Каталог предприятий");
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Страница",
-		"PROPERTY_CODE" => array("email","address","city_name","site","phones",""),
+		"PROPERTY_CODE" => array("program_description","site","phone","email","address",""),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_CANONICAL_URL" => "N",
 		"SET_LAST_MODIFIED" => "N",
@@ -51,4 +51,4 @@ $APPLICATION->SetTitle("Каталог предприятий");
 		"USE_PERMISSIONS" => "N",
 		"USE_SHARE" => "N"
 	)
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?><br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

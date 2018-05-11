@@ -22,7 +22,7 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Каталог предприятий", 
+		"Где тратить бонусы", 
 		"/catalog/", 
 		Array(), 
 		Array(), 

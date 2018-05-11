@@ -1,3 +1,6 @@
 <?
-$sSectionName="Каталог предприятий";
+$sSectionName = "Где тратить бонусы";
+$arDirProperties = array(
+
+);
 ?>
